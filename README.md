@@ -1,5 +1,5 @@
 # project_rumia
-Realistic nature simulation/environment rendering project. (With AI-Agents)
+Realistic nature simulation/environment rendering project.
 
 # Roadmap
 -----------------------------
@@ -7,7 +7,7 @@ Realistic nature simulation/environment rendering project. (With AI-Agents)
 - Eco-Systems
   - Weather
   - Day/Night Cycle
-  - Creatures
+  - Creatures (AI)
   - Biome
   - Seasons
   - Sound FX
