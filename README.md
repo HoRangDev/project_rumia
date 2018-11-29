@@ -17,5 +17,6 @@ Realistic nature simulation/environment rendering project. (With AI-Agents)
   - Massive Open World Rendering
   - Clouds
   - Volumetric Fog
+  - Global Illumination
 - Direct3D11 rendering backend
 - OpenGL rendering backend
