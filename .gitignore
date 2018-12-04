@@ -30,3 +30,15 @@
 *.exe
 *.out
 *.app
+Projects/rumia/.vs/rumia/v15/.suo
+*.db
+*.opendb
+*.ipch
+*.log
+*.tlog
+*.pdb
+*.idb
+Projects/.vs/rumia/v15/.suo
+*.ilk
+*.db-wal
+*.db-shm

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Sources">
+      <UniqueIdentifier>{6988b7c1-7e34-4257-9292-492340f22f8d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Core">
+      <UniqueIdentifier>{e81ba2bf-ce49-4afa-a735-af1f603ca0f1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Sources\Runtime\Core\EngineDefines.hpp">
+      <Filter>Sources\Core</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
