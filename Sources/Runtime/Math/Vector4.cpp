@@ -36,6 +36,11 @@ namespace rumia
    {
    }
 
+   Vector4::Vector4(const Vector4& _vec4) :
+      Vector4(_vec4.xx, _vec4.yy, _vec4.zz, _vec4.ww)
+   {
+   }
+
    const Vector4 Vector4::Right = Vector4{1.0f, 0.0f, 0.0f, 0.0f};
    const Vector4 Vector4::Up = Vector4{0.0f, 1.0f, 0.0f, 0.0f};
    const Vector4 Vector4::Forward = Vector4{0.0f, 0.0f, 0.0f, 0.0f};

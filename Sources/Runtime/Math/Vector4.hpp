@@ -13,6 +13,7 @@ namespace rumia
       Vector4(const Vector3& _vec3);
       Vector4(const Vector3& _vec3, float _ww);
       Vector4(float _xx, float _yy, float _zz, float _ww);
+      Vector4(const Vector4& _vec4);
 
    public:
       float xx;

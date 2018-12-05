@@ -19,6 +19,11 @@ namespace rumia
    {
    }
 
+   Vector3::Vector3(const Vector3& _vec3) :
+      Vector3(_vec3.xx, _vec3.yy, _vec3.zz)
+   {
+   }
+
    const Vector3 Vector3::Right = Vector3{ 1.0f, 0.0f, 0.0f };
    const Vector3 Vector3::Up = Vector3{ 0.0f, 1.0f, 0.0f };
    const Vector3 Vector3::Forward = Vector3{ 0.0f, 0.0f, 1.0f };
