@@ -1,3 +1,4 @@
+#include "gtest/gtest.h"
 #include "VectorTest.h"
 
 VectorTest::VectorTest()

@@ -13,7 +13,7 @@
   <ItemGroup>
     <ClCompile Include="..\Sources\unit-test\TestEntry.cpp" />
     <ClCompile Include="..\Sources\unit-test\VectorTest.cpp" />
-    <ClCompile Include="..\Sources\unit-test\VectorTest.hpp" />
+    <ClCompile Include="..\Sources\unit-test\VectorTest.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
