@@ -13,6 +13,10 @@
 
 namespace rumia
 {
+   /* x64 platform **/
+   using SizeType = unsigned long long;
+
+   /* Memory Management Utility functions **/
    template <typename Ty>
    void SafeDelete(Ty& target)
    {
