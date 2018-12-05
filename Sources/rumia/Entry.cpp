@@ -5,7 +5,7 @@
 
 int main()
 {
-   rumia::Vector2 vec{ 0.3f, 20.f };
+   rumia::Vector2 vec = { 0.3f, 20.f };
    std::cout << vec.xx << ", " << vec.yy << std::endl;
    return 0;
 }

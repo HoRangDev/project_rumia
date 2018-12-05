@@ -19,12 +19,16 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Sources\Runtime\Core\Allocator.hpp" />
     <ClInclude Include="..\Sources\Runtime\Core\EngineDefines.hpp" />
+    <ClInclude Include="..\Sources\Runtime\Math\MathDefines.h" />
     <ClInclude Include="..\Sources\Runtime\Math\Vector2.hpp" />
+    <ClInclude Include="..\Sources\Runtime\Math\Vector3.hpp" />
+    <ClInclude Include="..\Sources\Runtime\Math\Vector4.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Sources\Runtime\Math\Vector2.cpp" />
+    <ClCompile Include="..\Sources\Runtime\Math\Vector3.cpp" />
+    <ClCompile Include="..\Sources\Runtime\Math\Vector4.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

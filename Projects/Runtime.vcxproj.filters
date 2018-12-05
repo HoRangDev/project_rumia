@@ -15,15 +15,27 @@
     <ClInclude Include="..\Sources\Runtime\Core\EngineDefines.hpp">
       <Filter>Sources\Core</Filter>
     </ClInclude>
-    <ClInclude Include="..\Sources\Runtime\Core\Allocator.hpp">
-      <Filter>Sources\Core</Filter>
-    </ClInclude>
     <ClInclude Include="..\Sources\Runtime\Math\Vector2.hpp">
+      <Filter>Sources\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\Runtime\Math\Vector3.hpp">
+      <Filter>Sources\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\Runtime\Math\Vector4.hpp">
+      <Filter>Sources\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\Runtime\Math\MathDefines.h">
       <Filter>Sources\Math</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Sources\Runtime\Math\Vector2.cpp">
+      <Filter>Sources\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\Runtime\Math\Vector3.cpp">
+      <Filter>Sources\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\Runtime\Math\Vector4.cpp">
       <Filter>Sources\Math</Filter>
     </ClCompile>
   </ItemGroup>
