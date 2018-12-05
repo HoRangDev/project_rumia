@@ -12,5 +12,8 @@
     <ClInclude Include="..\Sources\Runtime\Core\EngineDefines.hpp">
       <Filter>Sources\Core</Filter>
     </ClInclude>
+    <ClInclude Include="..\Sources\Runtime\Core\Allocator.h">
+      <Filter>Sources\Core</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
