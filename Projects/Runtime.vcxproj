@@ -19,8 +19,12 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Sources\Runtime\Core\Allocator.h" />
+    <ClInclude Include="..\Sources\Runtime\Core\Allocator.hpp" />
     <ClInclude Include="..\Sources\Runtime\Core\EngineDefines.hpp" />
+    <ClInclude Include="..\Sources\Runtime\Math\Vector2.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Sources\Runtime\Math\Vector2.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

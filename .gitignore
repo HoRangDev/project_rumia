@@ -42,3 +42,4 @@ Projects/.vs/rumia/v15/.suo
 *.ilk
 *.db-wal
 *.db-shm
+*.exp

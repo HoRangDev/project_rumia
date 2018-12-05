@@ -7,13 +7,24 @@
     <Filter Include="Sources\Core">
       <UniqueIdentifier>{e81ba2bf-ce49-4afa-a735-af1f603ca0f1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\Math">
+      <UniqueIdentifier>{3a0355de-bc8b-44f7-bd40-7ef42f35b985}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Sources\Runtime\Core\EngineDefines.hpp">
       <Filter>Sources\Core</Filter>
     </ClInclude>
-    <ClInclude Include="..\Sources\Runtime\Core\Allocator.h">
+    <ClInclude Include="..\Sources\Runtime\Core\Allocator.hpp">
       <Filter>Sources\Core</Filter>
     </ClInclude>
+    <ClInclude Include="..\Sources\Runtime\Math\Vector2.hpp">
+      <Filter>Sources\Math</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Sources\Runtime\Math\Vector2.cpp">
+      <Filter>Sources\Math</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
