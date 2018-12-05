@@ -11,6 +11,8 @@
 #define RUMIA __declspec(dllimport) 
 #endif
 
+#define TYPE_TO_LITERAL(TYPE) #TYPE
+
 namespace rumia
 {
    /* x64 platform **/
