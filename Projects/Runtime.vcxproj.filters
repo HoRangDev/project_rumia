@@ -7,31 +7,19 @@
     <Filter Include="Sources\Core">
       <UniqueIdentifier>{e81ba2bf-ce49-4afa-a735-af1f603ca0f1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Sources\Math">
-      <UniqueIdentifier>{3a0355de-bc8b-44f7-bd40-7ef42f35b985}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Sources\Component">
       <UniqueIdentifier>{823935b3-262f-47cf-ad06-db29b6c13822}</UniqueIdentifier>
     </Filter>
     <Filter Include="Sources\World">
       <UniqueIdentifier>{e8cd6ac2-20e5-4293-9d06-c190749df70a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Math">
+      <UniqueIdentifier>{59014c35-4559-41f6-afd4-67da5d0cc50f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Sources\Runtime\Core\EngineDefines.hpp">
       <Filter>Sources\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Sources\Runtime\Math\Vector2.hpp">
-      <Filter>Sources\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Sources\Runtime\Math\Vector3.hpp">
-      <Filter>Sources\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Sources\Runtime\Math\Vector4.hpp">
-      <Filter>Sources\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Sources\Runtime\Math\MathDefines.h">
-      <Filter>Sources\Math</Filter>
     </ClInclude>
     <ClInclude Include="..\Sources\Runtime\Component\Component.h">
       <Filter>Sources\Component</Filter>
@@ -45,22 +33,34 @@
     <ClInclude Include="..\Sources\Runtime\Component\TestComponent.h">
       <Filter>Sources\Component</Filter>
     </ClInclude>
+    <ClInclude Include="..\Sources\Runtime\Math\Vector3.hpp">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\Runtime\Math\Vector4.hpp">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\Runtime\Math\MathDefines.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\Runtime\Math\Vector2.hpp">
+      <Filter>Math</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Sources\Runtime\Math\Vector2.cpp">
-      <Filter>Sources\Math</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Sources\Runtime\Math\Vector3.cpp">
-      <Filter>Sources\Math</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Sources\Runtime\Math\Vector4.cpp">
-      <Filter>Sources\Math</Filter>
-    </ClCompile>
     <ClCompile Include="..\Sources\Runtime\Component\Component.cpp">
       <Filter>Sources\Component</Filter>
     </ClCompile>
     <ClCompile Include="..\Sources\Runtime\Component\TestComponent.cpp">
       <Filter>Sources\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\Runtime\Math\Vector4.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\Runtime\Math\Vector2.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\Runtime\Math\Vector3.cpp">
+      <Filter>Math</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
