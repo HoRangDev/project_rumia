@@ -29,7 +29,7 @@ namespace rumia
    public:
       static const Vector3 Right;
       static const Vector3 Up;
-      /* Left-Hand coordinate forward **/
+      /* Right-Hand coordinate forward **/
       static const Vector3 Forward;
       static const Vector3 Zero;
       static const Vector3 One;
