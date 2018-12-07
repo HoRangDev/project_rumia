@@ -12,8 +12,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Sources\unit-test\TestEntry.cpp" />
-    <ClCompile Include="..\Sources\unit-test\VectorTest.cpp" />
-    <ClCompile Include="..\Sources\unit-test\VectorTest.h" />
+    <ClCompile Include="..\Sources\unit-test\VectorTest.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\Sources\unit-test\VectorTest.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

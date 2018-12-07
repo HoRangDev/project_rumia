@@ -22,19 +22,40 @@
     <ClInclude Include="..\Sources\Runtime\Component\Component.h" />
     <ClInclude Include="..\Sources\Runtime\Component\TestComponent.h" />
     <ClInclude Include="..\Sources\Runtime\Core\EngineDefines.hpp" />
-    <ClInclude Include="..\Sources\Runtime\Math\MathDefines.h" />
-    <ClInclude Include="..\Sources\Runtime\Math\Vector2.hpp" />
-    <ClInclude Include="..\Sources\Runtime\Math\Vector3.hpp" />
-    <ClInclude Include="..\Sources\Runtime\Math\Vector4.hpp" />
+    <ClInclude Include="..\Sources\Runtime\Math\MathDefines.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Sources\Runtime\Math\Vector2.hpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Sources\Runtime\Math\Vector3.hpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Sources\Runtime\Math\Vector4.hpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="..\Sources\Runtime\World\Actor.hpp" />
     <ClInclude Include="..\Sources\Runtime\World\World.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Sources\Runtime\Component\Component.cpp" />
     <ClCompile Include="..\Sources\Runtime\Component\TestComponent.cpp" />
-    <ClCompile Include="..\Sources\Runtime\Math\Vector2.cpp" />
-    <ClCompile Include="..\Sources\Runtime\Math\Vector3.cpp" />
-    <ClCompile Include="..\Sources\Runtime\Math\Vector4.cpp" />
+    <ClCompile Include="..\Sources\Runtime\Math\Vector2.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\Sources\Runtime\Math\Vector3.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\Sources\Runtime\Math\Vector4.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
@@ -130,12 +151,17 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;RUNTIME_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\Sources\Runtime</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Sources\Runtime;..\Thirdparty\assimp\include;..\Thirdparty\GLAD\include;..\Thirdparty\glm\include;..\Thirdparty\imgui\include;..\Thirdparty\stb_image\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>..\Thirdparty\assimp\libs\assimp-vc140-mt_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>copy /y "$(SolutionDir)..\Thirdparty\assimp\dlls\DEBUG\assimp-vc140-mt.dll" "$(TargetDir)assimp-vc140-mt.dll"</Command>
+      <Message>Copy DLL</Message>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -165,14 +191,21 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;RUNTIME_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\Sources\Runtime</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Sources\Runtime;..\Thirdparty\assimp\include;..\Thirdparty\GLAD\include;..\Thirdparty\glm\include;..\Thirdparty\imgui\include;..\Thirdparty\stb_image\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>..\Thirdparty\assimp\libs\assimp-vc140-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>copy /y "$(SolutionDir)..\Thirdparty\assimp\dlls\Release\assimp-vc140-mt.dll" "$(TargetDir)assimp-vc140-mt.dll"</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>Copy DLL</Message>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
