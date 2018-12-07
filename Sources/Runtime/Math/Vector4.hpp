@@ -16,10 +16,17 @@ namespace rumia
       Vector4(const Vector4& _vec4);
 
    public:
-      float xx;
-      float yy;
-      float zz;
-      float ww;
+      union
+      {
+         float components[4];
+         struct
+         {
+            float xx;
+            float yy;
+            float zz;
+            float ww;
+         };
+      };
 
    public:
       static const Vector4 Right;

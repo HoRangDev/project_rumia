@@ -15,9 +15,16 @@ namespace rumia
       Vector3(const Vector3& _vec3);
 
    public:
-      float xx;
-      float yy;
-      float zz;
+      union
+      {
+         float components[3];
+         struct
+         {
+            float xx;
+            float yy;
+            float zz;
+         };
+      };
 
    public:
       static const Vector3 Right;

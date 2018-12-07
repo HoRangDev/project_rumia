@@ -12,8 +12,15 @@ namespace rumia
       Vector2(const Vector2& _vec2);
 
    public:
-      float xx;
-      float yy;
+      union
+      {
+         float components[2];
+         struct 
+         {
+            float xx;
+            float yy;
+         };
+      };
 
    public:
       static const Vector2 Right;
