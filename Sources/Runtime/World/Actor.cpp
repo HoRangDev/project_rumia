@@ -30,4 +30,12 @@ namespace rumia
       }
       m_components.clear();
    }
+
+   void Actor::Tick()
+   {
+      for (Component* component : m_components)
+      {
+         component->Tick();
+      }
+   }
 }

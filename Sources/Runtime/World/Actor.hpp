@@ -114,6 +114,8 @@ namespace rumia
          }
       }
 
+      void Tick();
+
    protected:
       // After Actor constructor finished
       virtual void OnCreate() {}
@@ -123,7 +125,7 @@ namespace rumia
    private:
       bool           m_bEnabled;
       std::string    m_name;
-      uint64   m_id;
+      uint64         m_id;
       std::vector<Component*> m_components;
 
       Transform*  m_transform;

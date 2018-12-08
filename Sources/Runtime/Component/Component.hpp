@@ -22,11 +22,13 @@ namespace rumia
    public:
       virtual ~Component();
 
+      Actor* GetActor() const { return m_actor; }
+
+      virtual void Tick() {}
+
    protected:
       Component();
       Component(Actor* actor);
-
-      Actor* GetActor() const { return m_actor; }
 
    private:
       Actor*      m_actor;
