@@ -1,6 +1,5 @@
 #include "Transform.hpp"
 
-// @TODO: Test
 namespace rumia
 {
    RUMIA_REGISTER_COMPONENT(Transform);

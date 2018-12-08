@@ -13,19 +13,13 @@ namespace rumia
    class RUMIA Actor
    {
    public:
-      virtual ~Actor();
-
-   protected:
       Actor(const std::string& name = "Actor");
-
-      // After Actor constructor finished
-      virtual void OnCreate() {}
-      // Before Actor destructor called
-      virtual void OnDestroy() {}
+      virtual ~Actor();
 
       Transform* GetTransform() const { return m_transform; }
       Renderable* GetRenderable() const { return m_renderable; }
 
+      void SetName(const std::string& name) { m_name = name; }
       std::string GetName() const { return m_name; }
       uint64 GetID() const { return m_id; }
 
@@ -120,6 +114,12 @@ namespace rumia
          }
       }
 
+   protected:
+      // After Actor constructor finished
+      virtual void OnCreate() {}
+      // Before Actor destructor called
+      virtual void OnDestroy() {}
+
    private:
       bool           m_bEnabled;
       std::string    m_name;
@@ -131,6 +131,5 @@ namespace rumia
 
    private:
       static uint64 staticIDCount;
-
    };
 }
