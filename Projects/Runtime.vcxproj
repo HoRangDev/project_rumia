@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Sources\Runtime\Component\Component.h" />
+    <ClInclude Include="..\Sources\Runtime\Component\Component.hpp" />
     <ClInclude Include="..\Sources\Runtime\Component\TestComponent.h" />
     <ClInclude Include="..\Sources\Runtime\Component\Transform.hpp" />
     <ClInclude Include="..\Sources\Runtime\Core\EngineDefines.hpp" />

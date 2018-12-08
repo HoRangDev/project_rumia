@@ -39,9 +39,6 @@
     <ClInclude Include="..\Sources\Runtime\Core\EngineDefines.hpp">
       <Filter>Sources\Core</Filter>
     </ClInclude>
-    <ClInclude Include="..\Sources\Runtime\Component\Component.h">
-      <Filter>Sources\Component</Filter>
-    </ClInclude>
     <ClInclude Include="..\Sources\Runtime\World\Actor.hpp">
       <Filter>Sources\World</Filter>
     </ClInclude>
@@ -748,6 +745,9 @@
       <Filter>Thirdparty\stb_image</Filter>
     </ClInclude>
     <ClInclude Include="..\Sources\Runtime\Component\Transform.hpp">
+      <Filter>Sources\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\Runtime\Component\Component.hpp">
       <Filter>Sources\Component</Filter>
     </ClInclude>
   </ItemGroup>

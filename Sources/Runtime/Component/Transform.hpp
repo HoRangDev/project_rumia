@@ -1,5 +1,5 @@
 #pragma once
-#include "Component/Component.h"
+#include "Component/Component.hpp"
 
 #include "glm/glm.hpp"
 #include "glm/gtc/quaternion.hpp"
@@ -13,7 +13,7 @@ namespace rumia
 {
    class RUMIA Transform : public Component
    {
-      RUMIA_COMPONENT(Transform);
+      RUMIA_COMPONENT(Transform, EComponentType::Transform);
    public:
       Transform(Actor* actor);
 
@@ -69,6 +69,5 @@ namespace rumia
       std::vector<Transform*> m_children;
 
       bool  m_bParentUpdated;
-
    };
 }
