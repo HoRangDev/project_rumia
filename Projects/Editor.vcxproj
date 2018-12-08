@@ -49,14 +49,14 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>..\Binaries\x64\$(Configuration)\</OutDir>
-    <IntDir>..\Binaries\Immediate\x64\$(Configuration)\rumia\</IntDir>
+    <IntDir>..\Binaries\Immediate\x64\$(Configuration)\Editor\</IntDir>
     <SourcePath>..\Sources\rumia;..\Sources\Runtime;$(VC_SourcePath);</SourcePath>
     <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>..\Binaries\x64\$(Configuration)\</OutDir>
-    <IntDir>..\Binaries\Immediate\x64\$(Configuration)\rumia\</IntDir>
+    <IntDir>..\Binaries\Immediate\x64\$(Configuration)\Editor\</IntDir>
     <SourcePath>..\Sources\rumia;..\Sources\Runtime;$(VC_SourcePath);</SourcePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
