@@ -32,7 +32,7 @@ namespace rumia
       template <typename Ty>
       Ty* AttachComponent()
       {
-         if (Ty::GetType() != EComponentType::Transform)
+         if (Ty::GetType() != EComponentType::Transform || m_transform == nullptr)
          {
             Ty* component = ComponentRegistry::GetInstance().Acquire<Ty>(this);
             if (component != nullptr)
