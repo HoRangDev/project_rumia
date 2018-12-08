@@ -43,7 +43,7 @@ namespace rumia
       void SetParent(Transform* newParent);
       Transform* GetParent() const { return m_parent; }
 
-      std::vector<Transform*> GetChildrean() const { return m_children; }
+      std::vector<Transform*> GetChildren() const { return m_children; }
 
       glm::mat4 GetMatrix() const;
       glm::mat4 GetLocalMatrix() const;
