@@ -18,5 +18,6 @@ Realistic nature simulation/environment rendering project.
   - Clouds
   - Volumetric Fog
   - Global Illumination
-- Direct3D11 rendering backend
+- Direct3D 11 rendering backend
 - OpenGL rendering backend
+- Vulkan rendering backend
