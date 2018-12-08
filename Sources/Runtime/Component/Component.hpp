@@ -8,6 +8,14 @@
 
 namespace rumia
 {
+   enum class RUMIA EComponentType
+   {
+      Transform,
+      Renderable,
+      Light,
+      Script
+   };
+
    class Actor;
    class RUMIA Component
    {
@@ -20,8 +28,6 @@ namespace rumia
 
       Actor* GetActor() const { return m_actor; }
 
-      virtual std::string GetTypeName() const = 0;
-
    private:
       Actor*      m_actor;
 
@@ -32,29 +38,11 @@ namespace rumia
 
    class RUMIA ComponentRegistry
    {
+      friend class Actor;
    private:
       ComponentRegistry()
       {
          // @Empty
-      }
-
-   public:
-      static ComponentRegistry& GetInstance()
-      {
-         static ComponentRegistry registry;
-         return registry;
-      }
-
-      template <typename Ty>
-      void Register()
-      {
-         static_assert(std::is_base_of<Component, Ty>::value, " Ty is not a component!");
-         std::string compType = typeid(Ty).name();
-         auto itr = componentMap.find(compType);
-         if (itr == componentMap.end())
-         {
-            componentMap.insert(std::make_pair(compType, &Ty::Create));
-         }
       }
 
       template <typename Ty>
@@ -79,12 +67,31 @@ namespace rumia
          return nullptr;
       }
 
+   public:
+      static ComponentRegistry& GetInstance()
+      {
+         static ComponentRegistry registry;
+         return registry;
+      }
+
+      template <typename Ty>
+      void Register()
+      {
+         static_assert(std::is_base_of<Component, Ty>::value, " Ty is not a component!");
+         std::string compType = typeid(Ty).name();
+         auto itr = componentMap.find(compType);
+         if (itr == componentMap.end())
+         {
+            componentMap.insert(std::make_pair(compType, &Ty::Create));
+         }
+      }
+
    private: 
       std::map< std::string, std::function<Component*(Actor*)> > componentMap;
    };
 }
 
-#define RUMIA_COMPONENT(TYPE) public: virtual std::string GetTypeName() const override { return typeid(TYPE).name(); }\
+#define RUMIA_COMPONENT(TYPE, ComponentType) public: static EComponentType GetType() { return ComponentType; } \
                               private: friend class rumia::ComponentRegistry; static TYPE _registerInst; \
                               static TYPE* Create(Actor* actor) { return new TYPE(actor);} \
                               TYPE() { rumia::ComponentRegistry::GetInstance().Register<TYPE>(); } \

@@ -1,4 +1,4 @@
-#include "Component\Component.h"
+#include "Component\Component.hpp"
 
 namespace rumia
 {
