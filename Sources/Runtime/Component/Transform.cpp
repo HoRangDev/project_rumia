@@ -159,7 +159,7 @@ namespace rumia
          m_parent = newParent;
          if (newParent != nullptr)
          {
-            newParent->m_children.push_back(this);
+            newParent->m_children.emplace_back(this);
          }
 
          PostSetParent();

@@ -31,7 +31,7 @@ namespace rumia
             Ty* component = ComponentRegistry::GetInstance().Acquire<Ty>(this);
             if (component != nullptr)
             {
-               m_components.push_back(component);
+               m_components.emplace_back(component);
 
                // Caching renderable component
                if (component->GetType() == EComponentType::Renderable)
@@ -80,7 +80,7 @@ namespace rumia
          {
             if (typeid(*component) == typeid(Ty))
             {
-               components.push_back(component);
+               components.emplace_back(component);
             }
          }
 
