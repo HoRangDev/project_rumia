@@ -1,5 +1,6 @@
 #include "World/World.hpp"
 #include "World/Actor.hpp"
+#include "Component/Transform.hpp"
 
 namespace rumia
 {
@@ -21,6 +22,7 @@ namespace rumia
    {
       Actor* newActor = new Actor();
       m_actors.emplace_back(newActor);
+      return newActor;
    }
 
    void World::AddActor(Actor* actor)
@@ -29,7 +31,7 @@ namespace rumia
       {
          m_actors.emplace_back(actor);
 
-         Transform* transform = actor->GetComponent<Transform>();
+         Transform* transform = actor->GetTransform();
          std::vector<Transform*> children = transform->GetChildren();
          for (auto child : children)
          {
@@ -47,7 +49,7 @@ namespace rumia
          m_actors.erase(itr);
 
          // also remove children
-         Transform* transform = actor->GetComponent<Transform>();
+         Transform* transform = actor->GetTransform();
          std::vector<Transform*> children{ std::move(transform->GetChildren()) };
          for (auto child : children)
          {

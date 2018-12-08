@@ -1,6 +1,6 @@
 #pragma once
 #include "Core/EngineDefines.hpp"
-#include "Component/Transform.hpp"
+#include "Component/Component.hpp"
 
 #include <string>
 #include <vector>
@@ -36,8 +36,7 @@ namespace rumia
                // Caching renderable component
                if (component->GetType() == EComponentType::Renderable)
                {
-                  //@TODO: Caching renderable component
-                  //m_renderable = component;
+                  m_renderable = reinterpret_cast<Renderable*>(component);
                }
             }
 
@@ -50,22 +49,11 @@ namespace rumia
       template <typename Ty>
       Ty* GetComponent() const
       {
-         switch (Ty::GetType())
-         {
-         case EComponentType::Renderable:
-            return m_renderable;
-            break;
-
-         case EComponentType::Transform:
-            return m_transform;
-            break;
-         }
-
          for (uint64 idx = 0; idx < m_components.size(); ++idx)
          {
             if (typeid(*m_components[idx]) == typeid(Ty))
             {
-               return m_components[idx];
+               return static_cast<Ty*>(m_components[idx]);
             }
          }
 
