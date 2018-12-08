@@ -750,6 +750,9 @@
     <ClInclude Include="..\Sources\Runtime\Component\Component.hpp">
       <Filter>Sources\Component</Filter>
     </ClInclude>
+    <ClInclude Include="..\Sources\Runtime\Component\Renderable.h">
+      <Filter>Sources\Component</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Sources\Runtime\Component\Component.cpp">
@@ -793,6 +796,9 @@
     </ClCompile>
     <ClCompile Include="..\Sources\Runtime\World\World.cpp">
       <Filter>Sources\World</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\Runtime\Component\Renderable.cpp">
+      <Filter>Sources\Component</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

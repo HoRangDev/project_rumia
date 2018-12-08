@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Sources\Runtime\Component\Component.hpp" />
+    <ClInclude Include="..\Sources\Runtime\Component\Renderable.h" />
     <ClInclude Include="..\Sources\Runtime\Component\TestComponent.h" />
     <ClInclude Include="..\Sources\Runtime\Component\Transform.hpp" />
     <ClInclude Include="..\Sources\Runtime\Core\EngineDefines.hpp" />
@@ -272,6 +273,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Sources\Runtime\Component\Component.cpp" />
+    <ClCompile Include="..\Sources\Runtime\Component\Renderable.cpp" />
     <ClCompile Include="..\Sources\Runtime\Component\TestComponent.cpp" />
     <ClCompile Include="..\Sources\Runtime\Component\Transform.cpp" />
     <ClCompile Include="..\Sources\Runtime\Math\Vector2.cpp">
