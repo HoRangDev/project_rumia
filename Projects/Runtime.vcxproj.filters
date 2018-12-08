@@ -747,6 +747,9 @@
     <ClInclude Include="..\Thirdparty\stb_image\include\stb_image.h">
       <Filter>Thirdparty\stb_image</Filter>
     </ClInclude>
+    <ClInclude Include="..\Sources\Runtime\Component\Transform.hpp">
+      <Filter>Sources\Component</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Sources\Runtime\Component\Component.cpp">
@@ -781,6 +784,9 @@
     </ClCompile>
     <ClCompile Include="..\Thirdparty\imgui\include\imgui_widgets.cpp">
       <Filter>Thirdparty\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\Runtime\Component\Transform.cpp">
+      <Filter>Sources\Component</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -9,7 +9,6 @@
 namespace rumia
 {
    class Actor;
-   //class ComponentRegistry;
    class RUMIA Component
    {
    protected:
@@ -58,7 +57,7 @@ namespace rumia
       Ty* Acquire(Actor* actor)
       {
          static_assert(std::is_base_of<Component, Ty>::value, " Ty is not a component!");
-         return static_cast<Ty*>(Acquire(typeid(Ty).name()));
+         return static_cast<Ty*>(Acquire(typeid(Ty).name(), actor));
       }
 
       Component* Acquire(const std::string& typeName, Actor* actor)
