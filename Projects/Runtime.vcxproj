@@ -286,6 +286,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="..\Sources\Runtime\World\Actor.cpp" />
     <ClCompile Include="..\Thirdparty\glm\include\glm\detail\dummy.cpp" />
     <ClCompile Include="..\Thirdparty\glm\include\glm\detail\glm.cpp" />
     <ClCompile Include="..\Thirdparty\imgui\include\imgui.cpp" />

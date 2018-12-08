@@ -11,12 +11,16 @@ namespace rumia
    class Actor;
    class RUMIA Component
    {
+   public:
+      virtual ~Component();
+
    protected:
       Component();
       Component(Actor* actor);
-      virtual ~Component();
 
       Actor* GetActor() const { return m_actor; }
+
+      virtual std::string GetTypeName() const = 0;
 
    private:
       Actor*      m_actor;
@@ -80,7 +84,8 @@ namespace rumia
    };
 }
 
-#define RUMIA_COMPONENT(TYPE) private: friend class rumia::ComponentRegistry; static TYPE _registerInst; \
+#define RUMIA_COMPONENT(TYPE) public: virtual std::string GetTypeName() const override { return typeid(TYPE).name(); }\
+                              private: friend class rumia::ComponentRegistry; static TYPE _registerInst; \
                               static TYPE* Create(Actor* actor) { return new TYPE(actor);} \
                               TYPE() { rumia::ComponentRegistry::GetInstance().Register<TYPE>(); } \
 

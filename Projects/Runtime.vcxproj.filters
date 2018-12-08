@@ -788,6 +788,9 @@
     <ClCompile Include="..\Sources\Runtime\Component\Transform.cpp">
       <Filter>Sources\Component</Filter>
     </ClCompile>
+    <ClCompile Include="..\Sources\Runtime\World\Actor.cpp">
+      <Filter>Sources\World</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Thirdparty\assimp\include\assimp\color4.inl">
