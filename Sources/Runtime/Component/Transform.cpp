@@ -144,7 +144,6 @@ namespace rumia
       if (newParent != m_parent && newParent != this)
       {
          PreSetParent();
-         // @TODO; Detach from old
          if (m_parent != nullptr)
          {
             auto end = m_parent->m_children.end();

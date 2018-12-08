@@ -12,37 +12,36 @@ int main()
    Actor* actor = new Actor();
    Transform* newTransform = ComponentRegistry::GetInstance().Acquire<rumia::Transform>(actor);
    Transform* parentTransform = ComponentRegistry::GetInstance().Acquire<Transform>(actor);
-   parentTransform->SetLocalRotation(glm::vec3(glm::radians(20.0f), glm::radians(0.0f), 0.0f));
-   newTransform->SetRotation(glm::vec3(glm::radians(30.0f), glm::radians(0.0f), 0.0f));
-   auto var = newTransform->GetLocalRotationEuler();
-   std::cout << glm::degrees(var.x) << ", " << glm::degrees(var.y) << ", " << glm::degrees(var.z) << std::endl;
-   
-   newTransform->SetParent(parentTransform);
-   var = newTransform->GetLocalRotationEuler();
-   std::cout << glm::degrees(var.x) << ", " << glm::degrees(var.y) << ", " << glm::degrees(var.z) << std::endl;
-   var = newTransform->GetRotationEuler();
-   std::cout << glm::degrees(var.x) << ", " << glm::degrees(var.y) << ", " << glm::degrees(var.z) << std::endl;
-
    Transform* otherTransform = ComponentRegistry::GetInstance().Acquire<Transform>(actor);
-   otherTransform->SetRotation(glm::vec3(glm::radians(10.0f), 0.0f, 0.0f));
-   newTransform->SetParent(otherTransform);
-   var = newTransform->GetLocalRotationEuler();
-   std::cout << glm::degrees(var.x) << ", " << glm::degrees(var.y) << ", " << glm::degrees(var.z) << std::endl;
-   var = newTransform->GetRotationEuler();
-   std::cout << glm::degrees(var.x) << ", " << glm::degrees(var.y) << ", " << glm::degrees(var.z) << std::endl;
 
-   newTransform->SetParent(nullptr);
-   var = newTransform->GetRotationEuler();
-   std::cout << glm::degrees(var.x) << ", " << glm::degrees(var.y) << ", " << glm::degrees(var.z) << std::endl;
+   newTransform->SetLocalPosition(glm::vec3(0.0f, 0.0f, 1.0f));
+   otherTransform->SetLocalPosition(glm::vec3(1.0f, 0.0f, 0.0f));
+   parentTransform->SetLocalPosition(glm::vec3(0.0f, 1.0f, 0.0f));
 
    newTransform->SetParent(otherTransform);
-   var = newTransform->GetLocalRotationEuler();
-   std::cout << glm::degrees(var.x) << ", " << glm::degrees(var.y) << ", " << glm::degrees(var.z) << std::endl;
+
+   auto pos = newTransform->GetPosition();
+   std::cout << pos.x << "," << pos.y << "," << pos.z << std::endl;
+   pos = newTransform->GetLocalPosition();
+   std::cout << pos.x << "," << pos.y << "," << pos.z << std::endl;
+
    otherTransform->SetParent(parentTransform);
-   var = newTransform->GetLocalRotationEuler();
-   std::cout << glm::degrees(var.x) << ", " << glm::degrees(var.y) << ", " << glm::degrees(var.z) << std::endl;
-   var = newTransform->GetRotationEuler();
-   std::cout << glm::degrees(var.x) << ", " << glm::degrees(var.y) << ", " << glm::degrees(var.z) << std::endl;
+   pos = newTransform->GetPosition();
+   std::cout << pos.x << "," << pos.y << "," << pos.z << std::endl;
+   pos = newTransform->GetLocalPosition();
+   std::cout << pos.x << "," << pos.y << "," << pos.z << std::endl;
+
+   parentTransform->Translate(glm::vec3(2.0f, 0.0f, 0.0f));
+   pos = newTransform->GetPosition();
+   std::cout << pos.x << "," << pos.y << "," << pos.z << std::endl;
+   pos = newTransform->GetLocalPosition();
+   std::cout << pos.x << "," << pos.y << "," << pos.z << std::endl;
+
+   otherTransform->Translate(glm::vec3(0.0f, 1.0f, 0.0f));
+   pos = newTransform->GetPosition();
+   std::cout << pos.x << "," << pos.y << "," << pos.z << std::endl;
+   pos = newTransform->GetLocalPosition();
+   std::cout << pos.x << "," << pos.y << "," << pos.z << std::endl;
 
    return 0;
 }
