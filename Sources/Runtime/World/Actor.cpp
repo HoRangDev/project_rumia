@@ -3,7 +3,7 @@
 
 namespace rumia
 {
-   unsigned int Actor::staticIDCount = 0;
+   uint64 Actor::staticIDCount = 0;
 
    Actor::Actor(const std::string& name) :
       m_bEnabled(true),
@@ -24,7 +24,7 @@ namespace rumia
    Actor::~Actor()
    {
       OnDestroy();
-      for (int idx = 0; idx < m_components.size(); ++idx)
+      for (uint64 idx = 0; idx < m_components.size(); ++idx)
       {
          delete m_components[idx];
       }

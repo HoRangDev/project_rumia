@@ -27,7 +27,7 @@ namespace rumia
       Renderable* GetRenderable() const { return m_renderable; }
 
       std::string GetName() const { return m_name; }
-      unsigned int GetID() const { return m_id; }
+      uint64 GetID() const { return m_id; }
 
       template <typename Ty>
       Ty* AttachComponent()
@@ -67,7 +67,7 @@ namespace rumia
             break;
          }
 
-         for (int idx = 0; idx < m_components.size(); ++idx)
+         for (uint64 idx = 0; idx < m_components.size(); ++idx)
          {
             if (typeid(*m_components[idx]) == typeid(Ty))
             {
@@ -123,14 +123,14 @@ namespace rumia
    private:
       bool           m_bEnabled;
       std::string    m_name;
-      unsigned int   m_id;
+      uint64   m_id;
       std::vector<Component*> m_components;
 
       Transform*  m_transform;
       Renderable* m_renderable;
 
    private:
-      static unsigned int staticIDCount;
+      static uint64 staticIDCount;
 
    };
 }

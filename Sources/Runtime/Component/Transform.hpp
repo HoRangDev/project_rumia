@@ -44,6 +44,7 @@ namespace rumia
       Transform* GetParent() const { return m_parent; }
 
       glm::mat4 GetMatrix() const;
+      glm::mat4 GetLocalMatrix() const;
       glm::mat4 GetInverseMatrix() const;
 
       void UpdateTransform();

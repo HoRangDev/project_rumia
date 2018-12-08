@@ -32,7 +32,7 @@ namespace rumia
       Actor*      m_actor;
 
    private:
-      static SizeType componentCount;
+      static uint64 componentCount;
 
    };
 

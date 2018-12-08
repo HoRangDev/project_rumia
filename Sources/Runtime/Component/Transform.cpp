@@ -168,12 +168,17 @@ namespace rumia
       }
    }
 
-   glm::mat4x4 Transform::GetMatrix() const
+   glm::mat4 Transform::GetMatrix() const
    {
       return m_matrix;
    }
 
-   glm::mat4x4 Transform::GetInverseMatrix() const
+   glm::mat4 Transform::GetLocalMatrix() const
+   {
+      return m_localMatrix;
+   }
+
+   glm::mat4 Transform::GetInverseMatrix() const
    {
       return glm::inverse(m_matrix);
    }
