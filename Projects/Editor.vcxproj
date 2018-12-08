@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Sources\rumia\Entry.cpp" />
+    <ClCompile Include="..\Sources\Editor\Entry.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
@@ -68,7 +68,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>..\Sources\Runtime\;..\Sources\rumia\;..\Thirdparty\glm\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Sources\Runtime\;..\Sources\Editor\;..\Thirdparty\glm\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -87,7 +87,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>..\Sources\Runtime\;..\Sources\rumia\;..\Thirdparty\glm\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Sources\Runtime\;..\Sources\Editor\;..\Thirdparty\glm\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

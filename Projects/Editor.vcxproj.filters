@@ -6,7 +6,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Sources\rumia\Entry.cpp">
+    <ClCompile Include="..\Sources\Editor\Entry.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
   </ItemGroup>
