@@ -45,9 +45,6 @@
     <ClInclude Include="..\Sources\Runtime\World\World.hpp">
       <Filter>Sources\World</Filter>
     </ClInclude>
-    <ClInclude Include="..\Sources\Runtime\Component\TestComponent.h">
-      <Filter>Sources\Component</Filter>
-    </ClInclude>
     <ClInclude Include="..\Sources\Runtime\Math\Vector3.hpp">
       <Filter>Sources\Math</Filter>
     </ClInclude>
@@ -753,12 +750,12 @@
     <ClInclude Include="..\Sources\Runtime\Component\Renderable.h">
       <Filter>Sources\Component</Filter>
     </ClInclude>
+    <ClInclude Include="..\Sources\Runtime\Core\Helper.hpp">
+      <Filter>Sources\Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Sources\Runtime\Component\Component.cpp">
-      <Filter>Sources\Component</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Sources\Runtime\Component\TestComponent.cpp">
       <Filter>Sources\Component</Filter>
     </ClCompile>
     <ClCompile Include="..\Sources\Runtime\Math\Vector4.cpp">
@@ -799,6 +796,9 @@
     </ClCompile>
     <ClCompile Include="..\Sources\Runtime\Component\Renderable.cpp">
       <Filter>Sources\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\Runtime\Core\Helper.cpp">
+      <Filter>Sources\Core</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

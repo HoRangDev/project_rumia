@@ -1,6 +1,6 @@
 #include "Core/EngineDefines.hpp"
+#include "Core/Helper.hpp"
 #include "World/Actor.hpp"
-#include "Component/TestComponent.h"
 
 #include <iostream>
 

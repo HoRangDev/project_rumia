@@ -68,7 +68,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>..\Sources\Runtime\;..\Sources\Editor\;..\Thirdparty\glm\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Sources\Runtime\;..\Sources\Editor\;..\Thirdparty\glm\include;..\Thirdparty\json\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -87,7 +87,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>..\Sources\Runtime\;..\Sources\Editor\;..\Thirdparty\glm\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Sources\Runtime\;..\Sources\Editor\;..\Thirdparty\glm\include;..\Thirdparty\json\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
