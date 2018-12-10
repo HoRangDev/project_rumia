@@ -13,9 +13,49 @@ namespace rumia
       Unload();
    }
 
+   json World::Serialize() const
+   {
+      json object = json::object();
+      
+      json actorList = json::array();
+      for (Actor* actor : m_actors)
+      {
+         if (!actor->HasParent())
+         {
+            actorList.push_back(actor->Serialize());
+         }
+      }
+
+      object["actors"] = actorList;
+      return object;
+   }
+
+   void World::DeSerialize(const json& object)
+   {
+      if (!object.is_null())
+      {
+         auto itr = object.find("actors");
+         if (itr != object.end())
+         {
+            json actorList = (*itr);
+            for (json actor : actorList)
+            {
+               Actor* newActor = new Actor();
+               newActor->DeSerialize(actor);
+               AddActor(newActor);
+            }
+         }
+      }
+   }
+
    void World::LoadFromFile(const std::string& filePath)
    {
-      // @TODO: Implement Json serialize/deserialize
+      // @TODO: Implement Load World
+   }
+
+   void World::SaveToFile(const std::string& filePath)
+   {
+      // @TODO: Implement Save World
    }
 
    Actor* World::CreateActor()

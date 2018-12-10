@@ -9,6 +9,9 @@ namespace rumia
    public:
       virtual ~Renderable();
 
+      virtual json Serialize() const { return json(); }
+      virtual void DeSerialize(const json& object) { }
+
    protected:
       Renderable(Actor* actor);
 

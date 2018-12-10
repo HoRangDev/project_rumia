@@ -11,14 +11,16 @@ using namespace nlohmann;
 
 namespace rumia
 {
-   RUMIA json SerializeVec2(const glm::vec2& vec);
-   RUMIA json SerializeVec3(const glm::vec3& vec);
-   RUMIA json SerializeVec4(const glm::vec4& vec);
-   RUMIA json SerializeQuaternion(const glm::quat& quat);
+   namespace helper
+   {
+      RUMIA json SerializeVec2(const glm::vec2& vec);
+      RUMIA json SerializeVec3(const glm::vec3& vec);
+      RUMIA json SerializeVec4(const glm::vec4& vec);
+      RUMIA json SerializeQuaternion(const glm::quat& quat);
 
-   RUMIA glm::vec2 DeSerializeVec2(const json& object);
-   RUMIA glm::vec3 DeSerializeVec3(const json& object);
-   RUMIA glm::vec4 DeSerializeVec4(const json& object);
-   RUMIA glm::quat DeSerializeQuaternion(const json& object);
-
+      RUMIA glm::vec2 DeSerializeVec2(const json& object);
+      RUMIA glm::vec3 DeSerializeVec3(const json& object);
+      RUMIA glm::vec4 DeSerializeVec4(const json& object);
+      RUMIA glm::quat DeSerializeQuaternion(const json& object);
+   }
 }

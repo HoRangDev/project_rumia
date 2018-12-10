@@ -17,6 +17,9 @@ namespace rumia
    public:
       Transform(Actor* actor);
 
+      virtual json Serialize() const override;
+      virtual void DeSerialize(const json& object) override;
+
       void SetLocalPosition(const glm::vec3& position);
       void SetPosition(const glm::vec3& position);
       glm::vec3 GetLocalPosition() const;

@@ -15,4 +15,16 @@ namespace rumia
    Component::~Component()
    {
    }
+
+   json Component::Serialize() const
+   {
+      json object = json::object(); // Explicit empty object
+      object["componentName"] = typeid(*this).name();
+      return object;
+   }
+
+   void Component::DeSerialize(const json& object)
+   {
+      // #Empty
+   }
 }

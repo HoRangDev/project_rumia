@@ -1,5 +1,7 @@
 #include "Transform.hpp"
 
+#include "json.hpp"
+
 namespace rumia
 {
    RUMIA_REGISTER_COMPONENT(Transform);
@@ -14,6 +16,40 @@ namespace rumia
       m_bParentUpdated(false),
       Component(actor)
    {
+   }
+
+   json Transform::Serialize() const
+   {
+      // Transforms are saved as global space
+      json object = Component::Serialize();
+      
+      json positionObject = helper::SerializeVec3(GetPosition());
+      json scaleObject = helper::SerializeVec3(GetScale());
+      json rotationObject = helper::SerializeQuaternion(GetRotation());
+
+      object["position"] = positionObject;
+      object["scale"] = scaleObject;
+      object["rotation"] = rotationObject;
+      object["isRoot"] = (m_parent == nullptr) ? 1 : 0;
+
+      return object;
+   }
+
+   void Transform::DeSerialize(const json& object)
+   {
+      // It will be calculate local space transform and matrix when set up it's parent.
+      m_position = helper::DeSerializeVec3(*object.find("position"));
+      m_scale = helper::DeSerializeVec3(*object.find("scale"));
+      m_rotation = helper::DeSerializeQuaternion(*object.find("rotation"));
+
+      // If is root transform, Because local space = global space
+      bool isRoot = (*(object.find("isRoot"))) == 0 ? false : true;
+      if (isRoot)
+      {
+         UpdateTransform();
+      }
+
+      Component::DeSerialize(object);
    }
 
    void Transform::SetLocalPosition(const glm::vec3& position)

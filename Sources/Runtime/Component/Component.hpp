@@ -1,5 +1,5 @@
 #pragma once
-#include "Core/EngineDefines.hpp"
+#include "Core/Helper.hpp"
 
 #include <string>
 #include <map>
@@ -10,6 +10,7 @@ namespace rumia
 {
    enum class RUMIA EComponentType
    {
+      None,
       Transform,
       Renderable,
       Light,
@@ -25,6 +26,11 @@ namespace rumia
       Actor* GetActor() const { return m_actor; }
 
       virtual void Tick() {}
+
+      virtual json Serialize() const;
+      virtual void DeSerialize(const json& object);
+
+      virtual EComponentType GetType() const = 0;
 
    protected:
       Component();
@@ -93,7 +99,8 @@ namespace rumia
    };
 }
 
-#define RUMIA_COMPONENT(TYPE, ComponentType) public: static EComponentType GetType() { return ComponentType; } \
+#define RUMIA_COMPONENT(TYPE, ComponentType) public: virtual EComponentType GetType() const override { return ComponentType; }\
+                              static EComponentType GetTypeStatic() { return ComponentType; } \
                               private: friend class rumia::ComponentRegistry; static TYPE _registerInst; \
                               static TYPE* Create(Actor* actor) { return new TYPE(actor);} \
                               TYPE() { rumia::ComponentRegistry::GetInstance().Register<TYPE>(); } \

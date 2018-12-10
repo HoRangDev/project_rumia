@@ -28,7 +28,112 @@ namespace rumia
       {
          delete m_components[idx];
       }
+
       m_components.clear();
+   }
+
+   json Actor::Serialize() const
+   {
+      json object = json::object();
+
+      object["name"] = m_name;
+      object["enabled"] = (m_bEnabled) ? 1 : 0;
+
+      json componentList = json::array();
+      for (Component* component : m_components)
+      {
+         componentList += component->Serialize();
+      }
+      object["components"] = componentList;
+
+      std::vector<Transform*> children = m_transform->GetChildren();
+      json childList = json::array();
+      for (Transform* child : children)
+      {
+         Actor* childActor = child->GetActor();
+         childList += (childActor->Serialize());
+      }
+      object["children"] = childList;
+
+      return object;
+   }
+
+   void Actor::DeSerialize(const json& object)
+   {
+      if (!object.is_null())
+      {
+         auto itr = object.find("name");
+         if (itr != object.end())
+         {
+            m_name = (*itr).get<std::string>();
+         }
+
+         itr = object.find("enabled");
+         if (itr != object.end())
+         {
+            m_bEnabled = ((*itr) == 0) ? false : true;
+         }
+
+         // Component De-serialize
+         itr = object.find("components");
+         if (itr != object.end())
+         {
+            json componentList = (*itr);
+            for (json component : componentList)
+            {
+               auto compItr = component.find("componentName");
+               if (compItr != component.end())
+               {
+                  std::string componentName = (*compItr).get<std::string>();
+                  if (componentName == typeid(Transform).name())
+                  {
+                     m_transform->DeSerialize(component);
+                  }
+                  else
+                  {
+                     Component* newComponent = AttachComponent(componentName);
+                     newComponent->DeSerialize(component);
+                  }
+               }
+            }
+         }
+
+         // Children Deserialize
+         itr = object.find("children");
+         if (itr != object.end())
+         {
+            json childList = (*itr);
+            for (json childObject : childList)
+            {
+               Actor* newActor = new Actor();
+               newActor->DeSerialize(childObject);
+               newActor->GetTransform()->SetParent(m_transform);
+            }
+         }
+      }
+   }
+
+   Component* Actor::AttachComponent(const std::string& typeName)
+   {
+      Component* component = ComponentRegistry::GetInstance().Acquire(typeName, this);
+      if (component != nullptr)
+      {
+         if (component->GetType() == EComponentType::Transform)
+         {
+            SafeDelete(component);
+         }
+         else
+         {
+            m_components.emplace_back(component);
+
+            if (component->GetType() == EComponentType::Renderable)
+            {
+               m_renderable = reinterpret_cast<Renderable*>(component);
+            }
+         }
+      }
+
+      return component;
    }
 
    void Actor::Tick()
@@ -37,5 +142,10 @@ namespace rumia
       {
          component->Tick();
       }
+   }
+
+   bool Actor::HasParent() const
+   {
+      return (m_transform->GetParent() != nullptr);
    }
 }

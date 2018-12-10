@@ -1,5 +1,5 @@
 #pragma once
-#include "Core/EngineDefines.hpp"
+#include "Core/Helper.hpp"
 
 #include <string>
 #include <vector>
@@ -10,9 +10,14 @@ namespace rumia
    class RUMIA World
    {
    public:
+      World();
       ~World();
 
+      json Serialize() const;
+      void DeSerialize(const json& object);
+
       void LoadFromFile(const std::string& filePath);
+      void SaveToFile(const std::string& filePath);
 
       Actor* CreateActor();
       void AddActor(Actor* actor);
@@ -21,9 +26,6 @@ namespace rumia
       void Unload();
 
       void Tick();
-
-   private:
-      World();
 
    private:
       std::vector<Actor*>  m_actors;

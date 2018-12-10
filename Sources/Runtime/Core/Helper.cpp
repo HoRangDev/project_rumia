@@ -2,151 +2,154 @@
 
 namespace rumia
 {
-   json SerializeVec2(const glm::vec2& vec)
+   namespace helper
    {
-      json object;
-      object["x"] = vec.x;
-      object["y"] = vec.y;
-      return object;
-   }
-
-   json SerializeVec3(const glm::vec3& vec)
-   {
-      json object;
-      object["x"] = vec.x;
-      object["y"] = vec.y;
-      object["z"] = vec.z;
-      return object;
-   }
-
-   json SerializeVec4(const glm::vec4& vec)
-   {
-      json object;
-      object["x"] = vec.x;
-      object["y"] = vec.y;
-      object["z"] = vec.z;
-      object["w"] = vec.w;
-      return object;
-   }
-
-   json SerializeQuaternion(const glm::quat& quat)
-   {
-      json object;
-      object["w"] = quat.w;
-      object["x"] = quat.x;
-      object["y"] = quat.y;
-      object["z"] = quat.z;
-      return object;
-   }
-
-   glm::vec2 DeSerializeVec2(const json& object)
-   {
-      glm::vec2 output;
-      if (!object.is_null())
+      json SerializeVec2(const glm::vec2& vec)
       {
-         auto x = object.find("x");
-         if (x->is_number())
-         {
-            output.x = (*x);
-         }
-
-         auto y = object.find("y");
-         if (y->is_number())
-         {
-            output.y = (*y);
-         }
+         json object;
+         object["x"] = vec.x;
+         object["y"] = vec.y;
+         return object;
       }
 
-      return output;
-   }
-
-   glm::vec3 DeSerializeVec3(const json& object)
-   {
-      glm::vec3 output;
-      
-      if (!object.is_null())
+      json SerializeVec3(const glm::vec3& vec)
       {
-         auto x = object.find("x");
-         if (x->is_number())
-         {
-            output.x = (*x);
-         }
-
-         auto y = object.find("y");
-         if (y->is_number())
-         {
-            output.y = (*y);
-         }
-
-         auto z = object.find("z");
-         if (z->is_number())
-         {
-            output.z = (*z);
-         }
+         json object;
+         object["x"] = vec.x;
+         object["y"] = vec.y;
+         object["z"] = vec.z;
+         return object;
       }
-      
-      return output;
-   }
-   
-   glm::vec4 DeSerializeVec4(const json& object)
-   {
-      glm::vec4 output;
-      if (!object.is_null())
+
+      json SerializeVec4(const glm::vec4& vec)
       {
-         glm::vec3 xyzOutput = DeSerializeVec3(object);
-         auto x = object.find("x");
-         if (x->is_number())
+         json object;
+         object["x"] = vec.x;
+         object["y"] = vec.y;
+         object["z"] = vec.z;
+         object["w"] = vec.w;
+         return object;
+      }
+
+      json SerializeQuaternion(const glm::quat& quat)
+      {
+         json object;
+         object["w"] = quat.w;
+         object["x"] = quat.x;
+         object["y"] = quat.y;
+         object["z"] = quat.z;
+         return object;
+      }
+
+      glm::vec2 DeSerializeVec2(const json& object)
+      {
+         glm::vec2 output;
+         if (!object.is_null())
          {
-            output.x = (*x);
+            auto x = object.find("x");
+            if (x->is_number())
+            {
+               output.x = (*x);
+            }
+
+            auto y = object.find("y");
+            if (y->is_number())
+            {
+               output.y = (*y);
+            }
          }
 
-         auto y = object.find("y");
-         if (y->is_number())
+         return output;
+      }
+
+      glm::vec3 DeSerializeVec3(const json& object)
+      {
+         glm::vec3 output;
+
+         if (!object.is_null())
          {
-            output.y = (*y);
+            auto x = object.find("x");
+            if (x->is_number())
+            {
+               output.x = (*x);
+            }
+
+            auto y = object.find("y");
+            if (y->is_number())
+            {
+               output.y = (*y);
+            }
+
+            auto z = object.find("z");
+            if (z->is_number())
+            {
+               output.z = (*z);
+            }
          }
 
-         auto z = object.find("z");
-         if (z->is_number())
+         return output;
+      }
+
+      glm::vec4 DeSerializeVec4(const json& object)
+      {
+         glm::vec4 output;
+         if (!object.is_null())
          {
-            output.z = (*z);
+            glm::vec3 xyzOutput = DeSerializeVec3(object);
+            auto x = object.find("x");
+            if (x->is_number())
+            {
+               output.x = (*x);
+            }
+
+            auto y = object.find("y");
+            if (y->is_number())
+            {
+               output.y = (*y);
+            }
+
+            auto z = object.find("z");
+            if (z->is_number())
+            {
+               output.z = (*z);
+            }
+
+            auto w = object.find("w");
+            if (w->is_number())
+            {
+               output.w = (*w);
+            }
          }
+
+         return output;
+      }
+
+      glm::quat DeSerializeQuaternion(const json& object)
+      {
+         glm::quat output;
 
          auto w = object.find("w");
          if (w->is_number())
          {
             output.w = (*w);
          }
-      }
-     
-      return output;
-   }
+         auto x = object.find("x");
+         if (x->is_number())
+         {
+            output.x = (*x);
+         }
+         auto y = object.find("y");
+         if (y->is_number())
+         {
+            output.y = (*y);
+         }
+         auto z = object.find("z");
+         if (z->is_number())
+         {
+            output.z = (*z);
+         }
 
-   glm::quat DeSerializeQuaternion(const json& object)
-   {
-      glm::quat output;
-
-      auto w = object.find("w");
-      if (w->is_number())
-      {
-         output.w = (*w);
+         return output;
       }
-      auto x = object.find("x");
-      if (x->is_number())
-      {
-         output.x = (*x);
-      }
-      auto y = object.find("y");
-      if (y->is_number())
-      {
-         output.y = (*y);
-      }
-      auto z = object.find("z");
-      if (z->is_number())
-      {
-         output.z = (*z);
-      }
-
-      return output;
    }
 }

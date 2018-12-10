@@ -16,17 +16,13 @@ namespace rumia
       Actor(const std::string& name = "Actor");
       virtual ~Actor();
 
-      Transform* GetTransform() const { return m_transform; }
-      Renderable* GetRenderable() const { return m_renderable; }
-
-      void SetName(const std::string& name) { m_name = name; }
-      std::string GetName() const { return m_name; }
-      uint64 GetID() const { return m_id; }
+      json Serialize() const;
+      void DeSerialize(const json& object);
 
       template <typename Ty>
       Ty* AttachComponent()
       {
-         if (Ty::GetType() != EComponentType::Transform || m_transform == nullptr)
+         if (Ty::GetTypeStatic() != EComponentType::Transform || m_transform == nullptr)
          {
             Ty* component = ComponentRegistry::GetInstance().Acquire<Ty>(this);
             if (component != nullptr)
@@ -45,6 +41,9 @@ namespace rumia
 
          return nullptr;
       }
+
+      /* typeName = typeid(Ty).name() **/
+      Component* AttachComponent(const std::string& typeName);
 
       template <typename Ty>
       Ty* GetComponent() const
@@ -103,6 +102,15 @@ namespace rumia
       }
 
       void Tick();
+
+      Transform* GetTransform() const { return m_transform; }
+      Renderable* GetRenderable() const { return m_renderable; }
+
+      void SetName(const std::string& name) { m_name = name; }
+      std::string GetName() const { return m_name; }
+      uint64 GetID() const { return m_id; }
+
+      bool HasParent() const;
 
    protected:
       // After Actor constructor finished
