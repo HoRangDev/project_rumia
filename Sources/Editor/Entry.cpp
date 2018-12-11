@@ -16,6 +16,7 @@ int main()
    Transform* trans = testActor->GetTransform();
 
    trans->SetLocalPosition(glm::vec3{ 3.0f, 2.0f, 1.1f });
+   trans->SetScale(glm::vec3{ 0.5f, 0.5f, 0.5f });
 
    Actor* testChildActor = world1->CreateActor();
    testChildActor->SetName("I am child!");
@@ -27,7 +28,7 @@ int main()
    std::cout << serializedStr << std::endl;
 
    World* world2 = new World();
-   world2->DeSerialize(json::parse(serializedStr));
+   helper::DeSerialize(world2, serializedStr);
 
    return 0;
 }

@@ -22,5 +22,23 @@ namespace rumia
       RUMIA glm::vec3 DeSerializeVec3(const json& object);
       RUMIA glm::vec4 DeSerializeVec4(const json& object);
       RUMIA glm::quat DeSerializeQuaternion(const json& object);
+
+      template <typename Ty>
+      json Serialize(const Ty& serializable)
+      {
+         return serializable->Serialize();
+      }
+
+      template <typename Ty>
+      void DeSerialize(Ty& serializable, const json& object)
+      {
+         serializable->DeSerialize(object);
+      }
+
+      template <typename Ty>
+      void DeSerialize(Ty& serializable, const std::string& serializedStr)
+      {
+         serializable->DeSerialize(json::parse(serializedStr));
+      }
    }
 }
