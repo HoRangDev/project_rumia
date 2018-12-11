@@ -30,5 +30,14 @@ int main()
    World* world2 = new World();
    helper::DeSerialize(world2, serializedStr);
 
+   testActor->SetActive(false);
+   std::cout << trans->IsActivated() << std::endl;
+   testActor->SetActive(true);
+   trans->SetActive(false);
+   std::cout << trans->IsActivated() << std::endl;
+   std::cout << testActor->Serialize().dump(4) << std::endl;
+   trans->SetActive(true);
+   std::cout << trans->IsActivated() << std::endl;
+
    return 0;
 }

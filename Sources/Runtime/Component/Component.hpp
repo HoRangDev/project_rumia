@@ -32,11 +32,15 @@ namespace rumia
 
       virtual EComponentType GetType() const = 0;
 
+      void SetActive(bool bActive) { m_bActivated = bActive; }
+      bool IsActivated() const;
+
    protected:
       Component();
       Component(Actor* actor);
 
    private:
+      bool        m_bActivated;
       Actor*      m_actor;
 
    private:
