@@ -151,5 +151,15 @@ namespace rumia
 
          return output;
       }
+
+      uint32 BooleanToInt(bool bState)
+      {
+         return bState ? 1 : 0;
+      }
+
+      bool IntToBoolean(uint32 state)
+      {
+         return (state == 0) ? false : true;
+      }
    }
 }

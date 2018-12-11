@@ -23,6 +23,9 @@ namespace rumia
       RUMIA glm::vec4 DeSerializeVec4(const json& object);
       RUMIA glm::quat DeSerializeQuaternion(const json& object);
 
+      RUMIA uint32 BooleanToInt(bool bState);
+      RUMIA bool IntToBoolean(uint32 state);
+
       template <typename Ty>
       json Serialize(const Ty& serializable)
       {
