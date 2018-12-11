@@ -6,7 +6,7 @@ namespace rumia
    uint64 Actor::staticIDCount = 0;
 
    Actor::Actor(const std::string& name) :
-      m_bEnabled(true),
+      m_bActivated(true),
       m_name(name),
       m_id(staticIDCount),
       m_transform(nullptr),
@@ -37,7 +37,7 @@ namespace rumia
       json object = json::object();
 
       object["name"] = m_name;
-      object["enabled"] = (m_bEnabled) ? 1 : 0;
+      object["activated"] = helper::BooleanToInt(m_bActivated);
 
       json componentList = json::array();
       for (Component* component : m_components)
@@ -68,10 +68,10 @@ namespace rumia
             m_name = (*itr).get<std::string>();
          }
 
-         itr = object.find("enabled");
+         itr = object.find("activated");
          if (itr != object.end())
          {
-            m_bEnabled = ((*itr) == 0) ? false : true;
+            m_bActivated = helper::IntToBoolean(*itr);
          }
 
          // Component De-serialize
@@ -147,5 +147,13 @@ namespace rumia
    bool Actor::HasParent() const
    {
       return (m_transform->GetParent() != nullptr);
+   }
+
+   bool Actor::IsActivated() const
+   {
+      Transform* parentTransform = m_transform->GetParent();
+      return (parentTransform == nullptr) ? 
+         (m_bActivated) : 
+         (m_bActivated && parentTransform->GetActor()->IsActivated());
    }
 }

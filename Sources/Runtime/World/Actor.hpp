@@ -111,6 +111,9 @@ namespace rumia
       uint64 GetID() const { return m_id; }
 
       bool HasParent() const;
+      void SetActive(bool bActive) { m_bActivated = bActive; }
+      bool IsLocalActivated() const { return m_bActivated; }
+      bool IsActivated() const;
 
    protected:
       // After Actor constructor finished
@@ -119,7 +122,7 @@ namespace rumia
       virtual void OnDestroy() {}
 
    private:
-      bool           m_bEnabled;
+      bool           m_bActivated;
       std::string    m_name;
       uint64         m_id;
       std::vector<Component*> m_components;
