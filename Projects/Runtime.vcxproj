@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -22,7 +22,9 @@
     <ClInclude Include="..\Sources\Runtime\Component\Component.hpp" />
     <ClInclude Include="..\Sources\Runtime\Component\Renderable.h" />
     <ClInclude Include="..\Sources\Runtime\Component\Transform.hpp" />
+    <ClInclude Include="..\Sources\Runtime\Core\Engine.hpp" />
     <ClInclude Include="..\Sources\Runtime\Core\EngineDefines.hpp" />
+    <ClInclude Include="..\Sources\Runtime\Core\EventManager.hpp" />
     <ClInclude Include="..\Sources\Runtime\Core\Helper.hpp" />
     <ClInclude Include="..\Sources\Runtime\Math\MathDefines.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
@@ -275,6 +277,7 @@
     <ClCompile Include="..\Sources\Runtime\Component\Component.cpp" />
     <ClCompile Include="..\Sources\Runtime\Component\Renderable.cpp" />
     <ClCompile Include="..\Sources\Runtime\Component\Transform.cpp" />
+    <ClCompile Include="..\Sources\Runtime\Core\EventManager.cpp" />
     <ClCompile Include="..\Sources\Runtime\Core\Helper.cpp" />
     <ClCompile Include="..\Sources\Runtime\Math\Vector2.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
@@ -515,6 +518,7 @@
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>..\Thirdparty\json\include;..\Sources\Runtime;..\Thirdparty\assimp\include;..\Thirdparty\GLAD\include;..\Thirdparty\glm\include;..\Thirdparty\imgui\include;..\Thirdparty\stb_image\include</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -555,6 +559,7 @@
       <PreprocessorDefinitions>NDEBUG;RUNTIME_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>..\Thirdparty\json\include;..\Sources\Runtime;..\Thirdparty\assimp\include;..\Thirdparty\GLAD\include;..\Thirdparty\glm\include;..\Thirdparty\imgui\include;..\Thirdparty\stb_image\include</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

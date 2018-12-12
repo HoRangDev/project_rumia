@@ -753,6 +753,12 @@
     <ClInclude Include="..\Sources\Runtime\Core\Helper.hpp">
       <Filter>Sources\Core</Filter>
     </ClInclude>
+    <ClInclude Include="..\Sources\Runtime\Core\EventManager.hpp">
+      <Filter>Sources\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\Runtime\Core\Engine.hpp">
+      <Filter>Sources\Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Sources\Runtime\Component\Component.cpp">
@@ -798,6 +804,9 @@
       <Filter>Sources\Component</Filter>
     </ClCompile>
     <ClCompile Include="..\Sources\Runtime\Core\Helper.cpp">
+      <Filter>Sources\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\Runtime\Core\EventManager.cpp">
       <Filter>Sources\Core</Filter>
     </ClCompile>
   </ItemGroup>

@@ -2,7 +2,9 @@
 #include "Core/Helper.hpp"
 #include "World/Actor.hpp"
 #include "World/World.hpp"
+#include "Core/Helper.hpp"
 #include "Component/Transform.hpp"
+#include "Core/EventManager.hpp"
 
 #include <iostream>
 
@@ -38,6 +40,6 @@ int main()
    std::cout << testActor->Serialize().dump(4) << std::endl;
    trans->SetActive(true);
    std::cout << trans->IsActivated() << std::endl;
-
+   
    return 0;
 }
