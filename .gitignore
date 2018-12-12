@@ -43,3 +43,5 @@ Projects/.vs/rumia/v15/.suo
 *.db-wal
 *.db-shm
 *.exp
+*.iobj
+*.ipdb

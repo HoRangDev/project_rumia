@@ -22,14 +22,8 @@
     <Filter Include="Thirdparty\assimp">
       <UniqueIdentifier>{15e7b953-c00d-44e9-8f8a-3b61411ca565}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Thirdparty\GLAD">
-      <UniqueIdentifier>{3c63a045-12a8-44b5-a928-7091925ee5b4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Thirdparty\glm">
       <UniqueIdentifier>{f4e312b9-dbda-4eec-9871-ac84c8b88c8d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Thirdparty\imgui">
-      <UniqueIdentifier>{9f82f890-1edc-427a-b052-9b2edc323b1c}</UniqueIdentifier>
     </Filter>
     <Filter Include="Thirdparty\stb_image">
       <UniqueIdentifier>{c2eb49a5-66e2-4da8-a4d4-5cc9bd84dc36}</UniqueIdentifier>
@@ -281,12 +275,6 @@
     </ClInclude>
     <ClInclude Include="..\Thirdparty\assimp\include\assimp\Compiler\pushpack1.h">
       <Filter>Thirdparty\assimp</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Thirdparty\GLAD\include\glad\glad.h">
-      <Filter>Thirdparty\GLAD</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Thirdparty\GLAD\include\KHR\khrplatform.h">
-      <Filter>Thirdparty\GLAD</Filter>
     </ClInclude>
     <ClInclude Include="..\Thirdparty\glm\include\glm\common.hpp">
       <Filter>Thirdparty\glm</Filter>
@@ -720,24 +708,6 @@
     <ClInclude Include="..\Thirdparty\glm\include\glm\vector_relational.hpp">
       <Filter>Thirdparty\glm</Filter>
     </ClInclude>
-    <ClInclude Include="..\Thirdparty\imgui\include\imconfig.h">
-      <Filter>Thirdparty\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Thirdparty\imgui\include\imgui.h">
-      <Filter>Thirdparty\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Thirdparty\imgui\include\imgui_internal.h">
-      <Filter>Thirdparty\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Thirdparty\imgui\include\imstb_rectpack.h">
-      <Filter>Thirdparty\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Thirdparty\imgui\include\imstb_textedit.h">
-      <Filter>Thirdparty\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Thirdparty\imgui\include\imstb_truetype.h">
-      <Filter>Thirdparty\imgui</Filter>
-    </ClInclude>
     <ClInclude Include="..\Thirdparty\stb_image\include\stb_image.h">
       <Filter>Thirdparty\stb_image</Filter>
     </ClInclude>
@@ -779,18 +749,6 @@
     <ClCompile Include="..\Thirdparty\glm\include\glm\detail\glm.cpp">
       <Filter>Thirdparty\glm</Filter>
     </ClCompile>
-    <ClCompile Include="..\Thirdparty\imgui\include\imgui.cpp">
-      <Filter>Thirdparty\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Thirdparty\imgui\include\imgui_demo.cpp">
-      <Filter>Thirdparty\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Thirdparty\imgui\include\imgui_draw.cpp">
-      <Filter>Thirdparty\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Thirdparty\imgui\include\imgui_widgets.cpp">
-      <Filter>Thirdparty\imgui</Filter>
-    </ClCompile>
     <ClCompile Include="..\Sources\Runtime\Component\Transform.cpp">
       <Filter>Sources\Component</Filter>
     </ClCompile>
@@ -807,6 +765,9 @@
       <Filter>Sources\Core</Filter>
     </ClCompile>
     <ClCompile Include="..\Sources\Runtime\Core\EventManager.cpp">
+      <Filter>Sources\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\Runtime\Core\Engine.cpp">
       <Filter>Sources\Core</Filter>
     </ClCompile>
   </ItemGroup>

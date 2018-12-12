@@ -20,7 +20,7 @@ namespace rumia
       AppClose
    };
 
-   using EventDataType = std::variant<bool, uint8, int8, uint16, int16, int16, uint32, int32, uint64, int64, std::string,
+   using EventDataType = std::variant<bool, uint8, int8, uint16, int16, int16, uint32, int32, uint64, int64, float, double, std::string,
       Actor*, std::vector<Actor*>, glm::vec2, glm::vec3, glm::vec4, glm::mat4, glm::quat>;
    using Callback = std::function<void(EventDataType)>;
    using Subscriber =std::pair<void*, Callback>;

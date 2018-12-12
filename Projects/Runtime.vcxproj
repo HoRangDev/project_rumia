@@ -119,8 +119,6 @@
     <ClInclude Include="..\Thirdparty\assimp\include\assimp\version.h" />
     <ClInclude Include="..\Thirdparty\assimp\include\assimp\Vertex.h" />
     <ClInclude Include="..\Thirdparty\assimp\include\assimp\XMLTools.h" />
-    <ClInclude Include="..\Thirdparty\GLAD\include\glad\glad.h" />
-    <ClInclude Include="..\Thirdparty\GLAD\include\KHR\khrplatform.h" />
     <ClInclude Include="..\Thirdparty\glm\include\glm\common.hpp" />
     <ClInclude Include="..\Thirdparty\glm\include\glm\detail\func_common.hpp" />
     <ClInclude Include="..\Thirdparty\glm\include\glm\detail\func_exponential.hpp" />
@@ -265,18 +263,13 @@
     <ClInclude Include="..\Thirdparty\glm\include\glm\vec3.hpp" />
     <ClInclude Include="..\Thirdparty\glm\include\glm\vec4.hpp" />
     <ClInclude Include="..\Thirdparty\glm\include\glm\vector_relational.hpp" />
-    <ClInclude Include="..\Thirdparty\imgui\include\imconfig.h" />
-    <ClInclude Include="..\Thirdparty\imgui\include\imgui.h" />
-    <ClInclude Include="..\Thirdparty\imgui\include\imgui_internal.h" />
-    <ClInclude Include="..\Thirdparty\imgui\include\imstb_rectpack.h" />
-    <ClInclude Include="..\Thirdparty\imgui\include\imstb_textedit.h" />
-    <ClInclude Include="..\Thirdparty\imgui\include\imstb_truetype.h" />
     <ClInclude Include="..\Thirdparty\stb_image\include\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Sources\Runtime\Component\Component.cpp" />
     <ClCompile Include="..\Sources\Runtime\Component\Renderable.cpp" />
     <ClCompile Include="..\Sources\Runtime\Component\Transform.cpp" />
+    <ClCompile Include="..\Sources\Runtime\Core\Engine.cpp" />
     <ClCompile Include="..\Sources\Runtime\Core\EventManager.cpp" />
     <ClCompile Include="..\Sources\Runtime\Core\Helper.cpp" />
     <ClCompile Include="..\Sources\Runtime\Math\Vector2.cpp">
@@ -295,10 +288,6 @@
     <ClCompile Include="..\Sources\Runtime\World\World.cpp" />
     <ClCompile Include="..\Thirdparty\glm\include\glm\detail\dummy.cpp" />
     <ClCompile Include="..\Thirdparty\glm\include\glm\detail\glm.cpp" />
-    <ClCompile Include="..\Thirdparty\imgui\include\imgui.cpp" />
-    <ClCompile Include="..\Thirdparty\imgui\include\imgui_demo.cpp" />
-    <ClCompile Include="..\Thirdparty\imgui\include\imgui_draw.cpp" />
-    <ClCompile Include="..\Thirdparty\imgui\include\imgui_widgets.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Thirdparty\assimp\include\assimp\color4.inl" />
@@ -516,14 +505,14 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;RUNTIME_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\Sources\Runtime;..\Thirdparty\json\include;..\Thirdparty\assimp\include;..\Thirdparty\GLAD\include;..\Thirdparty\glm\include;..\Thirdparty\imgui\include;..\Thirdparty\stb_image\include;..\Thirdparty\glfw\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Sources\Runtime;..\Thirdparty\json\include;..\Thirdparty\assimp\include;..\Thirdparty\glm\include;..\Thirdparty\stb_image\include;..\Thirdparty\glfw\include</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>..\Thirdparty\assimp\libs\assimp-vc140-mt_d.lib;..\Thirdparty\glfw\libs\glfw3d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;..\Thirdparty\assimp\libs\assimp-vc140-mt_d.lib;..\Thirdparty\glfw\libs\glfw3d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>copy /y "$(SolutionDir)..\Thirdparty\assimp\dlls\DEBUG\assimp-vc140-mt.dll" "$(TargetDir)assimp-vc140-mt.dll"</Command>
@@ -558,7 +547,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;RUNTIME_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\Sources\Runtime;..\Thirdparty\json\include;..\Thirdparty\assimp\include;..\Thirdparty\GLAD\include;..\Thirdparty\glm\include;..\Thirdparty\imgui\include;..\Thirdparty\stb_image\include;..\Thirdparty\glfw\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Sources\Runtime;..\Thirdparty\json\include;..\Thirdparty\assimp\include;..\Thirdparty\glm\include;..\Thirdparty\stb_image\include;..\Thirdparty\glfw\include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -566,7 +555,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>..\Thirdparty\assimp\libs\assimp-vc140-mt.lib;..\Thirdparty\glfw\libs\glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;..\Thirdparty\assimp\libs\assimp-vc140-mt.lib;..\Thirdparty\glfw\libs\glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>copy /y "$(SolutionDir)..\Thirdparty\assimp\dlls\Release\assimp-vc140-mt.dll" "$(TargetDir)assimp-vc140-mt.dll"</Command>

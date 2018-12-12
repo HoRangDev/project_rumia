@@ -1,4 +1,4 @@
-// dear imgui, v1.67 WIP
+// dear imgui, v1.66b
 // (main code and documentation)
 
 // Call and read ImGui::ShowDemoWindow() in imgui_demo.cpp for demo code.
@@ -2493,7 +2493,7 @@ void ImGui::SetFocusID(ImGuiID id, ImGuiWindow* window)
     IM_ASSERT(id != 0);
 
     // Assume that SetFocusID() is called in the context where its NavLayer is the current layer, which is the case everywhere we call it.
-    const ImGuiNavLayer nav_layer = window->DC.NavLayerCurrent;
+    const int nav_layer = window->DC.NavLayerCurrent;
     if (g.NavWindow != window)
         g.NavInitRequest = false;
     g.NavId = id;
@@ -3299,9 +3299,8 @@ void ImGui::NewFrame()
     g.CurrentPopupStack.resize(0);
     ClosePopupsOverWindow(g.NavWindow);
 
-    // Create implicit/fallback window - which we will only render it if the user has added something to it.
+    // Create implicit window - we will only render it if the user has added something to it.
     // We don't use "Debug" to avoid colliding with user trying to create a "Debug" window with custom flags.
-    // This fallback is particularly important as it avoid ImGui:: calls from crashing.
     SetNextWindowSize(ImVec2(400,400), ImGuiCond_FirstUseEver);
     Begin("Debug##Default");
 
@@ -4210,14 +4209,14 @@ static void CheckStacksSize(ImGuiWindow* window, bool write)
 {
     // NOT checking: DC.ItemWidth, DC.AllowKeyboardFocus, DC.ButtonRepeat, DC.TextWrapPos (per window) to allow user to conveniently push once and not pop (they are cleared on Begin)
     ImGuiContext& g = *GImGui;
-    short* p_backup = &window->DC.StackSizesBackup[0];
-    { int current = window->IDStack.Size;       if (write) *p_backup = (short)current; else IM_ASSERT(*p_backup == current && "PushID/PopID or TreeNode/TreePop Mismatch!");   p_backup++; }    // Too few or too many PopID()/TreePop()
-    { int current = window->DC.GroupStack.Size; if (write) *p_backup = (short)current; else IM_ASSERT(*p_backup == current && "BeginGroup/EndGroup Mismatch!");                p_backup++; }    // Too few or too many EndGroup()
-    { int current = g.CurrentPopupStack.Size;   if (write) *p_backup = (short)current; else IM_ASSERT(*p_backup == current && "BeginMenu/EndMenu or BeginPopup/EndPopup Mismatch"); p_backup++;}// Too few or too many EndMenu()/EndPopup()
+    int* p_backup = &window->DC.StackSizesBackup[0];
+    { int current = window->IDStack.Size;       if (write) *p_backup = current; else IM_ASSERT(*p_backup == current && "PushID/PopID or TreeNode/TreePop Mismatch!");   p_backup++; }    // Too few or too many PopID()/TreePop()
+    { int current = window->DC.GroupStack.Size; if (write) *p_backup = current; else IM_ASSERT(*p_backup == current && "BeginGroup/EndGroup Mismatch!");                p_backup++; }    // Too few or too many EndGroup()
+    { int current = g.CurrentPopupStack.Size;   if (write) *p_backup = current; else IM_ASSERT(*p_backup == current && "BeginMenu/EndMenu or BeginPopup/EndPopup Mismatch"); p_backup++;}// Too few or too many EndMenu()/EndPopup()
     // For color, style and font stacks there is an incentive to use Push/Begin/Pop/.../End patterns, so we relax our checks a little to allow them.
-    { int current = g.ColorModifiers.Size;      if (write) *p_backup = (short)current; else IM_ASSERT(*p_backup >= current && "PushStyleColor/PopStyleColor Mismatch!");       p_backup++; }    // Too few or too many PopStyleColor()
-    { int current = g.StyleModifiers.Size;      if (write) *p_backup = (short)current; else IM_ASSERT(*p_backup >= current && "PushStyleVar/PopStyleVar Mismatch!");           p_backup++; }    // Too few or too many PopStyleVar()
-    { int current = g.FontStack.Size;           if (write) *p_backup = (short)current; else IM_ASSERT(*p_backup >= current && "PushFont/PopFont Mismatch!");                   p_backup++; }    // Too few or too many PopFont()
+    { int current = g.ColorModifiers.Size;      if (write) *p_backup = current; else IM_ASSERT(*p_backup >= current && "PushStyleColor/PopStyleColor Mismatch!");       p_backup++; }    // Too few or too many PopStyleColor()
+    { int current = g.StyleModifiers.Size;      if (write) *p_backup = current; else IM_ASSERT(*p_backup >= current && "PushStyleVar/PopStyleVar Mismatch!");           p_backup++; }    // Too few or too many PopStyleVar()
+    { int current = g.FontStack.Size;           if (write) *p_backup = current; else IM_ASSERT(*p_backup >= current && "PushFont/PopFont Mismatch!");                   p_backup++; }    // Too few or too many PopFont()
     IM_ASSERT(p_backup == window->DC.StackSizesBackup + IM_ARRAYSIZE(window->DC.StackSizesBackup));
 }
 
@@ -4456,7 +4455,7 @@ static void ImGui::UpdateManualResize(ImGuiWindow* window, const ImVec2& size_au
     ImGuiWindowFlags flags = window->Flags;
     if ((flags & ImGuiWindowFlags_NoResize) || (flags & ImGuiWindowFlags_AlwaysAutoResize) || window->AutoFitFramesX > 0 || window->AutoFitFramesY > 0)
         return;
-    if (window->WasActive == false) // Early out to avoid running this code for e.g. an hidden implicit/fallback Debug window.
+    if (window->WasActive == false) // Early out to avoid running this code for e.g. an hidden implicit Debug window.
         return;
 
     const int resize_border_count = g.IO.ConfigResizeWindowsFromEdges ? 4 : 0;
@@ -4695,7 +4694,7 @@ bool ImGui::Begin(const char* name, bool* p_open, ImGuiWindowFlags flags)
 
         window->Active = true;
         window->BeginOrderWithinParent = 0;
-        window->BeginOrderWithinContext = (short)(g.WindowsActiveCount++);
+        window->BeginOrderWithinContext = g.WindowsActiveCount++;
         window->BeginCount = 0;
         window->ClipRect = ImVec4(-FLT_MAX,-FLT_MAX,+FLT_MAX,+FLT_MAX);
         window->LastFrameActive = current_frame;
@@ -4817,7 +4816,7 @@ bool ImGui::Begin(const char* name, bool* p_open, ImGuiWindowFlags flags)
         // Position child window
         if (flags & ImGuiWindowFlags_ChildWindow)
         {
-            window->BeginOrderWithinParent = (short)parent_window->DC.ChildWindows.Size;
+            window->BeginOrderWithinParent = parent_window->DC.ChildWindows.Size;
             parent_window->DC.ChildWindows.push_back(window);
             if (!(flags & ImGuiWindowFlags_Popup) && !window_pos_set_by_api && !window_is_child_tooltip)
                 window->Pos = parent_window->DC.CursorPos;
@@ -5018,7 +5017,7 @@ bool ImGui::Begin(const char* name, bool* p_open, ImGuiWindowFlags flags)
         window->DC.CurrentLineSize = window->DC.PrevLineSize = ImVec2(0.0f, 0.0f);
         window->DC.CurrentLineTextBaseOffset = window->DC.PrevLineTextBaseOffset = 0.0f;
         window->DC.NavHideHighlightOneFrame = false;
-        window->DC.NavHasScroll = (GetWindowScrollMaxY(window) > 0.0f);
+        window->DC.NavHasScroll = (GetScrollMaxY() > 0.0f);
         window->DC.NavLayerActiveMask = window->DC.NavLayerActiveMaskNext;
         window->DC.NavLayerActiveMaskNext = 0x00;
         window->DC.MenuBarAppending = false;
@@ -5063,8 +5062,8 @@ bool ImGui::Begin(const char* name, bool* p_open, ImGuiWindowFlags flags)
             // Close & collapse button are on layer 1 (same as menus) and don't default focus
             const ImGuiItemFlags item_flags_backup = window->DC.ItemFlags;
             window->DC.ItemFlags |= ImGuiItemFlags_NoNavDefaultFocus;
-            window->DC.NavLayerCurrent = ImGuiNavLayer_Menu;
-            window->DC.NavLayerCurrentMask = (1 << ImGuiNavLayer_Menu);
+            window->DC.NavLayerCurrent++;
+            window->DC.NavLayerCurrentMask <<= 1;
 
             // Collapse button
             if (!(flags & ImGuiWindowFlags_NoCollapse))
@@ -5080,8 +5079,8 @@ bool ImGui::Begin(const char* name, bool* p_open, ImGuiWindowFlags flags)
                     *p_open = false;
             }
 
-            window->DC.NavLayerCurrent = ImGuiNavLayer_Main;
-            window->DC.NavLayerCurrentMask = (1 << ImGuiNavLayer_Main);
+            window->DC.NavLayerCurrent--;
+            window->DC.NavLayerCurrentMask >>= 1;
             window->DC.ItemFlags = item_flags_backup;
 
             // Title text (FIXME: refactor text alignment facilities along with RenderText helpers, this is too much code for what it does.)
@@ -5263,7 +5262,7 @@ void ImGui::FocusWindow(ImGuiWindow* window)
         g.NavInitRequest = false;
         g.NavId = window ? window->NavLastIds[0] : 0; // Restore NavId
         g.NavIdIsAlive = false;
-        g.NavLayer = ImGuiNavLayer_Main;
+        g.NavLayer = 0;
         //printf("[%05d] FocusWindow(\"%s\")\n", g.FrameCount, window ? window->Name : NULL);
     }
 
@@ -7062,7 +7061,7 @@ static ImGuiWindow* ImGui::NavRestoreLastChildNavWindow(ImGuiWindow* window)
     return window->NavLastChildNavWindow ? window->NavLastChildNavWindow : window;
 }
 
-static void NavRestoreLayer(ImGuiNavLayer layer)
+static void NavRestoreLayer(int layer)
 {
     ImGuiContext& g = *GImGui;
     g.NavLayer = layer;
@@ -7319,7 +7318,7 @@ static void ImGui::NavUpdate()
         else if (g.NavLayer != 0)
         {
             // Leave the "menu" layer
-            NavRestoreLayer(ImGuiNavLayer_Main);
+            NavRestoreLayer(0);
         }
         else
         {
@@ -7701,8 +7700,8 @@ static void ImGui::NavUpdateWindowing()
             NavInitWindow(apply_focus_window, false);
 
         // If the window only has a menu layer, select it directly
-        if (apply_focus_window->DC.NavLayerActiveMask == (1 << ImGuiNavLayer_Menu))
-            g.NavLayer = ImGuiNavLayer_Menu;
+        if (apply_focus_window->DC.NavLayerActiveMask == (1 << 1))
+            g.NavLayer = 1;
     }
     if (apply_focus_window)
         g.NavWindowingTarget = NULL;
@@ -7722,7 +7721,7 @@ static void ImGui::NavUpdateWindowing()
         }
         g.NavDisableHighlight = false;
         g.NavDisableMouseHover = true;
-        NavRestoreLayer((g.NavWindow->DC.NavLayerActiveMask & (1 << ImGuiNavLayer_Menu)) ? (ImGuiNavLayer)((int)g.NavLayer ^ 1) : ImGuiNavLayer_Main);
+        NavRestoreLayer((g.NavWindow->DC.NavLayerActiveMask & (1 << 1)) ? (g.NavLayer ^ 1) : 0);
     }
 }
 

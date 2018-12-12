@@ -12,6 +12,26 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Sources\Editor\Entry.cpp" />
+    <ClCompile Include="..\Thirdparty\gl3w\include\GL\gl3w.c" />
+    <ClCompile Include="..\Thirdparty\imgui\imgui.cpp" />
+    <ClCompile Include="..\Thirdparty\imgui\imgui_demo.cpp" />
+    <ClCompile Include="..\Thirdparty\imgui\imgui_draw.cpp" />
+    <ClCompile Include="..\Thirdparty\imgui\imgui_impl_glfw.cpp" />
+    <ClCompile Include="..\Thirdparty\imgui\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="..\Thirdparty\imgui\imgui_widgets.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Thirdparty\gl3w\include\GL\gl3w.h" />
+    <ClInclude Include="..\Thirdparty\gl3w\include\GL\glcorearb.h" />
+    <ClInclude Include="..\Thirdparty\gl3w\include\KHR\khrplatform.h" />
+    <ClInclude Include="..\Thirdparty\imgui\imconfig.h" />
+    <ClInclude Include="..\Thirdparty\imgui\imgui.h" />
+    <ClInclude Include="..\Thirdparty\imgui\imgui_impl_glfw.h" />
+    <ClInclude Include="..\Thirdparty\imgui\imgui_impl_opengl3.h" />
+    <ClInclude Include="..\Thirdparty\imgui\imgui_internal.h" />
+    <ClInclude Include="..\Thirdparty\imgui\imstb_rectpack.h" />
+    <ClInclude Include="..\Thirdparty\imgui\imstb_textedit.h" />
+    <ClInclude Include="..\Thirdparty\imgui\imstb_truetype.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
@@ -58,6 +78,7 @@
     <OutDir>..\Binaries\x64\$(Configuration)\</OutDir>
     <IntDir>..\Binaries\Immediate\x64\$(Configuration)\Editor\</IntDir>
     <SourcePath>..\Sources\rumia;..\Sources\Runtime;$(VC_SourcePath);</SourcePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -68,13 +89,13 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>..\Sources\Runtime\;..\Sources\Editor\;..\Thirdparty\glm\include;..\Thirdparty\json\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Sources\Runtime\;..\Sources\Editor\;..\Thirdparty\glm\include;..\Thirdparty\json\include;..\Thirdparty\gl3w\include;..\Thirdparty\glfw\include;..\Thirdparty\imgui</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>..\Binaries\x64\$(Configuration)\Runtime.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;..\Thirdparty\glfw\libs\glfw3d.lib;..\Binaries\x64\$(Configuration)\Runtime.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -88,7 +109,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>..\Sources\Runtime\;..\Sources\Editor\;..\Thirdparty\glm\include;..\Thirdparty\json\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Sources\Runtime\;..\Sources\Editor\;..\Thirdparty\glm\include;..\Thirdparty\json\include;..\Thirdparty\gl3w\include;..\Thirdparty\glfw\include;..\Thirdparty\imgui</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -96,7 +117,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>..\Binaries\x64\$(Configuration)\Runtime.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;..\Thirdparty\glfw\libs\glfw3.lib;..\Binaries\x64\$(Configuration)\Runtime.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
