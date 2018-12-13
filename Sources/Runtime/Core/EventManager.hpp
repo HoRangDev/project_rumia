@@ -5,6 +5,7 @@
 #include <map>
 #include <tuple>
 #include <vector>
+#include <queue>
 #include <functional>
 
 namespace rumia
@@ -31,12 +32,16 @@ namespace rumia
       static EventManager& GetInstance();
 
       void Subscribe(uint32 eventType, void* subscriber, Callback&& callback);
-      void UnSubscribe(uint32 eventType, void* subscriber);
+      void UnSubscribeEnqueue(uint32 eventType, void* subscriber);
 
       void Notify(uint32 eventType, const EventDataType& data = 0);
 
    private:
+      void UnSubscribe(uint32 eventType, std::vector<Subscriber>& subscribers);
+
+   private:
       std::map<uint32, std::vector<Subscriber>> m_events;
+      std::map<uint32, std::vector<void*>> m_unsubQueueMap;
 
    };
 }
@@ -45,6 +50,7 @@ namespace rumia
 #define EVENT_HANDLER_DATA(func) [this](EventDataType data){func(data);}
 
 #define SUBSCRIBE_EVENT(eventType, subscriber, func) EventManager::GetInstance().Subscribe(eventType, subscriber, func);
+#define UNSUBSCRIBE_EVENT(eventType, subscriber) EventManager::GetInstance().UnSubscribeEnqueue(eventType, subscriber);
 
 #define NOTIFY(eventType) EventManager::GetInstance().Notify(eventType);
 #define NOTIFY_WITH_DATA(eventType, data) EventManager::GetInstance().Notify(eventType, data);

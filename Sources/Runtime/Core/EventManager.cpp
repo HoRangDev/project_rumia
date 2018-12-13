@@ -15,21 +15,35 @@ namespace rumia
          std::forward<Callback>(callback)));
    }
 
-   void EventManager::UnSubscribe(uint32 eventType, void* subscriber)
+   void EventManager::UnSubscribeEnqueue(uint32 eventType, void* subscriber)
    {
       auto itr = m_events.find(eventType);
       if (itr != m_events.end())
       {
-         std::vector<Subscriber>& subscribers = (*itr).second;
-         auto foundSubscriber = std::find_if(subscribers.begin(), subscribers.end(), 
-            [subscriber](const Subscriber& foundSubscriber) {
-            return foundSubscriber.first == subscriber;
-         });
+         m_unsubQueueMap[eventType].push_back(subscriber);
+      }
+   }
 
-         if (foundSubscriber != subscribers.end())
+   void EventManager::UnSubscribe(uint32 eventType, std::vector<Subscriber>& subscribers)
+   {
+      auto unsubItr = m_unsubQueueMap.find(eventType);
+      if (unsubItr != m_unsubQueueMap.end())
+      {
+         for (auto unsubscriber : unsubItr->second)
          {
-            subscribers.erase(foundSubscriber);
+            auto foundSubscriber = std::find_if(subscribers.begin(), subscribers.end(),
+               [&unsubscriber](const Subscriber& foundSubscriber) {
+               return foundSubscriber.first == unsubscriber;
+            });
+
+            if (foundSubscriber != subscribers.end())
+            {
+               subscribers.erase(foundSubscriber);
+            }
          }
+
+         unsubItr->second.clear();
+         //unsubItr->second.shrink_to_fit();
       }
    }
 
@@ -39,6 +53,7 @@ namespace rumia
       if (itr != m_events.end())
       {
          std::vector<Subscriber>& subscribers = (*itr).second;
+         UnSubscribe(eventType, subscribers);
          for (Subscriber& subscriber : subscribers)
          {
             subscriber.second(data);
