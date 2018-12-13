@@ -13,6 +13,8 @@ namespace rumia
       World();
       ~World();
 
+      bool Initialize();
+
       json Serialize() const;
       void DeSerialize(const json& object);
 

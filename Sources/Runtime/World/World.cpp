@@ -13,6 +13,12 @@ namespace rumia
       Unload();
    }
 
+   bool World::Initialize()
+   {
+      // @TODO: Removed actors exist before and create few default objects like directional light, camera, etc
+      return true;
+   }
+
    json World::Serialize() const
    {
       json object = json::object();
