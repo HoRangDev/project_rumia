@@ -1,12 +1,13 @@
-#include "Actor.hpp"
+#include "World/Actor.hpp"
 #include "Component/Transform.hpp"
+#include "Core/EventManager.hpp"
 
 namespace rumia
 {
    uint64 Actor::staticIDCount = 0;
 
    Actor::Actor(const std::string& name) :
-      m_bActivated(true),
+      m_bActivated(false),
       m_name(name),
       m_id(staticIDCount),
       m_transform(nullptr),
@@ -16,6 +17,8 @@ namespace rumia
 
       // Actor always have own transform
       m_transform = AttachComponent<Transform>();
+
+      SetActive(true);
 
       OnCreate();
    }
@@ -147,6 +150,23 @@ namespace rumia
    bool Actor::HasParent() const
    {
       return (m_transform->GetParent() != nullptr);
+   }
+
+   void Actor::SetActive(bool bActive)
+   {
+      if (bActive != m_bActivated)
+      {
+         if (bActive)
+         {
+            SUBSCRIBE_EVENT(EEngineEvent::Tick, this, EVENT_HANDLER(Tick));
+         }
+         else
+         {
+            UNSUBSCRIBE_EVENT(EEngineEvent::Tick, this);
+         }
+
+         m_bActivated = bActive;
+      }
    }
 
    bool Actor::IsActivated() const

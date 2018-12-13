@@ -49,7 +49,7 @@ int main()
    std::cout << trans->IsActivated() << std::endl;
 
    Engine& engine = Engine::GetInstance();
-   if (!engine.Initialize(800, 600, "rumia"))
+   if (!engine.Initialize(1280, 720, "rumia"))
    {
       return -1;
    }
@@ -72,7 +72,8 @@ int main()
 
    //glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
-   int version = gl3wInit();
+   int err = gl3wInit();
+   int version = gl3wIsSupported(4, 6);
 
    ImGui::CreateContext();
    ImGui_ImplGlfw_InitForOpenGL(window, true);
@@ -101,6 +102,9 @@ int main()
       glViewport(0, 0, display_w, display_h);
       glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
       glClear(GL_COLOR_BUFFER_BIT);
+
+      engine.Tick();
+
       ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
       glfwMakeContextCurrent(window);

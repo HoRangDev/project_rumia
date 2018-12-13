@@ -111,7 +111,7 @@ namespace rumia
       uint64 GetID() const { return m_id; }
 
       bool HasParent() const;
-      void SetActive(bool bActive) { m_bActivated = bActive; }
+      void SetActive(bool bActive);
       bool IsLocalActivated() const { return m_bActivated; }
       bool IsActivated() const;
 

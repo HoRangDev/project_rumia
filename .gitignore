@@ -45,3 +45,4 @@ Projects/.vs/rumia/v15/.suo
 *.exp
 *.iobj
 *.ipdb
+Projects/imgui.ini
