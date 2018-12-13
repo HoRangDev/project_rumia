@@ -5,6 +5,8 @@
 
 namespace rumia
 {
+   class World;
+   class Renderer;
    class RUMIA Engine
    {
    public:
@@ -18,8 +20,14 @@ namespace rumia
 
       void Shutdown();
 
+      World& GetWorld() const { return (*m_world); }
+
    private:
       Engine();
+
+   private:
+      World* m_world;
+      Renderer* m_renderer;
 
    private:
       static Engine* instance;

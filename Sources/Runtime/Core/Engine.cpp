@@ -1,10 +1,13 @@
 #include "Core/Engine.hpp"
 #include "Core/EventManager.hpp"
+#include "World/World.hpp"
 
 namespace rumia
 {
    Engine* Engine::instance = nullptr;
-   Engine::Engine()
+   Engine::Engine() :
+      m_world(nullptr),
+      m_renderer(nullptr)
    {
    }
 
@@ -25,6 +28,15 @@ namespace rumia
    bool Engine::Initialize(uint32 screenWidth, uint32 screenHeight, const std::string& title)
    {
       //@TODO: Renderer, and init other systems
+      if (m_world == nullptr)
+      {
+         m_world = new World();
+         if (!m_world->Initialize())
+         {
+            return false;
+         }
+      }
+
       return true;
    }
 
