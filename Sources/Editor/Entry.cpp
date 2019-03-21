@@ -94,7 +94,6 @@ int main()
          ImGui::End();
       }
 
-      ImGui::Render();
       int display_w;
       int display_h;
       glfwMakeContextCurrent(window);
@@ -105,6 +104,7 @@ int main()
 
       engine.Tick();
 
+      ImGui::Render();
       ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
       glfwMakeContextCurrent(window);
