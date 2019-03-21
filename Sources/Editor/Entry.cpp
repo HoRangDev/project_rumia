@@ -78,11 +78,23 @@ int main()
    ImGui::CreateContext();
    ImGui_ImplGlfw_InitForOpenGL(window, true);
    ImGui_ImplOpenGL3_Init(glsl_version);
-   
+
    ImGui::StyleColorsDark();
    while (!glfwWindowShouldClose(window))
    {
       glfwPollEvents();
+
+      engine.Tick();
+      //@TODO: place engine render
+      //@TODO: editor render
+
+      int display_w;
+      int display_h;
+      //glfwMakeContextCurrent(window);
+      //glfwGetFramebufferSize(window, &display_w, &display_h);
+      //glViewport(0, 0, display_w, display_h);
+      glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
+      glClear(GL_COLOR_BUFFER_BIT);
 
       ImGui_ImplOpenGL3_NewFrame();
       ImGui_ImplGlfw_NewFrame();
@@ -93,16 +105,6 @@ int main()
          ImGui::Text("hI hI!!");
          ImGui::End();
       }
-
-      int display_w;
-      int display_h;
-      glfwMakeContextCurrent(window);
-      glfwGetFramebufferSize(window, &display_w, &display_h);
-      glViewport(0, 0, display_w, display_h);
-      glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
-      glClear(GL_COLOR_BUFFER_BIT);
-
-      engine.Tick();
 
       ImGui::Render();
       ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
