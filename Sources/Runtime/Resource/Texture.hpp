@@ -5,7 +5,7 @@
 
 namespace rumia
 {
-	enum class TextureType
+	enum class RUMIA TextureType
 	{
 		Texture1D,
 		Texture2D,
@@ -13,22 +13,22 @@ namespace rumia
 		Cubemap,
 	};
 
-	enum TextureFormat
+	enum RUMIA TextureFormat
 	{
 		TextureGrey = GL_RED,
 		TextureRGB = GL_RGB,
 		TextureRGBA = GL_RGBA
 	};
 
-	class Texture : public Resource
+	class RUMIA Texture : public Resource
 	{
 	public:
 		Texture(const std::string& filePath);
 		~Texture();
 
-		uint32 GetWidth() const { m_width; }
-		uint32 GetHeight() const { m_height; }
-		uint32 GetDepth() const { m_depth; }
+		uint32 GetWidth() const { return m_width; }
+		uint32 GetHeight() const { return m_height; }
+		uint32 GetDepth() const { return m_depth; }
 		
 		TextureType GetTextureType() const { return m_textureType; }
 		TextureFormat GetTextureFormat() const { return m_textureFormat; }

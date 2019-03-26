@@ -7,13 +7,16 @@
 #include "Core/EventManager.hpp"
 #include "Core/Engine.hpp"
 #include "Resource/Resource.hpp"
+#include "Resource/Texture.hpp"
 
 #include "imgui.h"
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
 #include <stdio.h>
-#include <GL/gl3w.h>    // Initialize with gl3wInit()
-#include <GLFW/glfw3.h> 
+
+#include <GL/gl3w.h>
+#include <glfw/glfw3.h>
+
 #include <iostream>
 
 using namespace rumia;
@@ -49,10 +52,10 @@ int main()
    trans->SetActive(true);
    std::cout << trans->IsActivated() << std::endl;
 
-   auto splited = helper::SplitString("Test/Test\\MultipleToken", {'/', '\\'});
+   auto splited = helper::SplitString("Test/Test\\MultipleToken", { '/', '\\' });
    for (auto splitStr : splited)
    {
-	   std::cout << splitStr << std::endl;
+      std::cout << splitStr << std::endl;
    }
 
    std::cout << helper::CombineString(splited, "-") << std::endl;
@@ -82,11 +85,14 @@ int main()
    //glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
    int err = gl3wInit();
-   int version = gl3wIsSupported(4, 6);
+   int version = gl3wIsSupported(3, 3);
 
    ImGui::CreateContext();
    ImGui_ImplGlfw_InitForOpenGL(window, true);
    ImGui_ImplOpenGL3_Init(glsl_version);
+
+   Texture tex{ "../Resources/Textures/brickwall.jpg" };
+   tex.Load();
 
    ImGui::StyleColorsDark();
    while (!glfwWindowShouldClose(window))

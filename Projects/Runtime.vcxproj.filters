@@ -31,9 +31,6 @@
     <Filter Include="Sources\Resource">
       <UniqueIdentifier>{bcc0574f-027a-42f7-b1b3-0ddab475404b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Rendering">
-      <UniqueIdentifier>{876774f7-5db3-4613-b29d-bb4fd0e0132f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Thirdparty\gl3w">
       <UniqueIdentifier>{15af2d70-f4c4-4ec3-be42-4939cf87d961}</UniqueIdentifier>
     </Filter>
@@ -42,6 +39,12 @@
     </Filter>
     <Filter Include="Thirdparty\json">
       <UniqueIdentifier>{2b2592d9-e5b0-419a-b8dd-8a22f0179ba3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Thirdparty\ImGUI">
+      <UniqueIdentifier>{81cf48ee-c84b-44bd-8f8a-025e1b7cc424}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Rendering">
+      <UniqueIdentifier>{876774f7-5db3-4613-b29d-bb4fd0e0132f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -745,7 +748,7 @@
       <Filter>Sources\Resource</Filter>
     </ClInclude>
     <ClInclude Include="..\Sources\Runtime\Rendering\Mesh.hpp">
-      <Filter>Rendering</Filter>
+      <Filter>Sources\Rendering</Filter>
     </ClInclude>
     <ClInclude Include="..\Sources\Runtime\Resource\Model.hpp">
       <Filter>Sources\Resource</Filter>
@@ -775,7 +778,31 @@
       <Filter>Sources\Component</Filter>
     </ClInclude>
     <ClInclude Include="..\Sources\Runtime\Rendering\RenderingDefs.hpp">
-      <Filter>Rendering</Filter>
+      <Filter>Sources\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Thirdparty\imgui\imconfig.h">
+      <Filter>Thirdparty\ImGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Thirdparty\imgui\imgui.h">
+      <Filter>Thirdparty\ImGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Thirdparty\imgui\imgui_impl_glfw.h">
+      <Filter>Thirdparty\ImGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Thirdparty\imgui\imgui_impl_opengl3.h">
+      <Filter>Thirdparty\ImGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Thirdparty\imgui\imgui_internal.h">
+      <Filter>Thirdparty\ImGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Thirdparty\imgui\imstb_rectpack.h">
+      <Filter>Thirdparty\ImGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Thirdparty\imgui\imstb_textedit.h">
+      <Filter>Thirdparty\ImGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Thirdparty\imgui\imstb_truetype.h">
+      <Filter>Thirdparty\ImGUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -826,6 +853,27 @@
     </ClCompile>
     <ClCompile Include="..\Sources\Runtime\Resource\Texture.cpp">
       <Filter>Sources\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Thirdparty\imgui\imgui.cpp">
+      <Filter>Thirdparty\ImGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Thirdparty\imgui\imgui_demo.cpp">
+      <Filter>Thirdparty\ImGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Thirdparty\imgui\imgui_draw.cpp">
+      <Filter>Thirdparty\ImGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Thirdparty\imgui\imgui_impl_glfw.cpp">
+      <Filter>Thirdparty\ImGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Thirdparty\imgui\imgui_impl_opengl3.cpp">
+      <Filter>Thirdparty\ImGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Thirdparty\imgui\imgui_widgets.cpp">
+      <Filter>Thirdparty\ImGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\Entry.cpp">
+      <Filter>Sources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

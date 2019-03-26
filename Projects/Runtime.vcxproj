@@ -273,10 +273,19 @@
     <ClInclude Include="..\Thirdparty\glm\include\glm\vec3.hpp" />
     <ClInclude Include="..\Thirdparty\glm\include\glm\vec4.hpp" />
     <ClInclude Include="..\Thirdparty\glm\include\glm\vector_relational.hpp" />
+    <ClInclude Include="..\Thirdparty\imgui\imconfig.h" />
+    <ClInclude Include="..\Thirdparty\imgui\imgui.h" />
+    <ClInclude Include="..\Thirdparty\imgui\imgui_impl_glfw.h" />
+    <ClInclude Include="..\Thirdparty\imgui\imgui_impl_opengl3.h" />
+    <ClInclude Include="..\Thirdparty\imgui\imgui_internal.h" />
+    <ClInclude Include="..\Thirdparty\imgui\imstb_rectpack.h" />
+    <ClInclude Include="..\Thirdparty\imgui\imstb_textedit.h" />
+    <ClInclude Include="..\Thirdparty\imgui\imstb_truetype.h" />
     <ClInclude Include="..\Thirdparty\json\include\json.hpp" />
     <ClInclude Include="..\Thirdparty\stb_image\include\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\Sources\Entry.cpp" />
     <ClCompile Include="..\Sources\Runtime\Component\Component.cpp" />
     <ClCompile Include="..\Sources\Runtime\Component\Renderable.cpp" />
     <ClCompile Include="..\Sources\Runtime\Component\Transform.cpp" />
@@ -300,8 +309,17 @@
     <ClCompile Include="..\Sources\Runtime\World\Actor.cpp" />
     <ClCompile Include="..\Sources\Runtime\World\World.cpp" />
     <ClCompile Include="..\Thirdparty\gl3w\include\GL\gl3w.c" />
-    <ClCompile Include="..\Thirdparty\glm\include\glm\detail\dummy.cpp" />
+    <ClCompile Include="..\Thirdparty\glm\include\glm\detail\dummy.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="..\Thirdparty\glm\include\glm\detail\glm.cpp" />
+    <ClCompile Include="..\Thirdparty\imgui\imgui.cpp" />
+    <ClCompile Include="..\Thirdparty\imgui\imgui_demo.cpp" />
+    <ClCompile Include="..\Thirdparty\imgui\imgui_draw.cpp" />
+    <ClCompile Include="..\Thirdparty\imgui\imgui_impl_glfw.cpp" />
+    <ClCompile Include="..\Thirdparty\imgui\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="..\Thirdparty\imgui\imgui_widgets.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Thirdparty\assimp\include\assimp\color4.inl" />
@@ -447,13 +465,13 @@
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -519,12 +537,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;RUNTIME_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\Sources\Runtime;..\Thirdparty\json\include;..\Thirdparty\assimp\include;..\Thirdparty\glm\include;..\Thirdparty\stb_image\include;..\Thirdparty\glfw\include;..\Thirdparty\gl3w\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Thirdparty\imgui;..\Sources\Runtime;..\Thirdparty\json\include;..\Thirdparty\assimp\include;..\Thirdparty\glm\include;..\Thirdparty\stb_image\include;..\Thirdparty\glfw\include;..\Thirdparty\gl3w\include</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>opengl32.lib;..\Thirdparty\assimp\libs\assimp-vc140-mt_d.lib;..\Thirdparty\glfw\libs\glfw3d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
@@ -561,11 +579,11 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;RUNTIME_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\Sources\Runtime;..\Thirdparty\json\include;..\Thirdparty\assimp\include;..\Thirdparty\glm\include;..\Thirdparty\stb_image\include;..\Thirdparty\glfw\include;..\Thirdparty\gl3w\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Thirdparty\imgui;..\Sources\Runtime;..\Thirdparty\json\include;..\Thirdparty\assimp\include;..\Thirdparty\glm\include;..\Thirdparty\stb_image\include;..\Thirdparty\glfw\include;..\Thirdparty\gl3w\include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
