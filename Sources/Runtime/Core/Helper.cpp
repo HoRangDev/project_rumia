@@ -220,5 +220,21 @@ namespace rumia
 
 		  return splited;
 	  }
+
+	  std::string CombineString(const std::vector<std::string>& strings, const std::string& join)
+	  {
+		  std::string temp;
+		  uint64 length = strings.size();
+		  for (uint64 idx = 0; idx < length; ++idx)
+		  {
+			  temp.append(strings[idx]);
+			  if (idx < (length - 1))
+			  {
+				  temp.append(join);
+			  }
+		  }
+
+		  return temp;
+	  }
    }
 }

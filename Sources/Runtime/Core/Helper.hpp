@@ -49,6 +49,8 @@ namespace rumia
 	  /* String */
 	  RUMIA std::vector<std::string> SplitString(const std::string& str, char token);
 	  RUMIA std::vector<std::string> SplitString(const std::string& str, const std::vector<char>& tokens);
+
+	  RUMIA std::string CombineString(const std::vector<std::string>& strings, const std::string& join = "");
 	  /************************************************************************/
 
    }

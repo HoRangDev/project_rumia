@@ -54,6 +54,8 @@ int main()
 	   std::cout << splitStr << std::endl;
    }
 
+   std::cout << helper::CombineString(splited, "-") << std::endl;
+
    Engine& engine = Engine::GetInstance();
    if (!engine.Initialize(1280, 720, "rumia"))
    {
