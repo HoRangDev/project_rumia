@@ -34,6 +34,15 @@
     <Filter Include="Rendering">
       <UniqueIdentifier>{876774f7-5db3-4613-b29d-bb4fd0e0132f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Thirdparty\gl3w">
+      <UniqueIdentifier>{15af2d70-f4c4-4ec3-be42-4939cf87d961}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Thirdparty\glfw">
+      <UniqueIdentifier>{47f8abe8-91d3-4183-9225-49ec8cd47dc5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Thirdparty\json">
+      <UniqueIdentifier>{2b2592d9-e5b0-419a-b8dd-8a22f0179ba3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Sources\Runtime\Core\EngineDefines.hpp">
@@ -723,9 +732,6 @@
     <ClInclude Include="..\Sources\Runtime\Component\Component.hpp">
       <Filter>Sources\Component</Filter>
     </ClInclude>
-    <ClInclude Include="..\Sources\Runtime\Component\Renderable.h">
-      <Filter>Sources\Component</Filter>
-    </ClInclude>
     <ClInclude Include="..\Sources\Runtime\Core\Helper.hpp">
       <Filter>Sources\Core</Filter>
     </ClInclude>
@@ -737,6 +743,39 @@
     </ClInclude>
     <ClInclude Include="..\Sources\Runtime\Resource\Resource.hpp">
       <Filter>Sources\Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\Runtime\Rendering\Mesh.hpp">
+      <Filter>Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\Runtime\Resource\Model.hpp">
+      <Filter>Sources\Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\Runtime\Resource\Texture.hpp">
+      <Filter>Sources\Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Thirdparty\gl3w\include\GL\gl3w.h">
+      <Filter>Thirdparty\gl3w</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Thirdparty\gl3w\include\GL\glcorearb.h">
+      <Filter>Thirdparty\gl3w</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Thirdparty\gl3w\include\KHR\khrplatform.h">
+      <Filter>Thirdparty\gl3w</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Thirdparty\glfw\include\GLFW\glfw3.h">
+      <Filter>Thirdparty\glfw</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Thirdparty\glfw\include\GLFW\glfw3native.h">
+      <Filter>Thirdparty\glfw</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Thirdparty\json\include\json.hpp">
+      <Filter>Thirdparty\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\Runtime\Component\Renderable.hpp">
+      <Filter>Sources\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\Runtime\Rendering\RenderingDefs.hpp">
+      <Filter>Rendering</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -780,6 +819,12 @@
       <Filter>Sources\Core</Filter>
     </ClCompile>
     <ClCompile Include="..\Sources\Runtime\Resource\Resource.cpp">
+      <Filter>Sources\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Thirdparty\gl3w\include\GL\gl3w.c">
+      <Filter>Thirdparty\gl3w</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\Runtime\Resource\Texture.cpp">
       <Filter>Sources\Resource</Filter>
     </ClCompile>
   </ItemGroup>

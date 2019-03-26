@@ -20,7 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Sources\Runtime\Component\Component.hpp" />
-    <ClInclude Include="..\Sources\Runtime\Component\Renderable.h" />
+    <ClInclude Include="..\Sources\Runtime\Component\Renderable.hpp" />
     <ClInclude Include="..\Sources\Runtime\Component\Transform.hpp" />
     <ClInclude Include="..\Sources\Runtime\Core\Engine.hpp" />
     <ClInclude Include="..\Sources\Runtime\Core\EngineDefines.hpp" />
@@ -42,7 +42,11 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClInclude>
+    <ClInclude Include="..\Sources\Runtime\Rendering\Mesh.hpp" />
+    <ClInclude Include="..\Sources\Runtime\Rendering\RenderingDefs.hpp" />
+    <ClInclude Include="..\Sources\Runtime\Resource\Model.hpp" />
     <ClInclude Include="..\Sources\Runtime\Resource\Resource.hpp" />
+    <ClInclude Include="..\Sources\Runtime\Resource\Texture.hpp" />
     <ClInclude Include="..\Sources\Runtime\World\Actor.hpp" />
     <ClInclude Include="..\Sources\Runtime\World\World.hpp" />
     <ClInclude Include="..\Thirdparty\assimp\include\assimp\ai_assert.h" />
@@ -120,6 +124,11 @@
     <ClInclude Include="..\Thirdparty\assimp\include\assimp\version.h" />
     <ClInclude Include="..\Thirdparty\assimp\include\assimp\Vertex.h" />
     <ClInclude Include="..\Thirdparty\assimp\include\assimp\XMLTools.h" />
+    <ClInclude Include="..\Thirdparty\gl3w\include\GL\gl3w.h" />
+    <ClInclude Include="..\Thirdparty\gl3w\include\GL\glcorearb.h" />
+    <ClInclude Include="..\Thirdparty\gl3w\include\KHR\khrplatform.h" />
+    <ClInclude Include="..\Thirdparty\glfw\include\GLFW\glfw3.h" />
+    <ClInclude Include="..\Thirdparty\glfw\include\GLFW\glfw3native.h" />
     <ClInclude Include="..\Thirdparty\glm\include\glm\common.hpp" />
     <ClInclude Include="..\Thirdparty\glm\include\glm\detail\func_common.hpp" />
     <ClInclude Include="..\Thirdparty\glm\include\glm\detail\func_exponential.hpp" />
@@ -264,6 +273,7 @@
     <ClInclude Include="..\Thirdparty\glm\include\glm\vec3.hpp" />
     <ClInclude Include="..\Thirdparty\glm\include\glm\vec4.hpp" />
     <ClInclude Include="..\Thirdparty\glm\include\glm\vector_relational.hpp" />
+    <ClInclude Include="..\Thirdparty\json\include\json.hpp" />
     <ClInclude Include="..\Thirdparty\stb_image\include\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
@@ -286,8 +296,10 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\Sources\Runtime\Resource\Resource.cpp" />
+    <ClCompile Include="..\Sources\Runtime\Resource\Texture.cpp" />
     <ClCompile Include="..\Sources\Runtime\World\Actor.cpp" />
     <ClCompile Include="..\Sources\Runtime\World\World.cpp" />
+    <ClCompile Include="..\Thirdparty\gl3w\include\GL\gl3w.c" />
     <ClCompile Include="..\Thirdparty\glm\include\glm\detail\dummy.cpp" />
     <ClCompile Include="..\Thirdparty\glm\include\glm\detail\glm.cpp" />
   </ItemGroup>
@@ -507,7 +519,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;RUNTIME_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\Sources\Runtime;..\Thirdparty\json\include;..\Thirdparty\assimp\include;..\Thirdparty\glm\include;..\Thirdparty\stb_image\include;..\Thirdparty\glfw\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Sources\Runtime;..\Thirdparty\json\include;..\Thirdparty\assimp\include;..\Thirdparty\glm\include;..\Thirdparty\stb_image\include;..\Thirdparty\glfw\include;..\Thirdparty\gl3w\include</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
@@ -549,7 +561,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;RUNTIME_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\Sources\Runtime;..\Thirdparty\json\include;..\Thirdparty\assimp\include;..\Thirdparty\glm\include;..\Thirdparty\stb_image\include;..\Thirdparty\glfw\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Sources\Runtime;..\Thirdparty\json\include;..\Thirdparty\assimp\include;..\Thirdparty\glm\include;..\Thirdparty\stb_image\include;..\Thirdparty\glfw\include;..\Thirdparty\gl3w\include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
