@@ -16,6 +16,12 @@ namespace rumia
 		//@TODO: split file path to name and directory then stored at each variables
 	}
 
+	Resource::~Resource()
+	{
+		// Double check
+		Unload();
+	}
+
 	bool Resource::Load()
 	{
 		if (!m_bLoaded)

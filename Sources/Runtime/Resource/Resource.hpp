@@ -21,7 +21,7 @@ namespace rumia
 	{
 	public:
 		Resource(const std::string& filePath, ResourceType resType);
-		virtual ~Resource() { /* Empty Destructor */ }
+		virtual ~Resource();
 
 		ResourceType GetType() const { return m_resType; }
 		std::string GetFilePath() const { return m_filePath; }
@@ -36,6 +36,8 @@ namespace rumia
 
 		virtual bool LoadProcess() = 0;
 		virtual void UnloadProcess() = 0;
+
+		//@TODO: Add Metadata
 
 	private:
 		void IncreaseRefCount() { ++m_refCount; }
