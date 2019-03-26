@@ -42,6 +42,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClInclude>
+    <ClInclude Include="..\Sources\Runtime\Resource\Resource.hpp" />
     <ClInclude Include="..\Sources\Runtime\World\Actor.hpp" />
     <ClInclude Include="..\Sources\Runtime\World\World.hpp" />
     <ClInclude Include="..\Thirdparty\assimp\include\assimp\ai_assert.h" />
@@ -284,6 +285,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="..\Sources\Runtime\Resource\Resource.cpp" />
     <ClCompile Include="..\Sources\Runtime\World\Actor.cpp" />
     <ClCompile Include="..\Sources\Runtime\World\World.cpp" />
     <ClCompile Include="..\Thirdparty\glm\include\glm\detail\dummy.cpp" />

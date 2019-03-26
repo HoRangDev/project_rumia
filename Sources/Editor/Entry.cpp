@@ -6,6 +6,7 @@
 #include "Component/Transform.hpp"
 #include "Core/EventManager.hpp"
 #include "Core/Engine.hpp"
+#include "Resource/Resource.hpp"
 
 #include "imgui.h"
 #include "imgui_impl_glfw.h"
@@ -55,6 +56,11 @@ int main()
    }
 
    std::cout << helper::CombineString(splited, "-") << std::endl;
+
+   Resource test{ "Test/Test\\Multiple/Directory/FileName", ResourceType::Unknown };
+   std::cout << test.GetFilePath() << std::endl;
+   std::cout << test.GetFileName() << std::endl;
+   std::cout << test.GetFileDirectory() << std::endl;
 
    Engine& engine = Engine::GetInstance();
    if (!engine.Initialize(1280, 720, "rumia"))

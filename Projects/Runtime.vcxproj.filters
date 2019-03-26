@@ -28,6 +28,12 @@
     <Filter Include="Thirdparty\stb_image">
       <UniqueIdentifier>{c2eb49a5-66e2-4da8-a4d4-5cc9bd84dc36}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\Resource">
+      <UniqueIdentifier>{bcc0574f-027a-42f7-b1b3-0ddab475404b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Rendering">
+      <UniqueIdentifier>{876774f7-5db3-4613-b29d-bb4fd0e0132f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Sources\Runtime\Core\EngineDefines.hpp">
@@ -729,6 +735,9 @@
     <ClInclude Include="..\Sources\Runtime\Core\Engine.hpp">
       <Filter>Sources\Core</Filter>
     </ClInclude>
+    <ClInclude Include="..\Sources\Runtime\Resource\Resource.hpp">
+      <Filter>Sources\Resource</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Sources\Runtime\Component\Component.cpp">
@@ -769,6 +778,9 @@
     </ClCompile>
     <ClCompile Include="..\Sources\Runtime\Core\Engine.cpp">
       <Filter>Sources\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\Runtime\Resource\Resource.cpp">
+      <Filter>Sources\Resource</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
