@@ -4,7 +4,8 @@ namespace rumia
 {
 	Resource::Resource(const std::string& filePath, ResourceType resType) :
 		m_resType(resType),
-		m_filePath(filePath)
+		m_filePath(filePath),
+		m_refCount(0)
 	{
 		auto splitedPath = helper::SplitString(m_filePath, { '/', '\\' });
 		m_fileName = splitedPath[splitedPath.size() - 1];

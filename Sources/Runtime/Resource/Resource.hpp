@@ -28,11 +28,19 @@ namespace rumia
 		std::string GetFileName() const { return m_fileName; }
 		std::string GetFileDirectory() const { return m_fileDirectory; }
 
+		uint64 GetRefCount() const { return m_refCount; }
+
+	private:
+		void IncreaseRefCount() { ++m_refCount; }
+		void DecreaseRefCount() { --m_refCount; }
+
 	private:
 		ResourceType	m_resType;
 		std::string		m_filePath;
 		std::string		m_fileName;
 		std::string		m_fileDirectory;
+
+		uint64			m_refCount;
 
 	};
 }
