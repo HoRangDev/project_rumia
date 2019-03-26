@@ -8,7 +8,7 @@ namespace rumia
 	// @TODO: File Format-Resource Type Mapping
 	enum class RUMIA ResourceType
 	{
-		Texture2D,
+		Texture,
 		Audio,
 		Scene,
 		Model,
