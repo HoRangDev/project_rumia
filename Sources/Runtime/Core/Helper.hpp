@@ -13,6 +13,7 @@ namespace rumia
 {
    namespace helper
    {
+	   /* Serializer */
       RUMIA json SerializeVec2(const glm::vec2& vec);
       RUMIA json SerializeVec3(const glm::vec3& vec);
       RUMIA json SerializeVec4(const glm::vec4& vec);
@@ -43,5 +44,12 @@ namespace rumia
       {
          serializable->DeSerialize(json::parse(serializedStr));
       }
+	  /************************************************************************/
+
+	  /* String */
+	  RUMIA std::vector<std::string> SplitString(const std::string& str, char token);
+	  RUMIA std::vector<std::string> SplitString(const std::string& str, const std::vector<char>& tokens);
+	  /************************************************************************/
+
    }
 }

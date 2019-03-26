@@ -48,6 +48,12 @@ int main()
    trans->SetActive(true);
    std::cout << trans->IsActivated() << std::endl;
 
+   auto splited = helper::SplitString("Test/Test\\MultipleToken", {'/', '\\'});
+   for (auto splitStr : splited)
+   {
+	   std::cout << splitStr << std::endl;
+   }
+
    Engine& engine = Engine::GetInstance();
    if (!engine.Initialize(1280, 720, "rumia"))
    {
