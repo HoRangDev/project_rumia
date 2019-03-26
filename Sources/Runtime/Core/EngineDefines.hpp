@@ -14,6 +14,8 @@
 
 #define TYPE_TO_LITERAL(TYPE) #TYPE
 
+#include <string>
+
 namespace rumia
 {
    /* Memory Management Utility functions **/
