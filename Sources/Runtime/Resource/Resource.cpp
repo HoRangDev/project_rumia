@@ -5,6 +5,7 @@ namespace rumia
 	Resource::Resource(const std::string& filePath, ResourceType resType) :
 		m_resType(resType),
 		m_filePath(filePath),
+		m_bLoaded(false),
 		m_refCount(0)
 	{
 		auto splitedPath = helper::SplitString(m_filePath, { '/', '\\' });
@@ -13,5 +14,29 @@ namespace rumia
 
 		m_fileDirectory = helper::CombineString(splitedPath, "/");
 		//@TODO: split file path to name and directory then stored at each variables
+	}
+
+	bool Resource::Load()
+	{
+		if (!m_bLoaded)
+		{
+			return LoadProcess();
+		}
+
+		return false;
+	}
+
+	void Resource::Unload()
+	{
+		if (m_bLoaded)
+		{
+			UnloadProcess();
+		}
+	}
+
+	bool Resource::Reload()
+	{
+		Unload();
+		return Load();
 	}
 }
