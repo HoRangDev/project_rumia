@@ -8,6 +8,8 @@
 
 #ifdef RUNTIME_EXPORTS
 #define RUMIA __declspec(dllexport)
+#elif RUNTIME_EXPORTS_IGNORE
+#define RUMIA 
 #else
 #define RUMIA __declspec(dllimport) 
 #endif

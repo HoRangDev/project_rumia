@@ -535,7 +535,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;RUNTIME_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;RUNTIME_EXPORTS_IGNORE;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>..\Thirdparty\imgui;..\Sources\Runtime;..\Thirdparty\json\include;..\Thirdparty\assimp\include;..\Thirdparty\glm\include;..\Thirdparty\stb_image\include;..\Thirdparty\glfw\include;..\Thirdparty\gl3w\include</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -577,7 +577,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;RUNTIME_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;RUNTIME_EXPORTS_IGNORE;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>..\Thirdparty\imgui;..\Sources\Runtime;..\Thirdparty\json\include;..\Thirdparty\assimp\include;..\Thirdparty\glm\include;..\Thirdparty\stb_image\include;..\Thirdparty\glfw\include;..\Thirdparty\gl3w\include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
