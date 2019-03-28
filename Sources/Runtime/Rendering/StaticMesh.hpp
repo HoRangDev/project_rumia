@@ -1,8 +1,5 @@
 #pragma once
-#include <glm/glm.hpp>
-#include <vector>
-#include "Core/EngineDefines.hpp"
-#include "Rendering/RenderingDefs.hpp"
+#include "Rendering/Mesh.h"
 
 namespace rumia
 {
@@ -13,12 +10,16 @@ namespace rumia
       glm::vec3 Normal;
    };
 
-   class RUMIA StaticMesh
+   class RUMIA StaticMesh : public Mesh
    {
    public:
       StaticMesh(const std::vector<VertexPTN>& vertices, const std::vector<uint32>& indices);
 
-      void Draw(class Shader* shader);
+      virtual void Draw(class Shader* shader) override;
+
+      GLuint GetVAO() const { return m_vao; }
+      GLuint GetVBO() const { return m_vbo; }
+      GLuint GetEBO() const { return m_ebo; }
 
    private:
       void Initialize();

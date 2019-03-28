@@ -44,4 +44,11 @@ namespace rumia
          glBindVertexArray(0);
       }
    }
+
+   void StaticMesh::Draw(Shader* shader)
+   {
+      glBindVertexArray(m_vao);
+      glDrawElements(GL_TRIANGLES, m_indices.size(), GL_UNSIGNED_INT, nullptr);
+      glBindVertexArray(0);
+   }
 }
