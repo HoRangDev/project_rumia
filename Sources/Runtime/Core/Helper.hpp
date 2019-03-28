@@ -7,6 +7,8 @@
 #include "glm/gtx/quaternion.hpp"
 #include "glm/gtc/type_ptr.hpp"
 
+#include <string_view>
+
 using namespace nlohmann;
 
 namespace rumia
@@ -47,8 +49,8 @@ namespace rumia
 	  /************************************************************************/
 
 	  /* String */
-	  RUMIA std::vector<std::string> SplitString(const std::string& str, char token);
-	  RUMIA std::vector<std::string> SplitString(const std::string& str, const std::vector<char>& tokens);
+      RUMIA std::vector<std::string> SplitString(const std::string_view& str, char token);
+	  RUMIA std::vector<std::string> SplitString(const std::string_view& str, const std::vector<char>& tokens);
 
 	  RUMIA std::string CombineString(const std::vector<std::string>& strings, const std::string& join = "");
 	  /************************************************************************/

@@ -162,30 +162,30 @@ namespace rumia
          return (state == 0) ? false : true;
       }
 
-	  std::vector<std::string> SplitString(const std::string& str, char token)
-	  {
-		  std::vector<std::string> splited;
-		  std::string temp;
+      std::vector<std::string> SplitString(const std::string_view& str, char token)
+      {
+         std::vector<std::string> splited;
+         std::string temp;
 
-		  uint64 length = str.length();
+         uint64 length = str.length();
 
-		  for (uint64 idx = 0; idx < length; ++idx)
-		  {
-			  if (str[idx] != token)
-			  {
-				  temp.push_back(str[idx]);
-			  }
+         for (uint64 idx = 0; idx < length; ++idx)
+         {
+            if (str[idx] != token)
+            {
+               temp.push_back(str[idx]);
+            }
 
-			  if (str[idx] == token || idx == (length - 1))
-			  {
-				  splited.push_back(std::move(temp));
-			  }
-		  }
+            if (str[idx] == token || idx == (length - 1))
+            {
+               splited.push_back(std::move(temp));
+            }
+         }
 
-		  return splited;
-	  }
+         return splited;
+      }
 
-	  std::vector<std::string> SplitString(const std::string& str, const std::vector<char>& tokens)
+	  std::vector<std::string> SplitString(const std::string_view& str, const std::vector<char>& tokens)
 	  {
 		  std::vector<std::string> splited;
 		  std::string temp;
