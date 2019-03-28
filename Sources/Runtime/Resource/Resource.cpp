@@ -13,7 +13,9 @@ namespace rumia
 		splitedPath.pop_back();
 
 		m_fileDirectory = helper::CombineString(splitedPath, "/");
-		//@TODO: split file path to name and directory then stored at each variables
+
+        auto splitedName = helper::SplitString(m_fileName, '.');
+        m_fileExt = splitedName[splitedName.size() - 1];
 	}
 
 	Resource::~Resource()

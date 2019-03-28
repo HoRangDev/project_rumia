@@ -3,15 +3,20 @@
 #include "Core/EngineDefines.hpp"
 #include "Core/Helper.hpp"
 
+#include <fstream>
+#include <sstream>
+#include <iostream>
+
 namespace rumia
 {
 	// @TODO: File Format-Resource Type Mapping
 	enum class RUMIA EResourceType
 	{
 		Texture,
+        Model,
+        Shader,
 		Audio,
 		Scene,
-		Model,
 		Text,
 		Config,
 		Unknown
@@ -26,6 +31,7 @@ namespace rumia
         EResourceType GetType() const { return m_resType; }
 		std::string GetFilePath() const { return m_filePath; }
 		std::string GetFileName() const { return m_fileName; }
+        std::string GetFileExt() const { return m_fileExt; }
 		std::string GetFileDirectory() const { return m_fileDirectory; }
 
 		uint64 GetRefCount() const { return m_refCount; }
@@ -44,9 +50,10 @@ namespace rumia
 		void DecreaseRefCount() { --m_refCount; }
 
 	private:
-       EResourceType	m_resType;
+        EResourceType	m_resType;
 		std::string		m_filePath;
 		std::string		m_fileName;
+        std::string     m_fileExt;
 		std::string		m_fileDirectory;
 
 		bool			m_bLoaded;

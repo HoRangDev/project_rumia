@@ -32,6 +32,8 @@ namespace rumia
 		
 		ETextureType GetTextureType() const { return m_textureType; }
 		ETextureFormat GetTextureFormat() const { return m_textureFormat; }
+
+        GLuint GetID() const { return m_id; }
 		
 		virtual bool LoadProcess() override;
 		virtual void UnloadProcess() override;
