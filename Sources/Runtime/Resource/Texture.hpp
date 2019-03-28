@@ -5,7 +5,7 @@
 
 namespace rumia
 {
-	enum class RUMIA TextureType
+	enum class RUMIA ETextureType
 	{
 		Texture1D,
 		Texture2D,
@@ -13,7 +13,7 @@ namespace rumia
 		Cubemap,
 	};
 
-	enum RUMIA TextureFormat
+	enum RUMIA ETextureFormat
 	{
 		TextureGrey = GL_RED,
 		TextureRGB = GL_RGB,
@@ -30,8 +30,8 @@ namespace rumia
 		uint32 GetHeight() const { return m_height; }
 		uint32 GetDepth() const { return m_depth; }
 		
-		TextureType GetTextureType() const { return m_textureType; }
-		TextureFormat GetTextureFormat() const { return m_textureFormat; }
+		ETextureType GetTextureType() const { return m_textureType; }
+		ETextureFormat GetTextureFormat() const { return m_textureFormat; }
 		
 		virtual bool LoadProcess() override;
 		virtual void UnloadProcess() override;
@@ -45,8 +45,8 @@ namespace rumia
 		void LoadTexture3D();
 
 	private:
-		TextureType		m_textureType;
-		TextureFormat	m_textureFormat;
+		ETextureType	m_textureType;
+		ETextureFormat	m_textureFormat;
 		uint32			m_width;
 		uint32			m_height;
 		uint32			m_depth;

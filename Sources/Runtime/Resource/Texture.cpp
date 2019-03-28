@@ -6,8 +6,8 @@ namespace rumia
 {
 	Texture::Texture(const std::string& filePath) :
 		m_width(0), m_height(0), m_depth(0),
-		m_textureType(TextureType::Texture2D),
-		Resource(filePath, ResourceType::Texture)
+		m_textureType(ETextureType::Texture2D),
+		Resource(filePath, EResourceType::Texture)
 	{
 	}
 
@@ -19,18 +19,18 @@ namespace rumia
 	{
 		switch (m_textureType)
 		{
-		case TextureType::Cubemap:
+		case ETextureType::Cubemap:
 			LoadCubemap();
 			break;
-		case TextureType::Texture1D:
+		case ETextureType::Texture1D:
 			LoadTexture1D();
 			break;
 
-		case TextureType::Texture2D:
+		case ETextureType::Texture2D:
 			LoadTexture2D();
 			break;
 
-		case TextureType::Texture3D:
+		case ETextureType::Texture3D:
 			LoadTexture3D();
 			break;
 		}
@@ -47,15 +47,15 @@ namespace rumia
 	{
 		switch (m_textureType)
 		{
-		case TextureType::Cubemap:
+		case ETextureType::Cubemap:
 			glBindTexture(GL_TEXTURE_CUBE_MAP, m_id);
-		case TextureType::Texture1D:
+		case ETextureType::Texture1D:
 			glBindTexture(GL_TEXTURE_1D, m_id);
 			break;
-		case TextureType::Texture2D:
+		case ETextureType::Texture2D:
 			glBindTexture(GL_TEXTURE_2D, m_id);
 			break;
-		case TextureType::Texture3D:
+		case ETextureType::Texture3D:
 			glBindTexture(GL_TEXTURE_3D, m_id);
 			break;
 		}
@@ -88,15 +88,15 @@ namespace rumia
 		switch (nrComponents)
 		{
 		case 1:
-			m_textureFormat = TextureFormat::TextureGrey;
+			m_textureFormat = ETextureFormat::TextureGrey;
 			break;
 
 		case 3:
-			m_textureFormat = TextureFormat::TextureRGB;
+			m_textureFormat = ETextureFormat::TextureRGB;
 			break;
 
 		case 4:
-			m_textureFormat = TextureFormat::TextureRGBA;
+			m_textureFormat = ETextureFormat::TextureRGBA;
 			break;
 		}
 

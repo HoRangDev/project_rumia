@@ -2,7 +2,7 @@
 
 namespace rumia
 {
-	Resource::Resource(const std::string& filePath, ResourceType resType) :
+	Resource::Resource(const std::string& filePath, EResourceType resType) :
 		m_resType(resType),
 		m_filePath(filePath),
 		m_bLoaded(false),

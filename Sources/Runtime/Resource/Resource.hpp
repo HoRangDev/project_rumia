@@ -6,7 +6,7 @@
 namespace rumia
 {
 	// @TODO: File Format-Resource Type Mapping
-	enum class RUMIA ResourceType
+	enum class RUMIA EResourceType
 	{
 		Texture,
 		Audio,
@@ -20,10 +20,10 @@ namespace rumia
 	class RUMIA Resource
 	{
 	public:
-		Resource(const std::string& filePath, ResourceType resType);
+		Resource(const std::string& filePath, EResourceType resType);
 		virtual ~Resource();
 
-		ResourceType GetType() const { return m_resType; }
+        EResourceType GetType() const { return m_resType; }
 		std::string GetFilePath() const { return m_filePath; }
 		std::string GetFileName() const { return m_fileName; }
 		std::string GetFileDirectory() const { return m_fileDirectory; }
@@ -44,7 +44,7 @@ namespace rumia
 		void DecreaseRefCount() { --m_refCount; }
 
 	private:
-		ResourceType	m_resType;
+       EResourceType	m_resType;
 		std::string		m_filePath;
 		std::string		m_fileName;
 		std::string		m_fileDirectory;
