@@ -1,5 +1,5 @@
 #pragma once
-#include "Rendering/Mesh.h"
+#include "Rendering/Mesh.hpp"
 
 namespace rumia
 {
@@ -15,18 +15,15 @@ namespace rumia
    public:
       StaticMesh(const std::vector<VertexPTN>& vertices, const std::vector<uint32>& indices);
 
-      virtual void Draw(class Shader* shader) override;
-
       GLuint GetVAO() const { return m_vao; }
       GLuint GetVBO() const { return m_vbo; }
       GLuint GetEBO() const { return m_ebo; }
 
    private:
-      void Initialize();
+      virtual bool Initialize_Impl() override;
+      virtual void Render_Impl(Renderer* renderer) override;
 
    private:
-      bool m_bInitialized;
-
       std::vector<VertexPTN>           m_vertices;
       std::vector<uint32>              m_indices;
 
