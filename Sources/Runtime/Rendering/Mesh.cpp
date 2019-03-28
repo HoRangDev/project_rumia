@@ -23,10 +23,9 @@ namespace rumia
 
    void Mesh::Render(Renderer* renderer)
    {
-      bool bIsMaterialAvailable = m_material != nullptr;
-      if (m_bInitialized && bIsMaterialAvailable)
+      if (bool bIsMaterialAvailable = m_material != nullptr; 
+               m_bInitialized && bIsMaterialAvailable)
       {
-         /*Render_Impl(renderer);*/
          //renderer->Enqueue(m_material, this);
       }
    }

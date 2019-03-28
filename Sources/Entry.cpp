@@ -8,6 +8,7 @@
 #include "Core/Engine.hpp"
 #include "Resource/Resource.hpp"
 #include "Resource/Texture.hpp"
+#include "Core/Attribute.hpp"
 
 #include "imgui.h"
 #include "imgui_impl_glfw.h"
@@ -23,42 +24,17 @@ using namespace rumia;
 
 int main()
 {
-   World* world1 = new World();
-   Actor* testActor = world1->CreateActor();
-   testActor->SetName("I am parent!");
-   Transform* trans = testActor->GetTransform();
+   /************************************************************************/
+   /*                          TEST CODE                                   */
+   /************************************************************************/
 
-   trans->SetLocalPosition(glm::vec3{ 3.0f, 2.0f, 1.1f });
-   trans->SetScale(glm::vec3{ 0.5f, 0.5f, 0.5f });
+   ShaderAttribute attrib;
+   attrib = 3;
 
-   Actor* testChildActor = world1->CreateActor();
-   testChildActor->SetName("I am child!");
-   Transform* transOfChild = testChildActor->GetTransform();
+   std::cout << IsShaderAttrbuteType(attrib, EShaderAttributeType::Int32) << std::endl;
+   std::cout << "Size of attribute: " << sizeof(attrib) << std::endl;
 
-   transOfChild->SetParent(trans);
-
-   auto serializedStr = world1->Serialize().dump(4);
-   std::cout << serializedStr << std::endl;
-
-   World* world2 = new World();
-   helper::DeSerialize(world2, serializedStr);
-
-   testActor->SetActive(false);
-   std::cout << trans->IsActivated() << std::endl;
-   testActor->SetActive(true);
-   trans->SetActive(false);
-   std::cout << trans->IsActivated() << std::endl;
-   std::cout << testActor->Serialize().dump(4) << std::endl;
-   trans->SetActive(true);
-   std::cout << trans->IsActivated() << std::endl;
-
-   auto splited = helper::SplitString("Test/Test\\MultipleToken", { '/', '\\' });
-   for (auto splitStr : splited)
-   {
-      std::cout << splitStr << std::endl;
-   }
-
-   std::cout << helper::CombineString(splited, "-") << std::endl;
+   /************************************************************************/
 
    Engine& engine = Engine::GetInstance();
    if (!engine.Initialize(1280, 720, "rumia"))
