@@ -39,6 +39,8 @@ namespace rumia
       glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, sizeof(VertexPTN), (void*)offsetof(VertexPTN, VertexPTN::Normal));
 
       glBindVertexArray(0);
+
+      return true;
    }
 
    void StaticMesh::Render_Impl(Renderer* renderer)

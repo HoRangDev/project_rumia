@@ -2,7 +2,7 @@
 
 namespace rumia
 {
-   Mesh::Mesh(const std::string& meshName = "None") :
+   Mesh::Mesh(const std::string& meshName) :
       m_bInitialized(false),
       m_meshName(meshName),
       m_material(nullptr)
