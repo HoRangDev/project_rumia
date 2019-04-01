@@ -15,6 +15,7 @@ namespace rumia
 		Texture,
         Model,
         Shader,
+        Material,
 		Audio,
 		Scene,
 		Text,
@@ -39,6 +40,8 @@ namespace rumia
 		virtual bool Load() final;
 		virtual void Unload() final;
 		virtual bool Reload() final;
+
+        bool IsLoaded() const { return m_bLoaded; }
 
 		virtual bool LoadProcess() = 0;
 		virtual void UnloadProcess() = 0;

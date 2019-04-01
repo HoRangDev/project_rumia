@@ -9,25 +9,26 @@ namespace rumia
 {
    enum class RUMIA EShaderAttributeType
    {
+      Texture,
       Int32,
       Float,
-      Double,
       Vec3,
       Vec4,
       Matrix4x4,
    };
 
    using ShaderAttribute = std::variant<
-      int32, float, double,
-      glm::vec3, glm::vec4, 
+      class Texture*,
+      int32, float,
+      glm::vec3, glm::vec4,
       glm::mat4x4>;
 
-   RUMIA EShaderAttributeType GetTypeOfShaderAttribute(const ShaderAttribute& attrib)
+   RUMIA static EShaderAttributeType GetTypeOfShaderAttribute(const ShaderAttribute& attrib)
    {
       return static_cast<EShaderAttributeType>(attrib.index());
    }
 
-   RUMIA bool IsShaderAttrbuteType(const ShaderAttribute& attrib, EShaderAttributeType type)
+   RUMIA static bool IsShaderAttrbuteType(const ShaderAttribute& attrib, EShaderAttributeType type)
    {
       return (GetTypeOfShaderAttribute(attrib) == type);
    }

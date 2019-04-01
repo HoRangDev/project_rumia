@@ -22,6 +22,7 @@
     <ClInclude Include="..\Sources\Runtime\Component\Component.hpp" />
     <ClInclude Include="..\Sources\Runtime\Component\Renderable.hpp" />
     <ClInclude Include="..\Sources\Runtime\Component\Transform.hpp" />
+    <ClInclude Include="..\Sources\Runtime\Core\Attribute.hpp" />
     <ClInclude Include="..\Sources\Runtime\Core\Engine.hpp" />
     <ClInclude Include="..\Sources\Runtime\Core\EngineDefines.hpp" />
     <ClInclude Include="..\Sources\Runtime\Core\EventManager.hpp" />
@@ -43,9 +44,12 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="..\Sources\Runtime\Rendering\Mesh.hpp" />
+    <ClInclude Include="..\Sources\Runtime\Rendering\StaticMesh.hpp" />
     <ClInclude Include="..\Sources\Runtime\Rendering\RenderingDefs.hpp" />
+    <ClInclude Include="..\Sources\Runtime\Resource\Material.hpp" />
     <ClInclude Include="..\Sources\Runtime\Resource\Model.hpp" />
     <ClInclude Include="..\Sources\Runtime\Resource\Resource.hpp" />
+    <ClInclude Include="..\Sources\Runtime\Resource\Shader.hpp" />
     <ClInclude Include="..\Sources\Runtime\Resource\Texture.hpp" />
     <ClInclude Include="..\Sources\Runtime\World\Actor.hpp" />
     <ClInclude Include="..\Sources\Runtime\World\World.hpp" />
@@ -304,7 +308,12 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="..\Sources\Runtime\Rendering\Mesh.cpp" />
+    <ClCompile Include="..\Sources\Runtime\Rendering\StaticMesh.cpp" />
+    <ClCompile Include="..\Sources\Runtime\Resource\Material.cpp" />
+    <ClCompile Include="..\Sources\Runtime\Resource\Model.cpp" />
     <ClCompile Include="..\Sources\Runtime\Resource\Resource.cpp" />
+    <ClCompile Include="..\Sources\Runtime\Resource\Shader.cpp" />
     <ClCompile Include="..\Sources\Runtime\Resource\Texture.cpp" />
     <ClCompile Include="..\Sources\Runtime\World\Actor.cpp" />
     <ClCompile Include="..\Sources\Runtime\World\World.cpp" />

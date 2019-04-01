@@ -747,9 +747,6 @@
     <ClInclude Include="..\Sources\Runtime\Resource\Resource.hpp">
       <Filter>Sources\Resource</Filter>
     </ClInclude>
-    <ClInclude Include="..\Sources\Runtime\Rendering\Mesh.hpp">
-      <Filter>Sources\Rendering</Filter>
-    </ClInclude>
     <ClInclude Include="..\Sources\Runtime\Resource\Model.hpp">
       <Filter>Sources\Resource</Filter>
     </ClInclude>
@@ -803,6 +800,21 @@
     </ClInclude>
     <ClInclude Include="..\Thirdparty\imgui\imstb_truetype.h">
       <Filter>Thirdparty\ImGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\Runtime\Rendering\StaticMesh.hpp">
+      <Filter>Sources\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\Runtime\Rendering\Mesh.hpp">
+      <Filter>Sources\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\Runtime\Resource\Material.hpp">
+      <Filter>Sources\Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\Runtime\Core\Attribute.hpp">
+      <Filter>Sources\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\Runtime\Resource\Shader.hpp">
+      <Filter>Sources\Resource</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -874,6 +886,21 @@
     </ClCompile>
     <ClCompile Include="..\Sources\Entry.cpp">
       <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\Runtime\Rendering\StaticMesh.cpp">
+      <Filter>Sources\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\Runtime\Resource\Model.cpp">
+      <Filter>Sources\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\Runtime\Rendering\Mesh.cpp">
+      <Filter>Sources\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\Runtime\Resource\Material.cpp">
+      <Filter>Sources\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\Runtime\Resource\Shader.cpp">
+      <Filter>Sources\Resource</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
