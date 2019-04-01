@@ -3,7 +3,7 @@
 namespace rumia
 {
    Shader::Shader(const std::string& filePath) :
-      m_shaderType(EShaderType::Unknwon),
+      m_shaderType(EShaderType::Unknown),
       m_id(0),
       Resource(filePath, EResourceType::Shader)
    {

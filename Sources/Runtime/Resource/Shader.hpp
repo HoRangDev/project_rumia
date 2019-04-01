@@ -5,15 +5,15 @@
 namespace rumia
 {
    //@TODO: Support tessellation stage
-   enum class EShaderType
+   enum class EShaderType : uint8
    {
       VertexShader,
       GeometryShader,
       FragmentShader,
-      Unknwon
+      Unknown,
    };
 
-   EShaderType FileExtensionToShaderType(const std::string& ext)
+   RUMIA static EShaderType FileExtensionToShaderType(const std::string& ext)
    {
       if (ext == ".vs")
       {
@@ -28,7 +28,7 @@ namespace rumia
          return EShaderType::FragmentShader;
       }
 
-      return EShaderType::Unknwon;
+      return EShaderType::Unknown;
    }
 
    class RUMIA Shader : public Resource
