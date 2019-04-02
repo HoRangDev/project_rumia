@@ -37,7 +37,7 @@ namespace rumia
       Shader();
       ~Shader();
 
-      virtual bool LoadProcess() override;
+      virtual bool LoadProcess(std::ifstream& file) override;
       virtual void UnloadProcess() override;
 
       GLuint GetID() const { return m_id; }

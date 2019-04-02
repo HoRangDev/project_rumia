@@ -35,7 +35,7 @@ namespace rumia
 
         GLuint GetID() const { return m_id; }
 		
-		virtual bool LoadProcess() override;
+		virtual bool LoadProcess(std::ifstream& file) override;
 		virtual void UnloadProcess() override;
 
 		void Bind();

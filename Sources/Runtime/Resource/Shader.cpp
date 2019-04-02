@@ -13,55 +13,39 @@ namespace rumia
    {
    }
 
-   bool Shader::LoadProcess()
+   bool Shader::LoadProcess(std::ifstream& file)
    {
-      std::string_view filePath = GetFilePath();
-      std::ifstream shaderFile;
-
       std::string shaderCode;
+      std::stringstream shaderStream;
+      shaderStream << file.rdbuf();
 
-      shaderFile.exceptions(std::ifstream::failbit | std::ifstream::badbit);
-      try
+      shaderCode = shaderStream.str();
+
+      std::string fileExt = GetFileExt();
+      EShaderType shaderType = FileExtensionToShaderType(fileExt);
+      switch (shaderType)
       {
-         shaderFile.open(filePath.data());
-         std::stringstream shaderStream;
-         shaderStream << shaderFile.rdbuf();
-         shaderFile.close();
+      case EShaderType::VertexShader:
+         m_id = glCreateShader(GL_VERTEX_SHADER);
+         break;
 
-         shaderCode = shaderStream.str();
+      case EShaderType::GeometryShader:
+         m_id = glCreateShader(GL_GEOMETRY_SHADER);
+         break;
 
-         std::string fileExt = GetFileExt();
-         EShaderType shaderType = FileExtensionToShaderType(fileExt);
-         switch (shaderType)
-         {
-         case EShaderType::VertexShader:
-            m_id = glCreateShader(GL_VERTEX_SHADER);
-            break;
+      case EShaderType::FragmentShader:
+         m_id = glCreateShader(GL_FRAGMENT_SHADER);
+         break;
 
-         case EShaderType::GeometryShader:
-            m_id = glCreateShader(GL_GEOMETRY_SHADER);
-            break;
-
-         case EShaderType::FragmentShader:
-            m_id = glCreateShader(GL_FRAGMENT_SHADER);
-            break;
-
-         default:
-            return false;
-         }
-
-         const char* source = shaderCode.data();
-         glShaderSource(m_id, 1, &source, nullptr);
-         glCompileShader(m_id);
-         
-         // @TODO: Check compile error
-      }
-      catch (std::ifstream::failure e)
-      {
-         //@TODO: Logging error message
+      default:
          return false;
       }
 
+      const char* source = shaderCode.data();
+      glShaderSource(m_id, 1, &source, nullptr);
+      glCompileShader(m_id);
+
+      // @TODO: Check compile error
       return true;
    }
 

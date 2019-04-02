@@ -43,10 +43,12 @@ namespace rumia
 
         bool IsLoaded() const { return m_bLoaded; }
 
-		virtual bool LoadProcess() = 0;
+		virtual bool LoadProcess(std::ifstream& file) = 0;
+        virtual void LoadMetadataProcess(std::ifstream& metafile){}
 		virtual void UnloadProcess() = 0;
 
         virtual void SaveProcess(std::ofstream& file) const = 0;
+        virtual void MetadataSaveProcess(std::ofstream& metafile) const {}
         virtual void SaveAs(const std::string& filePath) const final;
         virtual void Save() const final;
 
@@ -62,6 +64,8 @@ namespace rumia
 		std::string		m_fileName;
         std::string     m_fileExt;
 		std::string		m_fileDirectory;
+
+        std::string     m_metafilePath;
 
 		bool			m_bLoaded;
 		uint64			m_refCount;

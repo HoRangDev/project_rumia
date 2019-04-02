@@ -31,7 +31,14 @@ namespace rumia
            auto splitedName = helper::SplitString(m_fileName, '.');
            m_fileExt = splitedName[splitedName.size() - 1];
 
+           std::string metafileName = m_filePath;
+           metafileName.append(MetafileExtension);
+           m_metafilePath = m_fileDirectory;
+           m_metafilePath.append(FileDirectorySeparator);
+           m_metafilePath.append(metafileName);
+
            m_bLoaded = LoadProcess();
+           LoadMetadataProcess();
            return m_bLoaded;
 		}
 
@@ -43,6 +50,7 @@ namespace rumia
 		if (m_bLoaded)
 		{
 			UnloadProcess();
+            m_bLoaded = false;
 		}
 	}
 
@@ -58,6 +66,11 @@ namespace rumia
        {
           std::ofstream fileStream{ filePath.c_str() };
           SaveProcess(fileStream);
+          fileStream.close();
+
+          std::ofstream metafileStream{ metafilePath.c_str() };
+          MetadataSaveProcess(metafileStream);
+          metafileStream.close();
        }
     }
 
