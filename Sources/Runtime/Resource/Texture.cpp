@@ -35,6 +35,8 @@ namespace rumia
 	void Texture::UnloadProcess()
 	{
 		/* Nothing to do **/
+       glDeleteTextures(1, &m_id);
+       m_id = 0;
 	}
 
 	void Texture::Bind()
