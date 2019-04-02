@@ -41,10 +41,11 @@ namespace rumia
 		void Bind();
 
 	private:
-		void LoadCubemap();
-		void LoadTexture1D();
-		void LoadTexture2D();
-		void LoadTexture3D();
+       unsigned char* LoadRawDataFromStream(std::ifstream& file, int& width, int& height, int& nrComponents); // Must be free with stbi_image_free
+		bool LoadCubemap(std::ifstream& file);
+		bool LoadTexture1D(std::ifstream& file);
+		bool LoadTexture2D(std::ifstream& file);
+		bool LoadTexture3D(std::ifstream& file);
 
 	private:
 		ETextureType	m_textureType;

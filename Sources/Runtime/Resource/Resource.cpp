@@ -37,9 +37,16 @@ namespace rumia
            m_metafilePath.append(FileDirectorySeparator);
            m_metafilePath.append(metafileName);
 
-           m_bLoaded = LoadProcess();
-           LoadMetadataProcess();
-           return m_bLoaded;
+           std::ifstream fileStream{ m_filePath.c_str() };
+           if (fileStream.is_open())
+           {
+              std::ifstream metafileStream{ m_metafilePath.c_str() };
+              m_bLoaded = LoadProcess(fileStream);
+              LoadMetadataProcess(metafileStream);
+              fileStream.close();
+              metafileStream.close();
+              return m_bLoaded;
+           }
 		}
 
 		return false;
@@ -68,7 +75,7 @@ namespace rumia
           SaveProcess(fileStream);
           fileStream.close();
 
-          std::ofstream metafileStream{ metafilePath.c_str() };
+          std::ofstream metafileStream{ m_metafilePath.c_str() };
           MetadataSaveProcess(metafileStream);
           metafileStream.close();
        }
