@@ -41,6 +41,18 @@ namespace rumia
          return object;
       }
 
+      json SerializeMat4x4(const glm::mat4x4& mat)
+      {
+         // Column-Major 4 by 4 float type matrix
+         json object;
+         object["col0"] = SerializeVec4(mat[0]);
+         object["col1"] = SerializeVec4(mat[1]);
+         object["col2"] = SerializeVec4(mat[2]);
+         object["col3"] = SerializeVec4(mat[3]);
+
+         return object;
+      }
+
       glm::vec2 DeSerializeVec2(const json& object)
       {
          glm::vec2 output;
@@ -147,6 +159,25 @@ namespace rumia
          if (z->is_number())
          {
             output.z = (*z);
+         }
+
+         return output;
+      }
+
+      glm::mat4x4 DeSerializeMat4x4(const json& object)
+      {
+         glm::mat4x4 output;
+
+         std::array<json, 4> cols{
+            *object.find("col0"),
+            *object.find("col1"),
+            *object.find("col2"),
+            *object.find("col3")
+         };
+
+         for (uint32 idx = 0; idx < 4; ++idx)
+         {
+            output[idx] = DeSerializeVec4(cols[idx]);
          }
 
          return output;

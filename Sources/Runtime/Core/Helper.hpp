@@ -20,11 +20,13 @@ namespace rumia
       RUMIA json SerializeVec3(const glm::vec3& vec);
       RUMIA json SerializeVec4(const glm::vec4& vec);
       RUMIA json SerializeQuaternion(const glm::quat& quat);
+      RUMIA json SerializeMat4x4(const glm::mat4x4& mat);
 
       RUMIA glm::vec2 DeSerializeVec2(const json& object);
       RUMIA glm::vec3 DeSerializeVec3(const json& object);
       RUMIA glm::vec4 DeSerializeVec4(const json& object);
       RUMIA glm::quat DeSerializeQuaternion(const json& object);
+      RUMIA glm::mat4x4 DeSerializeMat4x4(const json& object);
 
       RUMIA uint32 BooleanToInt(bool bState);
       RUMIA bool IntToBoolean(uint32 state);
