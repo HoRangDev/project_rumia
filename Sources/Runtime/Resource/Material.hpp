@@ -25,6 +25,11 @@ namespace rumia
       void SetGeometryShader(Shader* shader);
       void SetFragmentShader(Shader* shader);
 
+      virtual bool LoadProcess(std::ifstream& file) override;
+      virtual void UnloadProcess() override;
+
+      virtual void SaveProcess(std::ofstream& file) const override;
+
    private:
       void BindShaders();
       void BindAttributes();

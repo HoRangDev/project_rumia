@@ -2,6 +2,8 @@
 #include "Resource/Texture.hpp"
 
 #include <array>
+#include <sstream>
+#include <json.hpp>
 
 namespace rumia
 {
@@ -170,5 +172,70 @@ namespace rumia
       glUniformMatrix4fv(glGetUniformLocation(m_program, key.c_str()),
          1, GL_FALSE,
          &val[0][0]);
+   }
+
+   bool Material::LoadProcess(std::ifstream& file)
+   {
+      std::stringstream stream;
+      stream << file.rdbuf();
+      std::string rawJsonData = stream.str();
+      
+      json jsonData = json::parse(rawJsonData);
+
+      // @TODO; Impl load process after impl ResourceManager first
+   }
+
+   void Material::UnloadProcess()
+   {
+      glDeleteProgram(m_program);
+      m_vertexShader = nullptr;
+      m_geometryShader = nullptr;
+      m_fragmentShader = nullptr;
+
+      m_bFirstBind = true;
+      m_bDirty = true;
+
+      m_attributes.clear();
+   }
+
+   void Material::SaveProcess(std::ofstream& file) const
+   {
+      json jsonData = json::object();
+      jsonData["VertexShader"] = m_vertexShader->GetFilePath();
+      jsonData["GeometryShader"] = m_geometryShader->GetFilePath();
+      jsonData["FragmentShader"] = m_fragmentShader->GetFilePath();
+
+      for (auto attribPair : m_attributes)
+      {
+         std::string key = attribPair.first;
+         ShaderAttribute attrib = attribPair.second;
+
+         json attribJsonObj = json::object();
+         attribJsonObj["Key"] = key;
+
+         auto typeOfAttrib = GetTypeOfShaderAttribute(attrib);
+         attribJsonObj["Type"] = static_cast<uint8>(typeOfAttrib);
+         switch (typeOfAttrib)
+         {
+         case EShaderAttributeType::Int32:
+            attribJsonObj["Data"] = std::get<int32>(attrib);
+            break;
+         case EShaderAttributeType::Float:
+            attribJsonObj["Data"] = std::get<float>(attrib);
+            break;
+         case EShaderAttributeType::Vec3:
+            attribJsonObj["Data"] = helper::SerializeVec3(std::get<glm::vec3>(attrib));
+            break;
+         case EShaderAttributeType::Vec4:
+            attribJsonObj["Data"] = helper::SerializeVec4(std::get<glm::vec4>(attrib));
+            break;
+         case EShaderAttributeType::Matrix4x4:
+            attribJsonObj["Data"] = helper::SerializeMat4x4(std::get<glm::mat4x4>(attrib));
+            break;
+         case EShaderAttributeType::Texture:
+            attribJsonObj["Data"] = std::get<Texture*>(attrib)->GetFilePath();
+            break;
+         }
+      }
    }
 }
