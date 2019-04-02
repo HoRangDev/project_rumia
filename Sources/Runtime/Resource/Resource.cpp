@@ -51,4 +51,18 @@ namespace rumia
 		Unload();
 		return Load(m_filePath);
 	}
+
+    void Resource::SaveAs(const std::string& filePath) const
+    {
+       if (m_bLoaded)
+       {
+          std::ofstream fileStream{ filePath.c_str() };
+          SaveProcess(fileStream);
+       }
+    }
+
+    void Resource::Save() const
+    {
+       SaveAs(m_filePath);
+    }
 }

@@ -19,7 +19,6 @@ namespace rumia
 
       bool IsValid() const;
 
-      //void SetTexture(const std::string_view& name, Texture* texture);
       void SetAttribute(const std::string& name, const ShaderAttribute& attribute);
 
       void SetVertexShader(Shader* shader);

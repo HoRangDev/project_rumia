@@ -76,8 +76,8 @@ int main()
       //@TODO: place engine render
       //@TODO: editor render
 
-      int display_w;
-      int display_h;
+      //int display_w;
+      //int display_h;
       //glfwMakeContextCurrent(window);
       //glfwGetFramebufferSize(window, &display_w, &display_h);
       //glViewport(0, 0, display_w, display_h);

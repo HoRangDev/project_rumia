@@ -46,6 +46,10 @@ namespace rumia
 		virtual bool LoadProcess() = 0;
 		virtual void UnloadProcess() = 0;
 
+        virtual void SaveProcess(std::ofstream& file) const = 0;
+        virtual void SaveAs(const std::string& filePath) const final;
+        virtual void Save() const final;
+
 		//@TODO: Add Metadata
 
 	private:
