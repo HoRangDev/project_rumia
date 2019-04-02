@@ -28,7 +28,8 @@ namespace rumia
 	{
 		if (!m_bLoaded)
 		{
-			return LoadProcess();
+           m_bLoaded = LoadProcess();
+           return m_bLoaded;
 		}
 
 		return false;
