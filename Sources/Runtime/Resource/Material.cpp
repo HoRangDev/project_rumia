@@ -183,6 +183,7 @@ namespace rumia
       json jsonData = json::parse(rawJsonData);
 
       // @TODO; Impl load process after impl ResourceManager first
+      return false;
    }
 
    void Material::UnloadProcess()
