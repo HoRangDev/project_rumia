@@ -67,9 +67,6 @@ int main()
    ImGui_ImplGlfw_InitForOpenGL(window, true);
    ImGui_ImplOpenGL3_Init(glsl_version);
 
-   Texture tex{ "../Resources/Textures/brickwall.jpg" };
-   tex.Load();
-
    ImGui::StyleColorsDark();
    while (!glfwWindowShouldClose(window))
    {

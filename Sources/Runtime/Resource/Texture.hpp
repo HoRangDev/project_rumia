@@ -23,7 +23,7 @@ namespace rumia
 	class RUMIA Texture : public Resource
 	{
 	public:
-		Texture(const std::string& filePath);
+		Texture();
 		~Texture();
 
 		uint32 GetWidth() const { return m_width; }

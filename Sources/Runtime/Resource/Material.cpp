@@ -5,14 +5,14 @@
 
 namespace rumia
 {
-   Material::Material(const std::string& filePath) :
+   Material::Material() :
       m_program(0),
       m_vertexShader(nullptr),
       m_geometryShader(nullptr),
       m_fragmentShader(nullptr),
       m_bFirstBind(true),
       m_bDirty(true),
-      Resource(filePath, EResourceType::Material)
+      Resource(EResourceType::Material)
    {
    }
 

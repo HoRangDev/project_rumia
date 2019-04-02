@@ -34,7 +34,7 @@ namespace rumia
    class RUMIA Shader : public Resource
    {
    public:
-      Shader(const std::string& filePath);
+      Shader();
       ~Shader();
 
       virtual bool LoadProcess() override;

@@ -4,10 +4,10 @@
 
 namespace rumia
 {
-	Texture::Texture(const std::string& filePath) :
+	Texture::Texture() :
 		m_width(0), m_height(0), m_depth(0),
 		m_textureType(ETextureType::Texture2D),
-		Resource(filePath, EResourceType::Texture)
+		Resource(EResourceType::Texture)
 	{
 	}
 

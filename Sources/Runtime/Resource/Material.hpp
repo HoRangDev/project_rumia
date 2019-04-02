@@ -12,7 +12,7 @@ namespace rumia
    class RUMIA Material : public Resource
    {
    public:
-      Material(const std::string& filePath);
+      Material();
       ~Material();
 
       void Bind();
@@ -47,6 +47,6 @@ namespace rumia
       bool  m_bDirty;
 
       std::unordered_map<std::string, ShaderAttribute>   m_attributes;
-      //std::unordered_map<std::string, Texture*>          m_textures;
+
    };
 }

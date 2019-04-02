@@ -2,10 +2,10 @@
 
 namespace rumia
 {
-   Shader::Shader(const std::string& filePath) :
+   Shader::Shader() :
       m_shaderType(EShaderType::Unknown),
       m_id(0),
-      Resource(filePath, EResourceType::Shader)
+      Resource(EResourceType::Shader)
    {
    }
 

@@ -2,20 +2,12 @@
 
 namespace rumia
 {
-	Resource::Resource(const std::string& filePath, EResourceType resType) :
+	Resource::Resource(EResourceType resType) :
 		m_resType(resType),
-		m_filePath(filePath),
 		m_bLoaded(false),
 		m_refCount(0)
 	{
-		auto splitedPath = helper::SplitString(m_filePath, { '/', '\\' });
-		m_fileName = splitedPath[splitedPath.size() - 1];
-		splitedPath.pop_back();
-
-		m_fileDirectory = helper::CombineString(splitedPath, "/");
-
-        auto splitedName = helper::SplitString(m_fileName, '.');
-        m_fileExt = splitedName[splitedName.size() - 1];
+		
 	}
 
 	Resource::~Resource()
@@ -24,10 +16,21 @@ namespace rumia
 		Unload();
 	}
 
-	bool Resource::Load()
+	bool Resource::Load(const std::string& filePath)
 	{
 		if (!m_bLoaded)
 		{
+           m_filePath = filePath;
+
+           auto splitedPath = helper::SplitString(m_filePath, { '/', '\\' });
+           m_fileName = splitedPath[splitedPath.size() - 1];
+           splitedPath.pop_back();
+
+           m_fileDirectory = helper::CombineString(splitedPath, "/");
+
+           auto splitedName = helper::SplitString(m_fileName, '.');
+           m_fileExt = splitedName[splitedName.size() - 1];
+
            m_bLoaded = LoadProcess();
            return m_bLoaded;
 		}
@@ -46,6 +49,6 @@ namespace rumia
 	bool Resource::Reload()
 	{
 		Unload();
-		return Load();
+		return Load(m_filePath);
 	}
 }

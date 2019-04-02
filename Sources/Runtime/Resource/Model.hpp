@@ -10,7 +10,7 @@ namespace rumia
    class RUMIA Model : public Resource 
    {
    public:
-      Model(const std::string& filePath);
+      Model();
       ~Model();
 
       void Render(Renderer* renderer);

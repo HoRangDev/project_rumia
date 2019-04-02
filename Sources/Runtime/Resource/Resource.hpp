@@ -26,7 +26,7 @@ namespace rumia
 	class RUMIA Resource
 	{
 	public:
-		Resource(const std::string& filePath, EResourceType resType);
+		Resource(EResourceType resType);
 		virtual ~Resource();
 
         EResourceType GetType() const { return m_resType; }
@@ -37,7 +37,7 @@ namespace rumia
 
 		uint64 GetRefCount() const { return m_refCount; }
 
-		virtual bool Load() final;
+		virtual bool Load(const std::string& filePath) final;
 		virtual void Unload() final;
 		virtual bool Reload() final;
 
