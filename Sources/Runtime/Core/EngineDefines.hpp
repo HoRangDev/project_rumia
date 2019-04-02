@@ -17,9 +17,14 @@
 #define TYPE_TO_LITERAL(TYPE) #TYPE
 
 #include <string>
+#include <string_view>
+using namespace std::string_view_literals;
 
 namespace rumia
 {
+   constexpr auto MetafileExtension = ".meta"sv;
+   constexpr auto FileDirectorySeparator = "/";
+
    /* Memory Management Utility functions **/
    template <typename Ty>
    void SafeDelete(Ty& target)
