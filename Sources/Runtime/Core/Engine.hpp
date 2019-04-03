@@ -1,12 +1,11 @@
 #pragma once
 #include "Core/EngineDefines.hpp"
 
-#include <string>
-
 namespace rumia
 {
    class World;
    class Renderer;
+   class ResourceManager;
    class RUMIA Engine
    {
    public:
@@ -20,14 +19,16 @@ namespace rumia
 
       void Shutdown();
 
+      ResourceManager& GetResourceManager() const { return (*m_resourceManager); }
       World& GetWorld() const { return (*m_world); }
 
    private:
       Engine();
 
    private:
-      World* m_world;
-      Renderer* m_renderer;
+      ResourceManager*  m_resourceManager;
+      Renderer*         m_renderer;
+      World*            m_world;
 
    private:
       static Engine* instance;
