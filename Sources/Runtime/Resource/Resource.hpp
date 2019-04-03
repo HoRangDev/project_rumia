@@ -55,8 +55,9 @@ namespace rumia
 		//@TODO: Add Metadata
 
 	private:
-		void IncreaseRefCount() { ++m_refCount; }
-		void DecreaseRefCount() { --m_refCount; }
+		void IncRefCount() { ++m_refCount; }
+		void DecRefCount() { --m_refCount; }
+        friend class ResourceManager;
 
 	private:
         EResourceType	m_resType;

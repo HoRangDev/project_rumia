@@ -31,6 +31,11 @@ namespace rumia
    bool Engine::Initialize(uint32 screenWidth, uint32 screenHeight, const std::string& title)
    {
       //@TODO: Renderer, and init other systems
+      if (m_resourceManager == nullptr)
+      {
+         m_resourceManager = new ResourceManager();
+      }
+
       if (m_world == nullptr)
       {
          m_world = new World();
