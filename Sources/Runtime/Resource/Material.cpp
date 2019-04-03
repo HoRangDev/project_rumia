@@ -236,16 +236,16 @@ namespace rumia
                m_attributes[key] = attribData->get<float>();
                break;
             case EShaderAttributeType::Vec2:
-               m_attributes[key] = helper::DeSerializeVec2(jsonData);
+               m_attributes[key] = helper::DeSerializeVec2(*attribData);
                break;
             case EShaderAttributeType::Vec3:
-               m_attributes[key] = helper::DeSerializeVec3(jsonData);
+               m_attributes[key] = helper::DeSerializeVec3(*attribData);
                break;
             case EShaderAttributeType::Vec4:
-               m_attributes[key] = helper::DeSerializeVec4(jsonData);
+               m_attributes[key] = helper::DeSerializeVec4(*attribData);
                break;
             case EShaderAttributeType::Matrix4x4:
-               m_attributes[key] = helper::DeSerializeMat4x4(jsonData);
+               m_attributes[key] = helper::DeSerializeMat4x4(*attribData);
                break;
 
             case EShaderAttributeType::Texture:
@@ -275,9 +275,18 @@ namespace rumia
    void Material::SaveProcess(std::ofstream& file) const
    {
       json jsonData = json::object();
-      jsonData["VertexShader"] = m_vertexShader->GetFilePath();
-      jsonData["GeometryShader"] = m_geometryShader->GetFilePath();
-      jsonData["FragmentShader"] = m_fragmentShader->GetFilePath();
+      if (m_vertexShader != nullptr)
+      {
+         jsonData["VertexShader"] = m_vertexShader->GetFilePath();
+      }
+      if (m_geometryShader != nullptr)
+      {
+         jsonData["GeometryShader"] = m_geometryShader->GetFilePath();
+      }
+      if (m_fragmentShader != nullptr)
+      {
+         jsonData["FragmentShader"] = m_fragmentShader->GetFilePath();
+      }
 
       json attribList = json::object();
       for (auto attribPair : m_attributes)
@@ -315,8 +324,12 @@ namespace rumia
             break;
          }
 
-         attribList.push_back(attribJsonObj);
-         jsonData["Attributes"] = attribList;
+         attribList[key] = attribJsonObj;
       }
+
+      jsonData["Attributes"] = attribList;
+
+      std::string dumped = jsonData.dump(4);
+      file << dumped;
    }
 }

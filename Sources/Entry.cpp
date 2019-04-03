@@ -8,7 +8,9 @@
 #include "Core/Engine.hpp"
 #include "Resource/Resource.hpp"
 #include "Resource/Texture.hpp"
-#include "Core/Attribute.hpp"
+#include "Resource/Shader.hpp"
+#include "Resource/Material.hpp"
+#include "Resource/ResourceManager.h"
 
 #include "imgui.h"
 #include "imgui_impl_glfw.h"
@@ -24,18 +26,6 @@ using namespace rumia;
 
 int main()
 {
-   /************************************************************************/
-   /*                          TEST CODE                                   */
-   /************************************************************************/
-
-   ShaderAttribute attrib;
-   attrib = 3;
-
-   std::cout << IsShaderAttrbuteType(attrib, EShaderAttributeType::Int32) << std::endl;
-   std::cout << "Size of attribute: " << sizeof(attrib) << std::endl;
-
-   /************************************************************************/
-
    Engine& engine = Engine::GetInstance();
    if (!engine.Initialize(1280, 720, "rumia"))
    {
@@ -62,6 +52,28 @@ int main()
 
    int err = gl3wInit();
    int version = gl3wIsSupported(3, 3);
+
+   /************************************************************************/
+   /*                          TEST CODE                                   */
+   /************************************************************************/
+   ResourceManager& resMng = engine.GetResourceManager();
+   Shader* testShader = resMng.Load<Shader>("../Resources/Shaders/test.vs");
+   Shader* testFragShader = resMng.Load<Shader>("../Resources/Shaders/test.fs");
+
+   Material testMat{};
+   testMat.SetVertexShader(testShader);
+   testMat.SetFragmentShader(testFragShader);
+   testMat.SetAttribute("Test1", 30);
+   testMat.SetAttribute("Test2", glm::vec3(0.5f, 0.3f, 0.2f));
+   testMat.SaveAs("..\\Resources\\Materials\\testmat.material");
+
+   Material testMat2{};
+   testMat2.Load("..\\Resources\\Materials\\testmat.material");
+
+   testShader->Unload();
+   testFragShader->Unload();
+
+   /************************************************************************/
 
    ImGui::CreateContext();
    ImGui_ImplGlfw_InitForOpenGL(window, true);

@@ -21,8 +21,8 @@ namespace rumia
       m_shaderCode = shaderStream.str();
 
       std::string fileExt = GetFileExt();
-      EShaderType shaderType = FileExtensionToShaderType(fileExt);
-      switch (shaderType)
+      m_shaderType = FileExtensionToShaderType(fileExt);
+      switch (m_shaderType)
       {
       case EShaderType::VertexShader:
          m_id = glCreateShader(GL_VERTEX_SHADER);

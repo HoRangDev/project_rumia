@@ -15,15 +15,15 @@ namespace rumia
 
    RUMIA static EShaderType FileExtensionToShaderType(const std::string& ext)
    {
-      if (ext == ".vs")
+      if (ext == "vs")
       {
          return EShaderType::VertexShader;
       }
-      else if (ext == ".gs")
+      else if (ext == "gs")
       {
          return EShaderType::GeometryShader;
       }
-      else if (ext == ".fs")
+      else if (ext == "fs")
       {
          return EShaderType::FragmentShader;
       }
