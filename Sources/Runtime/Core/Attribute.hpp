@@ -12,6 +12,7 @@ namespace rumia
       Texture,
       Int32,
       Float,
+      Vec2,
       Vec3,
       Vec4,
       Matrix4x4,
@@ -20,7 +21,7 @@ namespace rumia
    using ShaderAttribute = std::variant<
       class Texture*,
       int32, float,
-      glm::vec3, glm::vec4,
+      glm::vec2, glm::vec3, glm::vec4,
       glm::mat4x4>;
 
    RUMIA static EShaderAttributeType GetTypeOfShaderAttribute(const ShaderAttribute& attrib)

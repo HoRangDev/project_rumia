@@ -1,5 +1,7 @@
 #include "Resource/Material.hpp"
 #include "Resource/Texture.hpp"
+#include "Core/Engine.hpp"
+#include "Resource/ResourceManager.h"
 
 #include <array>
 #include <sstream>
@@ -132,6 +134,9 @@ namespace rumia
          case rumia::EShaderAttributeType::Float:
             SetFloat(attributeKey, std::get<float>(attribute));
             break;
+         case rumia::EShaderAttributeType::Vec2:
+            SetVec2f(attributeKey, std::get<glm::vec2>(attribute));
+            break;
          case rumia::EShaderAttributeType::Vec3:
             SetVec3f(attributeKey, std::get<glm::vec3>(attribute));
             break;
@@ -140,8 +145,6 @@ namespace rumia
             break;
          case rumia::EShaderAttributeType::Matrix4x4:
             SetMat4x4f(attributeKey, std::get<glm::mat4x4>(attribute));
-            break;
-         default:
             break;
          }
       }
@@ -155,6 +158,11 @@ namespace rumia
    void Material::SetFloat(const std::string& key, float val)
    {
       glUniform1f(glGetUniformLocation(m_program, key.c_str()), val);
+   }
+
+   void Material::SetVec2f(const std::string& key, const glm::vec2& val)
+   {
+      glUniform2f(glGetUniformLocation(m_program, key.c_str()), val[0], val[1]);
    }
 
    void Material::SetVec3f(const std::string& key, const glm::vec3& val)
@@ -176,6 +184,8 @@ namespace rumia
 
    bool Material::LoadProcess(std::ifstream& file)
    {
+      ResourceManager& resMng = Engine::GetInstance().GetResourceManager();
+
       std::stringstream stream;
       stream << file.rdbuf();
       std::string rawJsonData = stream.str();
@@ -183,7 +193,70 @@ namespace rumia
       json jsonData = json::parse(rawJsonData);
 
       // @TODO; Impl load process after impl ResourceManager first
-      return false;
+      auto shader = jsonData.find("VertexShader");
+      std::string  shaderPath;
+      if (shader != jsonData.end())
+      {
+         shaderPath = (*shader).get<std::string>();
+         m_vertexShader = resMng.Load<Shader>(shaderPath);
+      }
+
+      shader = jsonData.find("GeometryShader");
+      if (shader != jsonData.end())
+      {
+         shaderPath = (*shader).get<std::string>();
+         m_geometryShader = resMng.Load<Shader>(shaderPath);
+      }
+
+      shader = jsonData.find("FragmentShader");
+      if (shader != jsonData.end())
+      {
+         shaderPath = (*shader).get<std::string>();
+         m_fragmentShader = resMng.Load<Shader>(shaderPath);
+      }
+
+      auto attribList = jsonData["Attributes"];
+      for (auto attrib : attribList)
+      {
+         auto typeOfAttrib = attrib.find("Type");
+         auto keyOfAttrib = attrib.find("Key");
+         auto attribData = attrib.find("Data");
+
+         std::string key = keyOfAttrib->get<std::string>();
+
+         if (typeOfAttrib != attrib.end())
+         {
+            uint8 attribType = (*typeOfAttrib);
+            switch (static_cast<EShaderAttributeType>(attribType))
+            {
+            case EShaderAttributeType::Int32:
+               m_attributes[key] = attribData->get<int32>();
+               break;
+            case EShaderAttributeType::Float:
+               m_attributes[key] = attribData->get<float>();
+               break;
+            case EShaderAttributeType::Vec2:
+               m_attributes[key] = helper::DeSerializeVec2(jsonData);
+               break;
+            case EShaderAttributeType::Vec3:
+               m_attributes[key] = helper::DeSerializeVec3(jsonData);
+               break;
+            case EShaderAttributeType::Vec4:
+               m_attributes[key] = helper::DeSerializeVec4(jsonData);
+               break;
+            case EShaderAttributeType::Matrix4x4:
+               m_attributes[key] = helper::DeSerializeMat4x4(jsonData);
+               break;
+
+            case EShaderAttributeType::Texture:
+               std::string texturePath = attribData->get<std::string>();
+               m_attributes[key] = resMng.Load<Texture>(texturePath);
+               break;
+            }
+         }
+      }
+
+      return (m_fragmentShader != nullptr) && (m_vertexShader != nullptr);
    }
 
    void Material::UnloadProcess()
@@ -206,6 +279,7 @@ namespace rumia
       jsonData["GeometryShader"] = m_geometryShader->GetFilePath();
       jsonData["FragmentShader"] = m_fragmentShader->GetFilePath();
 
+      json attribList = json::object();
       for (auto attribPair : m_attributes)
       {
          std::string key = attribPair.first;
@@ -224,6 +298,9 @@ namespace rumia
          case EShaderAttributeType::Float:
             attribJsonObj["Data"] = std::get<float>(attrib);
             break;
+         case EShaderAttributeType::Vec2:
+            attribJsonObj["Data"] = helper::SerializeVec2(std::get<glm::vec2>(attrib));
+            break;
          case EShaderAttributeType::Vec3:
             attribJsonObj["Data"] = helper::SerializeVec3(std::get<glm::vec3>(attrib));
             break;
@@ -237,6 +314,9 @@ namespace rumia
             attribJsonObj["Data"] = std::get<Texture*>(attrib)->GetFilePath();
             break;
          }
+
+         attribList.push_back(attribJsonObj);
+         jsonData["Attributes"] = attribList;
       }
    }
 }

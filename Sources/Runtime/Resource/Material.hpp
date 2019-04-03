@@ -36,6 +36,7 @@ namespace rumia
 
       void SetInt(const std::string& key, int32 val);
       void SetFloat(const std::string& key, float val);
+      void SetVec2f(const std::string& key, const glm::vec2& val);
       void SetVec3f(const std::string& key, const glm::vec3& val);
       void SetVec4f(const std::string& key, const glm::vec4& val);
       void SetMat4x4f(const std::string& key, const glm::mat4x4& val);
