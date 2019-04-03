@@ -15,11 +15,10 @@ namespace rumia
 
    bool Shader::LoadProcess(std::ifstream& file)
    {
-      std::string shaderCode;
       std::stringstream shaderStream;
       shaderStream << file.rdbuf();
 
-      shaderCode = shaderStream.str();
+      m_shaderCode = shaderStream.str();
 
       std::string fileExt = GetFileExt();
       EShaderType shaderType = FileExtensionToShaderType(fileExt);
@@ -41,7 +40,7 @@ namespace rumia
          return false;
       }
 
-      const char* source = shaderCode.data();
+      const char* source = m_shaderCode.data();
       glShaderSource(m_id, 1, &source, nullptr);
       glCompileShader(m_id);
 
@@ -51,5 +50,14 @@ namespace rumia
 
    void Shader::UnloadProcess()
    {
+      glDeleteProgram(m_id);
+      m_id = 0;
+      m_shaderCode.clear();
+      m_shaderCode.shrink_to_fit();
+   }
+
+   void Shader::SaveProcess(std::ofstream& file) const
+   {
+      file << m_shaderCode;
    }
 }

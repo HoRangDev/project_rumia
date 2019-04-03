@@ -40,10 +40,13 @@ namespace rumia
       virtual bool LoadProcess(std::ifstream& file) override;
       virtual void UnloadProcess() override;
 
+      virtual void SaveProcess(std::ofstream& file) const override;
+
       GLuint GetID() const { return m_id; }
       EShaderType GetShaderType() const { return m_shaderType; }
 
    private:
+      std::string m_shaderCode;
       EShaderType m_shaderType;
       GLuint      m_id;
 
