@@ -49,6 +49,7 @@
     <ClInclude Include="..\Sources\Runtime\Resource\Material.hpp" />
     <ClInclude Include="..\Sources\Runtime\Resource\Model.hpp" />
     <ClInclude Include="..\Sources\Runtime\Resource\Resource.hpp" />
+    <ClInclude Include="..\Sources\Runtime\Resource\ResourceManager.h" />
     <ClInclude Include="..\Sources\Runtime\Resource\Shader.hpp" />
     <ClInclude Include="..\Sources\Runtime\Resource\Texture.hpp" />
     <ClInclude Include="..\Sources\Runtime\World\Actor.hpp" />

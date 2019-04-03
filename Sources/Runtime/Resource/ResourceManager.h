@@ -81,7 +81,7 @@ namespace rumia
       }
 
    private:
-      ResourceManager();
+      ResourceManager() { }
       friend class Engine;
 
    private:

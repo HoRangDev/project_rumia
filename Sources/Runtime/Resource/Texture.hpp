@@ -38,6 +38,8 @@ namespace rumia
 		virtual bool LoadProcess(std::ifstream& file) override;
 		virtual void UnloadProcess() override;
 
+        virtual void SaveProcess(std::ofstream& file) const override;
+
 		void Bind();
 
 	private:
@@ -54,6 +56,8 @@ namespace rumia
 		uint32			m_height;
 		uint32			m_depth;
 		GLuint			m_id;
+
+        std::vector<uint8> m_rawData;
 
 	};
 }

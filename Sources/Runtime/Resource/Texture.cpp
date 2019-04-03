@@ -36,7 +36,19 @@ namespace rumia
 	{
        glDeleteTextures(1, &m_id);
        m_id = 0;
+
+       m_rawData.clear();
+       m_rawData.shrink_to_fit();
 	}
+
+    void Texture::SaveProcess(std::ofstream& file) const
+    {
+       // @TODO: Impl More proper save process
+       for (uint8 character : m_rawData)
+       {
+          file << character;
+       }
+    }
 
 	void Texture::Bind()
 	{
@@ -58,8 +70,6 @@ namespace rumia
 
     unsigned char* Texture::LoadRawDataFromStream(std::ifstream& file, int& width, int& height, int& nrComponents)
     {
-       std::vector<unsigned char> buffer;
-
        std::streampos begin = file.tellg();
        file.seekg(0, std::ios_base::end);
        std::streampos end = file.tellg();
@@ -67,11 +77,11 @@ namespace rumia
 
        size_t bufferSize = (end - begin);
 
-       buffer.reserve(bufferSize);
-       buffer.assign(std::istreambuf_iterator<char>(file),
+       m_rawData.reserve(bufferSize);
+       m_rawData.assign(std::istreambuf_iterator<char>(file),
           std::istreambuf_iterator<char>());
 
-       return stbi_load_from_memory(buffer.data(), (int)bufferSize, 
+       return stbi_load_from_memory(m_rawData.data(), (int)bufferSize, 
           &width, &height, 
           &nrComponents, 0);
     }

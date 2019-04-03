@@ -816,6 +816,9 @@
     <ClInclude Include="..\Sources\Runtime\Resource\Shader.hpp">
       <Filter>Sources\Resource</Filter>
     </ClInclude>
+    <ClInclude Include="..\Sources\Runtime\Resource\ResourceManager.h">
+      <Filter>Sources\Resource</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Sources\Runtime\Component\Component.cpp">
