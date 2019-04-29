@@ -43,8 +43,12 @@ namespace rumia
          if (fileStream.is_open())
          {
             metafileStream.open(m_metafilePath);
+			if (metafileStream.is_open()) 
+			{
+				LoadMetadataProcess(metafileStream);
+			}
+
             m_bLoaded = LoadProcess(fileStream);
-            LoadMetadataProcess(metafileStream);
          }
 
          fileStream.close();
