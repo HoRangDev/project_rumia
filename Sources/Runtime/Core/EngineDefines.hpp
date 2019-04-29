@@ -24,6 +24,7 @@ namespace rumia
 {
    constexpr auto MetafileExtension = ".meta"sv;
    constexpr auto FileDirectorySeparator = "/";
+   constexpr auto EngineDefaultMaterial = "";
 
    /* Memory Management Utility functions **/
    template <typename Ty>
