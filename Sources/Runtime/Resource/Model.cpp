@@ -1,14 +1,13 @@
+#include <assimp/Importer.hpp>
+#include <assimp/scene.h>
+#include <assimp/postprocess.h>
+
 #include "Resource/Model.hpp"
 #include "Resource/Material.hpp"
 #include "ResourceManager.h"
 #include "Rendering/StaticMesh.hpp"
 #include "World/Actor.hpp"
 #include "Core/Engine.hpp"
-
-#include <assimp/Importer.hpp>
-#include <assimp/scene.h>
-#include <assimp/postprocess.h>
-#include <assimp/mesh.h>
 
 namespace rumia
 {

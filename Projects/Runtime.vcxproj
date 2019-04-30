@@ -333,7 +333,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Thirdparty\assimp\include\assimp\color4.inl" />
-    <None Include="..\Thirdparty\assimp\include\assimp\config.h.in" />
     <None Include="..\Thirdparty\assimp\include\assimp\material.inl" />
     <None Include="..\Thirdparty\assimp\include\assimp\matrix3x3.inl" />
     <None Include="..\Thirdparty\assimp\include\assimp\matrix4x4.inl" />
