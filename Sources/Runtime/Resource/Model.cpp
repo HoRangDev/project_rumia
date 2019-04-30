@@ -60,6 +60,59 @@ namespace rumia
 		m_meshMatTable.clear();
 	}
 
+	void Model::LoadMetadataProcess(std::ifstream& metafile)
+	{
+		std::stringstream stream;
+		stream << metafile.rdbuf();
+		std::string rawJsonStr = stream.str();
+
+		json jsonData = json::parse(rawJsonStr);
+		auto meshMatTableItr = jsonData.find(MESH_MAT_TABLE_KEY);
+		if (meshMatTableItr != jsonData.end())
+		{
+			json meshMatTable = (*meshMatTableItr);
+			for (auto meshMatPair : meshMatTable)
+			{
+				auto meshNameItr = meshMatPair.find(MESH_NAME_KEY);
+				auto materialPathItr = meshMatPair.find(MATERIAL_PATH_KEY);
+
+				std::string meshName = meshNameItr->get<std::string>();
+				std::string materialPath = materialPathItr->get<std::string>();
+
+				auto foundItr = m_meshMatTable.find(meshName);
+				bool bAlreadyExistPair = foundItr == m_meshMatTable.end();
+				if (!bAlreadyExistPair)
+				{
+					m_meshMatTable.insert(
+						std::make_pair(
+							meshName,
+							materialPath)
+					);
+				}
+			}
+		}
+	}
+
+	void Model::MetadataSaveProcess(std::ofstream& metafile) const
+	{
+		json jsonData = json::object();
+		json meshMatTable = json::object();
+		for (auto mesh : m_meshes)
+		{
+			json pair = json::object();
+			Material* material = mesh->GetMaterial();
+
+			pair[MESH_NAME_KEY] = mesh->GetName();
+			pair[MATERIAL_PATH_KEY] = material->GetFilePath();
+			meshMatTable.push_back(pair);
+		}
+
+		jsonData[MESH_MAT_TABLE_KEY] = meshMatTable;
+
+		std::string dumped = jsonData.dump(4);
+		metafile << jsonData;
+	}
+
 	void Model::ProcessNode(ResourceManager& resMng, aiNode* node, const aiScene* scene)
 	{
 		if (node != nullptr && scene != nullptr)
@@ -80,6 +133,7 @@ namespace rumia
 	Mesh* Model::ProcessMesh(ResourceManager& resMng, aiMesh* importedMesh, const aiScene* scene)
 	{
 		StaticMesh* mesh = nullptr;
+
 		if (importedMesh != nullptr && scene != nullptr)
 		{
 			std::vector<VertexPTN> vertices;
@@ -97,7 +151,7 @@ namespace rumia
 				vertex.Position.x = importedMesh->mVertices[idx].x;
 				vertex.Position.y = importedMesh->mVertices[idx].y;
 				vertex.Position.z = importedMesh->mVertices[idx].z;
-				
+
 				// Vertex-Normal
 				vertex.Normal.x = importedMesh->mNormals[idx].x;
 				vertex.Normal.y = importedMesh->mNormals[idx].y;
@@ -111,7 +165,7 @@ namespace rumia
 					texCoords.y = importedMesh->mTextureCoords[0][idx].y;
 				}
 				vertex.TexCoord = texCoords;
-				
+
 				vertices.push_back(vertex);
 			}
 

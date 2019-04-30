@@ -8,6 +8,10 @@ class aiMesh;
 
 namespace rumia
 {
+	constexpr auto MESH_NAME_KEY = "MeshName";
+	constexpr auto MATERIAL_PATH_KEY = "MaterialPath";
+	constexpr auto MESH_MAT_TABLE_KEY = "MeshMatTable";
+
 	// @TODO: Mesh -> Actor convert
 	// Model meta data:
 	// Model file/mesh type/preprocess flags/mesh-material table
@@ -25,6 +29,9 @@ namespace rumia
 
 		//@TODO: Impl save model files
 		virtual void SaveProcess(std::ofstream& file) const override { /* Empty */ }
+
+		virtual void LoadMetadataProcess(std::ifstream& metafile) override;
+		virtual void MetadataSaveProcess(std::ofstream& metafile) const override;
 
 		void Render(Renderer* renderer);
 
