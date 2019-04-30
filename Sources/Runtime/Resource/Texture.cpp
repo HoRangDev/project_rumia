@@ -5,14 +5,17 @@
 namespace rumia
 {
 	Texture::Texture() :
+		m_id(InvalidID),
 		m_width(0), m_height(0), m_depth(0),
 		m_textureType(ETextureType::Texture2D),
+		m_textureFormat(ETextureFormat::TextureRGB),
 		Resource(EResourceType::Texture)
 	{
 	}
 
 	Texture::~Texture()
 	{
+		Unload();
 	}
 
 	bool Texture::LoadProcess(std::ifstream& file)

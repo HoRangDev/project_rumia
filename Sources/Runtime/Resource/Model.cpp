@@ -79,9 +79,9 @@ namespace rumia
 
 	Mesh* Model::ProcessMesh(ResourceManager& resMng, aiMesh* importedMesh, const aiScene* scene)
 	{
+		StaticMesh* mesh = nullptr;
 		if (importedMesh != nullptr && scene != nullptr)
 		{
-			StaticMesh* mesh = nullptr;
 			std::vector<VertexPTN> vertices;
 			std::vector<unsigned int> indices;
 
@@ -141,9 +141,9 @@ namespace rumia
 			}
 
 			mesh->SetMaterial(material);
-
-			return mesh;
 		}
+
+		return mesh;
 	}
 
 	void Model::Render(Renderer* renderer)

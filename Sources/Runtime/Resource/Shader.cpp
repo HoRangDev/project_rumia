@@ -4,13 +4,14 @@ namespace rumia
 {
    Shader::Shader() :
       m_shaderType(EShaderType::Unknown),
-      m_id(0),
+      m_id(InvalidID),
       Resource(EResourceType::Shader)
    {
    }
 
    Shader::~Shader()
    {
+	   Unload();
    }
 
    bool Shader::LoadProcess(std::ifstream& file)

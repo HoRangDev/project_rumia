@@ -67,8 +67,13 @@ int main()
    testMat.SetAttribute("Test2", glm::vec3(0.5f, 0.3f, 0.2f));
    testMat.SaveAs("..\\Resources\\Materials\\testmat.material");
 
-   Material testMat2{};
-   testMat2.Load("..\\Resources\\Materials\\testmat.material");
+   Material* testMat2 = resMng.Load<Material>("../Resources/Materials/testmat.material");
+
+   {
+	   Material testMat3;
+	   testMat3.Load("../Resources/Materials/testmat.material");
+	   //testMat3.Unload();
+   }
 
    testShader->Unload();
    testFragShader->Unload();

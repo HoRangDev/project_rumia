@@ -13,7 +13,6 @@ namespace rumia
    Resource::~Resource()
    {
       // Double check
-      Unload();
    }
 
    bool Resource::Load(const std::string& filePath)
