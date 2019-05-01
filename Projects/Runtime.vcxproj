@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Sources\Runtime\Component\Component.hpp" />
+    <ClInclude Include="..\Sources\Runtime\Component\ModelRenderer.hpp" />
     <ClInclude Include="..\Sources\Runtime\Component\Renderable.hpp" />
     <ClInclude Include="..\Sources\Runtime\Component\Transform.hpp" />
     <ClInclude Include="..\Sources\Runtime\Core\Attribute.hpp" />
@@ -292,6 +293,7 @@
   <ItemGroup>
     <ClCompile Include="..\Sources\Entry.cpp" />
     <ClCompile Include="..\Sources\Runtime\Component\Component.cpp" />
+    <ClCompile Include="..\Sources\Runtime\Component\ModelRenderer.cpp" />
     <ClCompile Include="..\Sources\Runtime\Component\Renderable.cpp" />
     <ClCompile Include="..\Sources\Runtime\Component\Transform.cpp" />
     <ClCompile Include="..\Sources\Runtime\Core\Engine.cpp" />

@@ -12,6 +12,7 @@ namespace rumia
       m_bActivated(true),
       m_actor(actor)
    {
+	   Initialize();
    }
 
    Component::~Component()

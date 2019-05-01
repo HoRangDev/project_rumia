@@ -819,6 +819,9 @@
     <ClInclude Include="..\Thirdparty\assimp\include\assimp\config.h">
       <Filter>Thirdparty\assimp</Filter>
     </ClInclude>
+    <ClInclude Include="..\Sources\Runtime\Component\ModelRenderer.hpp">
+      <Filter>Sources\Component</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Sources\Runtime\Component\Component.cpp">
@@ -904,6 +907,9 @@
     </ClCompile>
     <ClCompile Include="..\Sources\Runtime\Resource\Shader.cpp">
       <Filter>Sources\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\Runtime\Component\ModelRenderer.cpp">
+      <Filter>Sources\Component</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -35,6 +35,9 @@ namespace rumia
       void SetActive(bool bActive) { m_bActivated = bActive; }
       bool IsActivated() const;
 
+	  virtual void Initialize() { /* Empty Function! */ }
+	  virtual void DeInitialize() { /* Empty Function! */ }
+
    protected:
       Component();
       Component(Actor* actor);
@@ -103,10 +106,12 @@ namespace rumia
    };
 }
 
+#define RUMIA_ABSTRACT_COMPONENT(TYPE) protected: TYPE() { /* Empty function */}
+
 #define RUMIA_COMPONENT(TYPE, ComponentType) public: virtual EComponentType GetType() const override { return ComponentType; }\
                               static EComponentType GetTypeStatic() { return ComponentType; } \
                               private: friend class rumia::ComponentRegistry; static TYPE _registerInst; \
                               static TYPE* Create(Actor* actor) { return new TYPE(actor);} \
-                              TYPE() { rumia::ComponentRegistry::GetInstance().Register<TYPE>(); } \
+                              protected: TYPE() { rumia::ComponentRegistry::GetInstance().Register<TYPE>(); } \
 
 #define RUMIA_REGISTER_COMPONENT(TYPE) TYPE TYPE::_registerInst;
