@@ -3,21 +3,18 @@ Realistic nature simulation/environment rendering project.
 
 # Roadmap
 -----------------------------
-- Procedural Terrain Generation
-- Eco-Systems
+- Systems
   - Weather
   - Day/Night Cycle
-  - Creatures (AI)
-  - Biome
+  - Creatures
+  - Biomes
   - Seasons
-  - Sound FX
-- Real-time Photorealistic Rendering
+  - Procedural Terrain Generation
+- Rendering
   - PBR
-  - Atomsphereric scattering
+  - Atmospheric scattering
   - Massive Open World Rendering
   - Clouds
   - Volumetric Fog
   - Global Illumination
-- Direct3D 11 rendering backend
-- OpenGL rendering backend
-- Vulkan rendering backend
+  - OpenGL rendering backend
