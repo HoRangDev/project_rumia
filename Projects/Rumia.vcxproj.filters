@@ -21,6 +21,9 @@
     <ClCompile Include="..\Sources\Engine\Object.cpp">
       <Filter>Sources\Engine</Filter>
     </ClCompile>
+    <ClCompile Include="..\Sources\Engine\World.cpp">
+      <Filter>Sources\Engine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Sources\Engine\Object.h">
@@ -30,6 +33,9 @@
       <Filter>Sources\Engine</Filter>
     </ClInclude>
     <ClInclude Include="..\Sources\Engine\EmptyComponent.h">
+      <Filter>Sources\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\Engine\World.h">
       <Filter>Sources\Engine</Filter>
     </ClInclude>
   </ItemGroup>

@@ -4,6 +4,7 @@
 namespace rumia
 {
 	Object::Object(const std::string& name) :
+		m_enabled(true),
 		m_name(name)
 	{
 	}
@@ -65,7 +66,10 @@ namespace rumia
 	{
 		for (auto component : m_components)
 		{
-			component->Update(dt);
+			if (component->IsEnabled())
+			{
+				component->Update(dt);
+			}
 		}
 	}
 }

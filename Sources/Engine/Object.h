@@ -25,9 +25,16 @@ namespace rumia
 
 		void Update(float dt);
 
+		void SetName(const std::string& name) { m_name = name; }
+		std::string GetName() const { return m_name; }
+
+		void SetEnable(bool enabled) { m_enabled = enabled; }
+		bool IsEnabled() const { return m_enabled; }
+
 	private:
 		std::string				m_name;
 		std::vector<Component*>	m_components;
+		bool					m_enabled;
 
 	};
 

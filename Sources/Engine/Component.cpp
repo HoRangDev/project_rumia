@@ -3,6 +3,7 @@
 namespace rumia
 {
 	Component::Component() : 
+		m_enabled(true),
 		m_target(nullptr)
 	{
 	}

@@ -13,12 +13,14 @@
   <ItemGroup>
     <ClCompile Include="..\Sources\Engine\Component.cpp" />
     <ClCompile Include="..\Sources\Engine\Object.cpp" />
+    <ClCompile Include="..\Sources\Engine\World.cpp" />
     <ClCompile Include="..\Sources\main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Sources\Engine\Component.h" />
     <ClInclude Include="..\Sources\Engine\Object.h" />
     <ClInclude Include="..\Sources\Engine\EmptyComponent.h" />
+    <ClInclude Include="..\Sources\Engine\World.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
