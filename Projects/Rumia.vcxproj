@@ -11,16 +11,29 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\Sources\Core\Math\Matrix4x4.cpp" />
+    <ClCompile Include="..\Sources\Core\Math\Quaternion.cpp" />
+    <ClCompile Include="..\Sources\Core\Math\Vector2.cpp" />
+    <ClCompile Include="..\Sources\Core\Math\Vector3.cpp" />
+    <ClCompile Include="..\Sources\Core\Math\Vector4.cpp" />
     <ClCompile Include="..\Sources\Engine\Component.cpp" />
     <ClCompile Include="..\Sources\Engine\Object.cpp" />
     <ClCompile Include="..\Sources\Engine\World.cpp" />
     <ClCompile Include="..\Sources\main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Sources\Core\Math\Interp.h" />
+    <ClInclude Include="..\Sources\Core\Math\MathUtility.h" />
+    <ClInclude Include="..\Sources\Core\Math\Matrix4x4.h" />
+    <ClInclude Include="..\Sources\Core\Math\Quaternion.h" />
+    <ClInclude Include="..\Sources\Core\Math\Vector2.h" />
+    <ClInclude Include="..\Sources\Core\Math\Vector3.h" />
+    <ClInclude Include="..\Sources\Core\Math\Vector4.h" />
     <ClInclude Include="..\Sources\Engine\Component.h" />
-    <ClInclude Include="..\Sources\Engine\Object.h" />
     <ClInclude Include="..\Sources\Engine\EmptyComponent.h" />
+    <ClInclude Include="..\Sources\Engine\Object.h" />
     <ClInclude Include="..\Sources\Engine\World.h" />
+    <ClInclude Include="..\Sources\Macros.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

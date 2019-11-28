@@ -4,19 +4,31 @@
     <Filter Include="Sources">
       <UniqueIdentifier>{2f97a9fa-960a-4da6-841e-9bf99c345ec1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Sources\Engine">
-      <UniqueIdentifier>{bd3cfca4-1f48-4f5b-a0d1-d7d4c75706e0}</UniqueIdentifier>
+    <Filter Include="Sources\Core">
+      <UniqueIdentifier>{71019836-d6de-468b-9c13-4d6bafbf7efa}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Sources\Game">
-      <UniqueIdentifier>{49e75314-1ebe-4bae-a005-102c0111d4a8}</UniqueIdentifier>
+    <Filter Include="Sources\Engine">
+      <UniqueIdentifier>{3792b043-5c42-4fd5-8b13-3d89330b282f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Core\Math">
+      <UniqueIdentifier>{5dc4c074-b0e1-449a-9804-b7d6637b4e29}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Sources\main.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
-    <ClCompile Include="..\Sources\Engine\Component.cpp">
-      <Filter>Sources\Engine</Filter>
+    <ClCompile Include="..\Sources\Core\Math\Matrix4x4.cpp">
+      <Filter>Sources\Core\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\Core\Math\Quaternion.cpp">
+      <Filter>Sources\Core\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\Core\Math\Vector2.cpp">
+      <Filter>Sources\Core\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\Core\Math\Vector4.cpp">
+      <Filter>Sources\Core\Math</Filter>
     </ClCompile>
     <ClCompile Include="..\Sources\Engine\Object.cpp">
       <Filter>Sources\Engine</Filter>
@@ -24,19 +36,49 @@
     <ClCompile Include="..\Sources\Engine\World.cpp">
       <Filter>Sources\Engine</Filter>
     </ClCompile>
+    <ClCompile Include="..\Sources\Engine\Component.cpp">
+      <Filter>Sources\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\Core\Math\Vector3.cpp">
+      <Filter>Sources\Core\Math</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Sources\Core\Math\Interp.h">
+      <Filter>Sources\Core\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\Core\Math\Matrix4x4.h">
+      <Filter>Sources\Core\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\Core\Math\Quaternion.h">
+      <Filter>Sources\Core\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\Core\Math\Vector2.h">
+      <Filter>Sources\Core\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\Core\Math\Vector4.h">
+      <Filter>Sources\Core\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\Engine\EmptyComponent.h">
+      <Filter>Sources\Engine</Filter>
+    </ClInclude>
     <ClInclude Include="..\Sources\Engine\Object.h">
+      <Filter>Sources\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\Engine\World.h">
       <Filter>Sources\Engine</Filter>
     </ClInclude>
     <ClInclude Include="..\Sources\Engine\Component.h">
       <Filter>Sources\Engine</Filter>
     </ClInclude>
-    <ClInclude Include="..\Sources\Engine\EmptyComponent.h">
-      <Filter>Sources\Engine</Filter>
+    <ClInclude Include="..\Sources\Macros.h">
+      <Filter>Sources</Filter>
     </ClInclude>
-    <ClInclude Include="..\Sources\Engine\World.h">
-      <Filter>Sources\Engine</Filter>
+    <ClInclude Include="..\Sources\Core\Math\Vector3.h">
+      <Filter>Sources\Core\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\Core\Math\MathUtility.h">
+      <Filter>Sources\Core\Math</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
