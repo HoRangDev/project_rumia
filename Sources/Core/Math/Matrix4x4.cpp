@@ -72,16 +72,16 @@ namespace rumia
 		{
 			Matrix4x4 result;
 
-			__m128 tmp[4];
-			tmp[0] = _mm_shuffle_ps(rows[0], rows[1], _MM_SHUFFLE(1, 0, 1, 0));
-			tmp[2] = _mm_shuffle_ps(rows[0], rows[1], _MM_SHUFFLE(3, 2, 3, 2));
-			tmp[1] = _mm_shuffle_ps(rows[2], rows[3], _MM_SHUFFLE(1, 0, 1, 0));
-			tmp[3] = _mm_shuffle_ps(rows[2], rows[3], _MM_SHUFFLE(3, 2, 3, 2));
+			VectorRegister tmp[4];
+			tmp[0] = _mm_shuffle_ps(rows[0], rows[1], SHUFFLEMASK(0, 1, 0, 1));
+			tmp[2] = _mm_shuffle_ps(rows[0], rows[1], SHUFFLEMASK(2, 3, 2, 3));
+			tmp[1] = _mm_shuffle_ps(rows[2], rows[3], SHUFFLEMASK(0, 1, 0, 1));
+			tmp[3] = _mm_shuffle_ps(rows[2], rows[3], SHUFFLEMASK(2, 3, 2, 3));
 
-			result.rows[0] = _mm_shuffle_ps(tmp[0], tmp[1], _MM_SHUFFLE(2, 0, 2, 0));
-			result.rows[1] = _mm_shuffle_ps(tmp[0], tmp[1], _MM_SHUFFLE(3, 1, 3, 1));
-			result.rows[2] = _mm_shuffle_ps(tmp[2], tmp[3], _MM_SHUFFLE(2, 0, 2, 0));
-			result.rows[3] = _mm_shuffle_ps(tmp[2], tmp[3], _MM_SHUFFLE(3, 1, 3, 1));
+			result.rows[0] = _mm_shuffle_ps(tmp[0], tmp[1], SHUFFLEMASK(0, 2, 0, 2));
+			result.rows[1] = _mm_shuffle_ps(tmp[0], tmp[1], SHUFFLEMASK(1, 3, 1, 3));
+			result.rows[2] = _mm_shuffle_ps(tmp[2], tmp[3], SHUFFLEMASK(0, 2, 0, 2));
+			result.rows[3] = _mm_shuffle_ps(tmp[2], tmp[3], SHUFFLEMASK(1, 3, 1, 3));
 
 			return result;
 		}

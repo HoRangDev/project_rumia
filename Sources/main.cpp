@@ -29,5 +29,8 @@ int main()
 
 	delete testObject;
 	testObject = nullptr;
+
+	math::Matrix4x4 mat{ 1.0f, 2.0f, 3.0f, 4.0f };
+	auto transposedMat = mat.Transposed();
 	return 0;
 }

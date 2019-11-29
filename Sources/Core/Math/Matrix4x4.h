@@ -29,7 +29,7 @@ namespace rumia
 			union
 			{
 				float elements[4][4];
-				__m128 rows[4];
+				VectorRegister rows[4];
 
 				struct
 				{
@@ -41,26 +41,26 @@ namespace rumia
 			};
 		};
 
-		static inline __m128 LinComb_SSE(const __m128& a, const Matrix4x4& mat)
+		static inline VectorRegister LinComb_SSE(const VectorRegister& a, const Matrix4x4& mat)
 		{
-			__m128 result;
-			result = _mm_mul_ps(
-				_mm_shuffle_ps(a, a, _MM_SHUFFLE(0, 0, 0, 0)),
+			VectorRegister result;
+			result = VectorMultiply(
+				_mm_shuffle_ps(a, a, SHUFFLEMASK(0, 0, 0, 0)),
 				mat.rows[0]);
-			result = _mm_add_ps(
+			result = VectorAdd(
 				result,
-				_mm_mul_ps(
-					_mm_shuffle_ps(a, a, _MM_SHUFFLE(1, 1, 1, 1)),
+				VectorMultiply(
+					_mm_shuffle_ps(a, a, SHUFFLEMASK(1, 1, 1, 1)),
 					mat.rows[1]));
-			result = _mm_add_ps(
+			result = VectorAdd(
 				result,
-				_mm_mul_ps(
-					_mm_shuffle_ps(a, a, _MM_SHUFFLE(2, 2, 2, 2)),
+				VectorMultiply(
+					_mm_shuffle_ps(a, a, SHUFFLEMASK(2, 2, 2, 2)),
 					mat.rows[2]));
-			result = _mm_add_ps(
+			result = VectorAdd(
 				result,
-				_mm_mul_ps(
-					_mm_shuffle_ps(a, a, _MM_SHUFFLE(3, 3, 3, 3)),
+				VectorMultiply(
+					_mm_shuffle_ps(a, a, SHUFFLEMASK(3, 3, 3, 3)),
 					mat.rows[3]));
 
 			return result;
