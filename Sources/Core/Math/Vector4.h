@@ -1,5 +1,5 @@
 #pragma once
-#include <emmintrin.h>
+#include "MathUtility.h"
 
 namespace rumia
 {
@@ -47,7 +47,7 @@ namespace rumia
 		public:
 			union  
 			{
-				__m128 elements;
+				VectorRegister elements;
 				struct
 				{
 					float x;
